@@ -1,0 +1,46 @@
+{
+    "pagesa":[
+        {"pagesaID":10372,"shumaPageses":22.00,"dataPageses":"2025-05-09 20:03:22.000","shifra":"SH-251...","transaksioniID":11928,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10373,"shumaPageses":12.00,"dataPageses":"2025-05-09 20:33:47.000","shifra":"SH-25231","transaksioniID":11929,"subjektiID":3,"menyraPagesesID":1},
+        {"pagesaID":10374,"shumaPageses":22.00,"dataPageses":"2025-05-09 22:05:35.000","shifra":"SH-25232","transaksioniID":11933,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10375,"shumaPageses":22.00,"dataPageses":"2025-05-10 10:43:25.000","shifra":"SH-25233","transaksioniID":11934,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10376,"shumaPageses":22.00,"dataPageses":"2025-05-10 10:51:15.000","shifra":"SH-25234","transaksioniID":11936,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10377,"shumaPageses":22.00,"dataPageses":"2025-05-10 10:56:49.000","shifra":"SH-25235","transaksioniID":11939,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10378,"shumaPageses":22.00,"dataPageses":"2025-05-10 10:58:22.000","shifra":"SH-25236","transaksioniID":11939,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10379,"shumaPageses":22.00,"dataPageses":"2025-05-10 11:00:23.000","shifra":"SH-25237","transaksioniID":11941,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10380,"shumaPageses":22.00,"dataPageses":"2025-05-10 11:06:47.000","shifra":"SH-25238","transaksioniID":11943,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10381,"shumaPageses":22.00,"dataPageses":"2025-05-10 11:07:17.000","shifra":"SH-25239","transaksioniID":11944,"subjektiID":13,"menyraPagesesID":1},
+        {"pagesaID":10382,"shumaPageses":22.00,"dataPageses":"2025-05-10 11:11:00.000","shifra":"SH-25240","transaksioniID":11947,"subjektiID":3,"menyraPagesesID":1},
+        {"pagesaID":10383,"shumaPageses":12.00,"dataPageses":"2025-05-10 11:13:34.000","shifra":"SH-25241","transaksioniID":11948,"subjektiID":3,"menyraPagesesID":1},
+        {"pagesaID":10384,"shumaPageses":2.00,"dataPageses":"2025-05-10 11:14:02.000","shifra":"SH-25242","transaksioniID":11951,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10385,"shumaPageses":2.00,"dataPageses":"2025-05-10 11:14:43.000","shifra":"SH-25243","transaksioniID":11952,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10386,"shumaPageses":20.00,"dataPageses":"2025-05-10 11:21:34.000","shifra":"SH-25245","transaksioniID":11956,"subjektiID":3,"menyraPagesesID":1},
+        {"pagesaID":10387,"shumaPageses":2.00,"dataPageses":"2025-05-10 11:23:33.000","shifra":"SH-25246","transaksioniID":11956,"subjektiID":3,"menyraPagesesID":1},
+        {"pagesaID":10388,"shumaPageses":2.00,"dataPageses":"2025-05-10 11:23:50.000","shifra":"SH-25246","transaksioniID":11957,"subjektiID":3,"menyraPagesesID":1},
+        {"pagesaID":10389,"shumaPageses":22.00,"dataPageses":"2025-05-10 11:24:42.000","shifra":"SH-25248","transaksioniID":11958,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10390,"shumaPageses":22.00,"dataPageses":"2025-05-10 11:27:47.000","shifra":"SH-25249","transaksioniID":11962,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10391,"shumaPageses":2.00,"dataPageses":"2025-05-10 11:31:34.000","shifra":"SH-25250","transaksioniID":11962,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10392,"shumaPageses":2.00,"dataPageses":"2025-05-10 11:33:05.000","shifra":"SH-25251","transaksioniID":11963,"subjektiID":12,"menyraPagesesID":1},
+        {"pagesaID":10393,"shumaPageses":20.00,"dataPageses":"2025-05-10 11:34:06.000","shifra":"SH-25254","transaksioniID":11965,"subjektiID":13,"menyraPagesesID":1},
+        {"pagesaID":10397,"shumaPageses":40.00,"dataPageses":"2025-05-10 11:34:59.000","shifra":"SH-25255","transaksioniID":11966,"subjektiID":13,"menyraPagesesID":1}
+    ],
+    "transaksionet":[
+        {"transaksioniID":11935,"shifra":"SH-25234","lloji":"Shitje","totaliperPagese":22.00,"totaliPageses":22.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 10:51:15.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":null,"eshtePublik":1,"llojiID":10349},
+        {"transaksioniID":11936,"shifra":"SH-25235","lloji":"Shitje","totaliperPagese":12.00,"totaliPageses":12.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 10:56:58.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":null,"eshtePublik":1,"llojiID":10350},
+        {"transaksioniID":11937,"shifra":"SH-25235","lloji":"Modifikim Shitje","totaliperPagese":12.00,"totaliPageses":12.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 10:56:58.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":"Shitja është ndryshuar për arsye të tjera. Kontrollo detajet.","eshtePublik":1,"llojiID":10350},
+        {"transaksioniID":11938,"shifra":"SH-25236","lloji":"Shitje","totaliperPagese":22.00,"totaliPageses":22.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 10:58:14.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":null,"eshtePublik":1,"llojiID":10351},
+        {"transaksioniID":11939,"shifra":"SH-25236","lloji":"Shitje","totaliperPagese":22.00,"totaliPageses":22.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 10:58:22.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":null,"eshtePublik":1,"llojiID":10351},
+        {"transaksioniID":11940,"shifra":"SH-25237","lloji":"Shitje","totaliperPagese":22.00,"totaliPageses":22.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 11:00:23.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":null,"eshtePublik":1,"llojiID":10352},
+        {"transaksioniID":11941,"shifra":"SH-25237","lloji":"Shitje","totaliperPagese":22.00,"totaliPageses":22.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 11:06:32.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":null,"eshtePublik":1,"llojiID":10352},
+        {"transaksioniID":11942,"shifra":"SH-25238","lloji":"Shitje","totaliperPagese":3.00,"totaliPageses":3.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 11:06:47.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":null,"eshtePublik":1,"llojiID":10353},
+        {"transaksioniID":11943,"shifra":"SH-25238","lloji":"Modifikim Shitje","totaliperPagese":3.00,"totaliPageses":3.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 11:06:47.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":"Shitja është ndryshuar për arsye të tjera. Kontrollo detajet.","eshtePublik":1,"llojiID":10353},
+        {"transaksioniID":11944,"shifra":"SH-25239","lloji":"Shitje","totaliperPagese":22.00,"totaliPageses":22.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 11:07:17.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":null,"eshtePublik":1,"llojiID":10354},
+        {"transaksioniID":11945,"shifra":"SH-25239","lloji":"Modifikim Shitje","totaliperPagese":12.00,"totaliPageses":12.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 11:09:27.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":"Shitja është ndryshuar për arsye të tjera. Kontrollo detajet.","eshtePublik":1,"llojiID":10354},
+        {"transaksioniID":11947,"shifra":"SH-25241","lloji":"Shitje","totaliperPagese":22.00,"totaliPageses":22.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 11:13:12.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":null,"eshtePublik":1,"llojiID":10355},
+        {"transaksioniID":11948,"shifra":"SH-25241","lloji":"Shitje","totaliperPagese":12.00,"totaliPageses":12.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 11:13:34.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":null,"eshtePublik":1,"llojiID":10355},
+        {"transaksioniID":11949,"shifra":"SH-25241","lloji":"Modifikim Shitje","totaliperPagese":12.00,"totaliPageses":12.00,"mbetjaPerPagese":0.00,"dataTransaksionit":"2025-05-10 11:13:42.000","perdoruesiID":1,"ndermimiID":7207,"komenti":null,"pershkrimi":"Shitja është ndryshuar për arsye të tjera. Kontrollo detajet.","eshtePublik":1,"llojiID":10355}
+    ]
+
+
+
+}

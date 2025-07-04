@@ -1,0 +1,219 @@
+{
+    "bonusetPunonjesit":[
+        {
+        "bonusetPunonjesitID": 1028,
+        "punonjesiID": 23,
+        "bonusetID": 2014,
+        "statusi": 1,
+        "menyraPageses": 1,
+        "dataPageses": "2025-02-24 21:14:36.000",
+        "transaksioniID": 9761,
+        "shifra": "BN-102825"
+    },
+    {
+        "bonusetPunonjesitID": 1029,
+        "punonjesiID": 23,
+        "bonusetID": 2015,
+        "statusi": 1,
+        "menyraPageses": 1,
+        "dataPageses": "2025-02-24 21:14:36.000",
+        "transaksioniID": 9762,
+        "shifra": "BN-102925"
+    },
+    {
+        "bonusetPunonjesitID": 1030,
+        "punonjesiID": 23,
+        "bonusetID": 2016,
+        "statusi": 1,
+        "menyraPageses": 1,
+        "dataPageses": "2025-02-24 21:14:36.000",
+        "transaksioniID": 9763,
+        "shifra": "BN-103025"
+    },
+    {
+        "bonusetPunonjesitID": 1032,
+        "punonjesiID": 23,
+        "bonusetID": 3013,
+        "statusi": 1,
+        "menyraPageses": 1,
+        "dataPageses": "2025-02-24 21:15:34.000",
+        "transaksioniID": 9765,
+        "shifra": "BN-103125"
+    },
+    {
+        "bonusetPunonjesitID": 2027,
+        "punonjesiID": 23,
+        "bonusetID": 4013,
+        "statusi": 1,
+        "menyraPageses": 1,
+        "dataPageses": "2025-03-23 21:16:36.000",
+        "transaksioniID": 10761,
+        "shifra": "BN-251033"
+    },
+    {
+        "bonusetPunonjesitID": 2028,
+        "punonjesiID": 23,
+        "bonusetID": 4014,
+        "statusi": 1,
+        "menyraPageses": 1,
+        "dataPageses": "2025-03-23 21:16:36.000",
+        "transaksioniID": 10762,
+        "shifra": "BN-252028"
+    },
+    {
+        "bonusetPunonjesitID": 2029,
+        "punonjesiID": 23,
+        "bonusetID": 4015,
+        "statusi": 1,
+        "menyraPageses": 1,
+        "dataPageses": "2025-03-23 21:16:36.000",
+        "transaksioniID": 10763,
+        "shifra": "BN-252029"
+    },
+    {
+        "bonusetPunonjesitID": 2030,
+        "punonjesiID": 23,
+        "bonusetID": 5013,
+        "statusi": 1,
+        "menyraPageses": 1,
+        "dataPageses": "2025-03-23 21:16:36.000",
+        "transaksioniID": 10764,
+        "shifra": "BN-252030"
+    }
+    ],
+    "bonuset":[
+        {
+            "bonusetID": 2013,
+            "shuma": 10.00,
+            "dataBonuseve": "2025-02-01"
+        },
+        {
+            "bonusetID": 2014,
+            "shuma": 40.00,
+            "dataBonuseve": "2025-02-02"
+        },
+        {
+            "bonusetID": 2015,
+            "shuma": 105.00,
+            "dataBonuseve": "2025-02-07"
+        },
+        {
+            "bonusetID": 2016,
+            "shuma": 10.00,
+            "dataBonuseve": "2025-02-11"
+        },
+        {
+            "bonusetID": 3013,
+            "shuma": 10.00,
+            "dataBonuseve": "2025-02-20"
+        },
+        {
+            "bonusetID": 4013,
+            "shuma": 10.00,
+            "dataBonuseve": "2025-03-01"
+        },
+        {
+            "bonusetID": 4014,
+            "shuma": 35.00,
+            "dataBonuseve": "2025-03-03"
+        },
+        {
+            "bonusetID": 4015,
+            "shuma": 25.00,
+            "dataBonuseve": "2025-03-10"
+        },
+        {
+            "bonusetID": 5013,
+            "shuma": 10.00,
+            "dataBonuseve": "2025-03-21"
+        },
+        {
+            "bonusetID": 5014,
+            "shuma": 15.00,
+            "dataBonuseve": "2025-04-21"
+        }
+    ],
+        "paga":[
+    {
+        "pagaID": 32,
+        "punonjesiID": 23,
+        "dataPageses": "2025-01-26 00:00:00.000",
+        "paga": 250.00,
+        "bonusi": 0.00,
+        "zbritje": 0.00,
+        "menyraPagesesID": 1,
+        "transaksioniID": 6746,
+        "shifra": "PG-3624"
+    },
+    {
+        "pagaID": 34,
+        "punonjesiID": 23,
+        "dataPageses": "2025-01-26 00:00:00.000",
+        "paga": 250.00,
+        "bonusi": 0.00,
+        "zbritje": 0.00,
+        "menyraPagesesID": 1,
+        "transaksioniID": 6769,
+        "shifra": "PG-3625"
+    },
+    {
+        "pagaID": 35,
+        "punonjesiID": 23,
+        "dataPageses": "2025-01-28 18:48:35.000",
+        "paga": 250.00,
+        "bonusi": 0.00,
+        "zbritje": 0.00,
+        "menyraPagesesID": 1,
+        "transaksioniID": 6797,
+        "shifra": "PG-3625"
+    },
+    {
+        "pagaID": 1031,
+        "punonjesiID": 24,
+        "dataPageses": "2025-02-18 21:34:52.000",
+        "paga": 3.00,
+        "bonusi": 0.00,
+        "zbritje": 0.00,
+        "menyraPagesesID": 1,
+        "transaksioniID": 8760,
+        "shifra": "PG-3825"
+    }
+    ],
+    "punonjesit":[
+        {"punonjesiID":1,"emri":"p1","mbiemri":"p1","dataPunesimit":"2024-10-10","pagaBaze":200.00,"aktiv":true,"nrTelefonit":"44444430"},
+        {"punonjesiID":23,"emri":"emri23","mbiemri":"mbieasdmri","dataPunesimit":"2024-10-28","pagaBaze":250.00,"aktiv":true,"nrTelefonit":"444444"},
+        {"punonjesiID":24,"emri":"t","mbiemri":"t","dataPunesimit":"2025-02-18","pagaBaze":3.00,"aktiv":false,"nrTelefonit":"3"},
+        {"punonjesiID":25,"emri":"t","mbiemri":"t","dataPunesimit":"2025-02-18","pagaBaze":2.00,"aktiv":false,"nrTelefonit":"2"},
+        {"punonjesiID":26,"emri":"t","mbiemri":"t","dataPunesimit":"2025-02-18","pagaBaze":2.00,"aktiv":false,"nrTelefonit":"2"},
+        {"punonjesiID":27,"emri":"tt","mbiemri":"tt","dataPunesimit":"2025-02-18","pagaBaze":22.00,"aktiv":false,"nrTelefonit":"222"},
+        {"punonjesiID":28,"emri":"asd","mbiemri":"qe","dataPunesimit":"2025-02-18","pagaBaze":21.00,"aktiv":false,"nrTelefonit":"222"},
+        {"punonjesiID":29,"emri":"asf","mbiemri":"gfdg","dataPunesimit":"2025-02-18","pagaBaze":2334.00,"aktiv":false,"nrTelefonit":"111"},
+        {"punonjesiID":30,"emri":"rewr","mbiemri":"ewdsf","dataPunesimit":"2025-02-18","pagaBaze":33.00,"aktiv":false,"nrTelefonit":"33"},
+        {"punonjesiID":31,"emri":"dsgfdg","mbiemri":"fdg","dataPunesimit":"2025-02-18","pagaBaze":33.00,"aktiv":false,"nrTelefonit":"33"},
+        {"punonjesiID":32,"emri":"dsf","mbiemri":"dsf","dataPunesimit":"2025-02-18","pagaBaze":22.00,"aktiv":false,"nrTelefonit":"2343"},
+        {"punonjesiID":33,"emri":"dsf","mbiemri":"dsf","dataPunesimit":"2025-02-18","pagaBaze":22.00,"aktiv":false,"nrTelefonit":"22"},
+        {"punonjesiID":34,"emri":"dfsg","mbiemri":"dfgd","dataPunesimit":"2025-02-18","pagaBaze":33.00,"aktiv":false,"nrTelefonit":"33"},
+        {"punonjesiID":2024,"emri":"testBonuset","mbiemri":"t","dataPunesimit":"2025-03-21","pagaBaze":200.00,"aktiv":true,"nrTelefonit":"4546877"}
+    ],
+    "pushimet":[
+        {"pushimID":1,"punonjesID":1,"dataFillimit":"2024-10-10","dataMbarimit":"2024-10-20","lloji":"vjetor","aprovohet":true,"arsyeja":"tendencioze","nrDiteve":9},
+        {"pushimID":3,"punonjesID":null,"dataFillimit":"2024-11-20","dataMbarimit":"2024-11-28","lloji":"asd","aprovohet":true,"arsyeja":"asd","nrDiteve":8},
+        {"pushimID":4,"punonjesID":null,"dataFillimit":"2024-11-13","dataMbarimit":"2024-11-20","lloji":"asd","aprovohet":true,"arsyeja":"asd","nrDiteve":7},
+        {"pushimID":5,"punonjesID":null,"dataFillimit":"2024-11-16","dataMbarimit":"2024-11-23","lloji":"ads","aprovohet":true,"arsyeja":"asd","nrDiteve":7},
+        {"pushimID":7,"punonjesID":null,"dataFillimit":"2024-11-15","dataMbarimit":"2024-11-30","lloji":"asd","aprovohet":true,"arsyeja":"asd","nrDiteve":15},
+        {"pushimID":10,"punonjesID":null,"dataFillimit":"2024-11-20","dataMbarimit":"2024-11-30","lloji":"asd","aprovohet":true,"arsyeja":"asd","nrDiteve":10},
+        {"pushimID":11,"punonjesID":null,"dataFillimit":"2024-11-16","dataMbarimit":"2024-11-23","lloji":"asd","aprovohet":true,"arsyeja":"asd","nrDiteve":10},
+        {"pushimID":16,"punonjesID":23,"dataFillimit":"2025-02-07","dataMbarimit":"2025-02-13","lloji":"a","aprovohet":true,"arsyeja":"a","nrDiteve":6},
+        {"pushimID":17,"punonjesID":23,"dataFillimit":"2025-02-07","dataMbarimit":"2025-02-13","lloji":"aasd","aprovohet":true,"arsyeja":"aasdyyyyyyyyy...","nrDiteve":6},
+        {"pushimID":18,"punonjesID":23,"dataFillimit":"2025-02-07","dataMbarimit":"2025-02-12","lloji":"adsasd","aprovohet":true,"arsyeja":"adsadsad","nrDiteve":5},
+        {"pushimID":19,"punonjesID":23,"dataFillimit":"2025-02-07","dataMbarimit":"2025-02-12","lloji":"adsasd","aprovohet":true,"arsyeja":"adsadsad","nrDiteve":5},
+        {"pushimID":20,"punonjesID":23,"dataFillimit":"2025-02-07","dataMbarimit":"2025-02-12","lloji":"adsasd","aprovohet":true,"arsyeja":"adsadsad","nrDiteve":5},
+        {"pushimID":21,"punonjesID":23,"dataFillimit":"2025-02-07","dataMbarimit":"2025-02-12","lloji":"adsasd","aprovohet":true,"arsyeja":"adsadsad","nrDiteve":5},
+        {"pushimID":22,"punonjesID":23,"dataFillimit":"2025-02-07","dataMbarimit":"2025-02-12","lloji":"adsasd","aprovohet":true,"arsyeja":"adsadsad","nrDiteve":5},
+        {"pushimID":1016,"punonjesID":23,"dataFillimit":"2025-01-18","dataMbarimit":"2025-01-21","lloji":"s","aprovohet":true,"arsyeja":"ss","nrDiteve":3},
+        {"pushimID":1017,"punonjesID":23,"dataFillimit":"2025-01-18","dataMbarimit":"2025-01-21","lloji":"s","aprovohet":true,"arsyeja":"ss","nrDiteve":3}
+    ]
+
+
+
+}

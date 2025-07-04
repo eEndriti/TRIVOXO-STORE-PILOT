@@ -1,0 +1,67 @@
+{
+    "balanci":[
+        {
+            "balanciID":1,
+            "shuma":11229,
+            "menyraPagesesID":1
+        },
+        {
+            "balanciID":2,
+            "shuma":2500,
+            "menyraPagesesID":2
+        },
+        {
+            "balanciID":3,
+            "shuma":4000,
+            "menyraPagesesID":3
+        }
+    ],
+    "menyraPageses":[
+        {
+            "menyraPagesesID": 1,
+            "emertimi": "Cash",
+            "asociuarMeArken": true
+        },
+        {
+            "menyraPagesesID": 2,
+            "emertimi": "NLB",
+            "asociuarMeArken": false
+        },
+        {
+            "menyraPagesesID": 3,
+            "emertimi": "TEB",
+            "asociuarMeArken": false
+        },
+        {
+            "menyraPagesesID": 12,
+            "emertimi": "BPB",
+            "asociuarMeArken": false
+        }
+    ],
+    "transferetBankare":[
+        {
+            "transferetBankareID": 1,
+            "transaksioniID": 11931,
+            "ngaMenyraPagesesID": 1,
+            "neMenyraPagesesID": 2,
+            "balanci": 244.00,
+            "ndermimiID": 7206,
+            "dataTransfert": "2025-05-09 20:36:20.000",
+            "perdoruesiID": 1,
+            "shifra": "TB-251"
+        },
+        {
+            "transferetBankareID": 2,
+            "transaksioniID": 11932,
+            "ngaMenyraPagesesID": 2,
+            "neMenyraPagesesID": 1,
+            "balanci": 42.00,
+            "ndermimiID": 7206,
+            "dataTransfert": "2025-05-09 20:37:24.000",
+            "perdoruesiID": 1,
+            "shifra": "TB-252"
+        }
+    ]
+
+
+}

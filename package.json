@@ -1,0 +1,49 @@
+{
+  "name": "berdynatech-customized-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "Custom Electron + React Desktop App",
+  "author": "BerdynaTech Inc",
+  "scripts": {
+    "start": "electron .",
+    "dev": "vite --config ./my-react-app/vite.config.js",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.storeManagement.yourapp",
+    "icon": "/assets/icon.ico",
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist_electron"
+    },
+    "files": [
+      "main.js",
+      "renderer.js",
+      "assets/",
+      "configManager.js",
+      "my-react-app/dist/**"
+    ],
+    "extraResources": [],
+    "asar": true,
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^35.1.5",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "asar": "^3.2.0",
+    "bcrypt": "^5.1.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "mssql": "^11.0.1",
+    "xlsx": "^0.18.5"
+  }
+}

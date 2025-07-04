@@ -1,0 +1,14 @@
+{
+    "parametratGarancionit":[
+        {
+            "parametratGarancionitID":1,
+            "emriBiznesit":"Berdyna Tech",
+            "adresa":"Rr. Konferenca e Bujanit, Pejë, Kosovë",
+            "telefoni":"+383 49 988 833",
+            "kushtet":[
+                ["Në rast të dëmtimit të diskut, garantohet vetëm disku, jo të dhënat","Dëmtimet fizike nga përplasjet, goditjet, ndrydhjet, lëngjet apo ujit.Në rast të dëmtimit të diskut, garantohet vetëm disku, jo të dhënat. Nëse është servisuar nga palë të tjera pa miratim tonë."," Nëse është servisuar nga palë të tjera pa miratim tonë."]
+            ],
+            "filePath":"C:\\Users\\BerdynaTech\\Desktop"
+        }
+    ]
+}

@@ -1,0 +1,92 @@
+:root {
+    --primary-color: #2A3D4E;   /* Dark Blue */
+    --secondary-color: #24AD5D; /* Green */
+    --light-color: #F8F9FA;     /* Light White */
+  }
+  
+  .halo-login {
+    min-height: 100vh;
+    /* you can add a subtle pattern or gradient if you like */
+  }
+  
+  .login-card {
+    width: 320px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: none;
+    padding: 1.5rem;
+  }
+  
+  .avatar-list {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  
+  .avatar-col {
+    position: relative; /* for the triangle */
+    text-align: center;
+    margin: 0 0.5rem;
+    cursor: pointer;
+  }
+  
+  .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--light-color);
+    transition: transform 0.2s;
+  }
+  
+  .avatar:hover {
+    transform: scale(1.1);
+  }
+  
+  .avatar.selected {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+  }
+  
+  .avatar.selected::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--secondary-color);
+  }
+  
+  .avatar-label {
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+  }
+  
+  .password-panel {
+    margin-bottom: 1rem;
+  }
+  
+  .login-button {
+    border-radius: 30px;
+    padding: 0.6rem 0;
+    font-weight: bold;
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--primary-color);
+    transition: box-shadow 0.3s, transform 0.2s;
+  }
+  
+  .login-button:hover:not(:disabled) {
+    box-shadow: 0 0 8px var(--secondary-color);
+    transform: translateY(-2px);
+  }
+  

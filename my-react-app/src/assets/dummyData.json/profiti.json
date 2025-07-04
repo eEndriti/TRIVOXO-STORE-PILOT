@@ -1,0 +1,21 @@
+{
+    "profiti":[
+        {"profitiID":8296,"shuma":11.00,"ndermimiID":7207,"transaksioniID":11941,"dataProfiti":"2025-05-10 11:06:32.000","statusi":0,"shumaPerBonuse":11.00},
+        {"profitiID":8297,"shuma":1.00,"ndermimiID":7207,"transaksioniID":11943,"dataProfiti":"2025-05-10 11:06:47.000","statusi":0,"shumaPerBonuse":1.00},
+        {"profitiID":8298,"shuma":11.00,"ndermimiID":7207,"transaksioniID":11944,"dataProfiti":"2025-05-10 11:10:00.000","statusi":0,"shumaPerBonuse":11.00},
+        {"profitiID":8300,"shuma":11.00,"ndermimiID":7207,"transaksioniID":11947,"dataProfiti":"2025-05-10 11:11:00.000","statusi":0,"shumaPerBonuse":11.00},
+        {"profitiID":8303,"shuma":11.00,"ndermimiID":7207,"transaksioniID":11948,"dataProfiti":"2025-05-10 11:13:44.000","statusi":0,"shumaPerBonuse":11.00},
+        {"profitiID":8304,"shuma":1.00,"ndermimiID":7207,"transaksioniID":11951,"dataProfiti":"2025-05-10 11:14:30.000","statusi":0,"shumaPerBonuse":1.00},
+        {"profitiID":8305,"shuma":1.00,"ndermimiID":7207,"transaksioniID":11952,"dataProfiti":"2025-05-10 11:14:43.000","statusi":0,"shumaPerBonuse":1.00},
+        {"profitiID":8304,"shuma":9.00,"ndermimiID":7207,"transaksioniID":11955,"dataProfiti":"2025-05-10 11:21:34.000","statusi":0,"shumaPerBonuse":9.00},
+        {"profitiID":8305,"shuma":1.00,"ndermimiID":7207,"transaksioniID":11956,"dataProfiti":"2025-05-10 11:23:33.000","statusi":0,"shumaPerBonuse":1.00},
+        {"profitiID":8306,"shuma":1.00,"ndermimiID":7207,"transaksioniID":11957,"dataProfiti":"2025-05-10 11:27:47.000","statusi":0,"shumaPerBonuse":1.00},
+        {"profitiID":8308,"shuma":1.00,"ndermimiID":7207,"transaksioniID":11958,"dataProfiti":"2025-05-10 11:31:34.000","statusi":0,"shumaPerBonuse":1.00},
+        {"profitiID":8309,"shuma":11.00,"ndermimiID":7207,"transaksioniID":11962,"dataProfiti":"2025-05-10 11:32:57.000","statusi":0,"shumaPerBonuse":11.00},
+        {"profitiID":8310,"shuma":20.00,"ndermimiID":7207,"transaksioniID":11963,"dataProfiti":"2025-05-10 11:34:06.000","statusi":0,"shumaPerBonuse":20.00},
+        {"profitiID":8311,"shuma":20.00,"ndermimiID":7207,"transaksioniID":11965,"dataProfiti":"2025-05-10 11:34:36.000","statusi":0,"shumaPerBonuse":20.00},
+        {"profitiID":8314,"shuma":20.00,"ndermimiID":7207,"transaksioniID":11966,"dataProfiti":"2025-05-10 11:34:59.000","statusi":0,"shumaPerBonuse":20.00}
+    ]
+
+
+}

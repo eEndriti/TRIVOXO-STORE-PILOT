@@ -1,0 +1,54 @@
+{
+    "servisimi":[
+        {
+            "servisimiID":8060,"shifra":"S-257061","kontakti":"44559888","komenti":null,"pajisjetPercjellese":"Data/","dataPranimit":"2025-03-22 21:12:50.000","statusi":"Perfunduar","shifraGarancioni":null,"totaliPerPagese":42.00,"totaliPageses":42.00,"mbetjaPageses":0.00,"dataPerfundimit":"2025-03-22","perdoruesiID":1,"ndermimiID":5086,"subjektiID":3,"transaksioniID":10755,"menyraPagesesID":1
+        },
+        {
+            "servisimiID":8063,"shifra":"S-258061","kontakti":"12314578","komenti":null,"pajisjetPercjellese":"Data/","dataPranimit":"2025-03-23 21:36:09.000","statusi":"Perfunduar","shifraGarancioni":null,"totaliPerPagese":10.00,"totaliPageses":10.00,"mbetjaPageses":0.00,"dataPerfundimit":"2025-03-23","perdoruesiID":1,"ndermimiID":6087,"subjektiID":1,"transaksioniID":10778,"menyraPagesesID":1
+        },
+        {
+            "servisimiID":8064,"shifra":"S-258061","kontakti":"12314578","komenti":null,"pajisjetPercjellese":null,"dataPranimit":"2025-03-24 21:36:09.000","statusi":"Perfunduar","shifraGarancioni":null,"totaliPerPagese":10.00,"totaliPageses":10.00,"mbetjaPageses":0.00,"dataPerfundimit":"2025-03-24","perdoruesiID":1,"ndermimiID":6087,"subjektiID":1,"transaksioniID":10779,"menyraPagesesID":1
+        },
+        {
+            "servisimiID":8065,"shifra":"S-258064","kontakti":"12314578","komenti":null,"pajisjetPercjellese":null,"dataPranimit":"2025-03-25 21:36:09.000","statusi":"Perfunduar","shifraGarancioni":null,"totaliPerPagese":10.00,"totaliPageses":10.00,"mbetjaPageses":0.00,"dataPerfundimit":"2025-03-25","perdoruesiID":1,"ndermimiID":7158,"subjektiID":1,"transaksioniID":null,"menyraPagesesID":1
+        },
+        {
+            "servisimiID":8066,"shifra":"S-2536","kontakti":"123456789","komenti":null,"pajisjetPercjellese":null,"dataPranimit":"2025-03-29 21:36:49.000","statusi":"Aktiv","shifraGarancioni":null,"totaliPerPagese":null,"totaliPageses":null,"mbetjaPageses":null,"dataPerfundimit":null,"perdoruesiID":1,"ndermimiID":7206,"subjektiID":1,"transaksioniID":null,"menyraPagesesID":1
+        }
+    ],
+    "servisProdukti":[
+        {"servisProduktitID":1081,"servisimiID":3065,"produktiID":1,"sasia":1,"cmimiShitjesPerCope":150.00,"totaliProduktit":150.00,"komenti":"In stock","profitiProduktit":50.00},
+        {"servisProduktitID":1082,"servisimiID":3066,"produktiID":2,"sasia":1,"cmimiShitjesPerCope":150.00,"totaliProduktit":150.00,"komenti":"In stock","profitiProduktit":50.00},
+        {"servisProduktitID":1084,"servisimiID":3067,"produktiID":2,"sasia":1,"cmimiShitjesPerCope":150.00,"totaliProduktit":150.00,"komenti":"In stock","profitiProduktit":50.00},
+        {"servisProduktitID":2073,"servisimiID":4057,"produktiID":2005,"sasia":1,"cmimiShitjesPerCope":25.00,"totaliProduktit":25.00,"komenti":"In stock","profitiProduktit":6.00},
+        {"servisProduktitID":2075,"servisimiID":4058,"produktiID":1,"sasia":1,"cmimiShitjesPerCope":35.00,"totaliProduktit":35.00,"komenti":"asdsad","profitiProduktit":23.00},
+        {"servisProduktitID":3075,"servisimiID":4059,"produktiID":1,"sasia":1,"cmimiShitjesPerCope":40.00,"totaliProduktit":40.00,"komenti":"asdsad","profitiProduktit":19.00},
+        {"servisProduktitID":3080,"servisimiID":4062,"produktiID":3,"sasia":1,"cmimiShitjesPerCope":221.99,"totaliProduktit":221.99,"komenti":"komenticc","profitiProduktit":90.00},
+        {"servisProduktitID":3082,"servisimiID":4063,"produktiID":2008,"sasia":1,"cmimiShitjesPerCope":2.00,"totaliProduktit":2.00,"komenti":"sad","profitiProduktit":1.00},
+        {"servisProduktitID":3085,"servisimiID":4064,"produktiID":2012,"sasia":1,"cmimiShitjesPerCope":2.00,"totaliProduktit":2.00,"komenti":null,"profitiProduktit":1.00},
+        {"servisProduktitID":3086,"servisimiID":4065,"produktiID":2012,"sasia":1,"cmimiShitjesPerCope":2.00,"totaliProduktit":2.00,"komenti":"asdsad","profitiProduktit":1.00},
+        {"servisProduktitID":4076,"servisimiID":5061,"produktiID":1003,"sasia":2,"cmimiShitjesPerCope":90.00,"totaliProduktit":180.00,"komenti":null,"profitiProduktit":90.00},
+        {"servisProduktitID":4077,"servisimiID":5062,"produktiID":1,"sasia":1,"cmimiShitjesPerCope":25.00,"totaliProduktit":25.00,"komenti":"In stock","profitiProduktit":6.00},
+        {"servisProduktitID":4078,"servisimiID":5062,"produktiID":2005,"sasia":1,"cmimiShitjesPerCope":40.00,"totaliProduktit":40.00,"komenti":"asdsad","profitiProduktit":20.00},
+        {"servisProduktitID":4079,"servisimiID":5062,"produktiID":1003,"sasia":1,"cmimiShitjesPerCope":90.00,"totaliProduktit":90.00,"komenti":"komenticc","profitiProduktit":45.00},
+        {"servisProduktitID":4080,"servisimiID":5062,"produktiID":3,"sasia":1,"cmimiShitjesPerCope":150.00,"totaliProduktit":150.00,"komenti":"komenticc","profitiProduktit":50.00},
+        {"servisProduktitID":4081,"servisimiID":5063,"produktiID":1,"sasia":1,"cmimiShitjesPerCope":25.00,"totaliProduktit":25.00,"komenti":"In stock","profitiProduktit":6.00},
+        {"servisProduktitID":4109,"servisimiID":5064,"produktiID":3015,"sasia":100,"cmimiShitjesPerCope":22.00,"totaliProduktit":2200.00,"komenti":null,"profitiProduktit":1100.00},
+        {"servisProduktitID":4110,"servisimiID":5064,"produktiID":2007,"sasia":14,"cmimiShitjesPerCope":22.00,"totaliProduktit":308.00,"komenti":"asd","profitiProduktit":154.00},
+        {"servisProduktitID":5075,"servisimiID":5077,"produktiID":2012,"sasia":1,"cmimiShitjesPerCope":2.00,"totaliProduktit":2.00,"komenti":null,"profitiProduktit":1.00},
+        {"servisProduktitID":5076,"servisimiID":5076,"produktiID":3,"sasia":1,"cmimiShitjesPerCope":150.00,"totaliProduktit":150.00,"komenti":"komenticc","profitiProduktit":50.00},
+        {"servisProduktitID":6077,"servisimiID":5078,"produktiID":1,"sasia":1,"cmimiShitjesPerCope":25.00,"totaliProduktit":25.00,"komenti":"In stock","profitiProduktit":6.00},
+        {"servisProduktitID":7076,"servisimiID":7060,"produktiID":1,"sasia":1,"cmimiShitjesPerCope":25.00,"totaliProduktit":25.00,"komenti":"In stock","profitiProduktit":6.00},
+        {"servisProduktitID":7078,"servisimiID":8060,"produktiID":2012,"sasia":1,"cmimiShitjesPerCope":2.00,"totaliProduktit":2.00,"komenti":"asdsad","profitiProduktit":1.00},
+        {"servisProduktitID":7079,"servisimiID":8060,"produktiID":2012,"sasia":1,"cmimiShitjesPerCope":40.00,"totaliProduktit":40.00,"komenti":"asdsad","profitiProduktit":20.00},
+        {"servisProduktitID":7083,"servisimiID":5075,"produktiID":2005,"sasia":1,"cmimiShitjesPerCope":40.00,"totaliProduktit":40.00,"komenti":"asdsad","profitiProduktit":20.00},
+        {"servisProduktitID":7084,"servisimiID":5075,"produktiID":2005,"sasia":1,"cmimiShitjesPerCope":40.00,"totaliProduktit":40.00,"komenti":"asdsad","profitiProduktit":20.00},
+        {"servisProduktitID":7087,"servisimiID":4063,"produktiID":1003,"sasia":1,"cmimiShitjesPerCope":90.00,"totaliProduktit":90.00,"komenti":null,"profitiProduktit":45.00},
+        {"servisProduktitID":7088,"servisimiID":8061,"produktiID":2005,"sasia":1,"cmimiShitjesPerCope":40.00,"totaliProduktit":40.00,"komenti":"asdsad","profitiProduktit":20.00},
+        {"servisProduktitID":7089,"servisimiID":8061,"produktiID":1,"sasia":1,"cmimiShitjesPerCope":25.00,"totaliProduktit":25.00,"komenti":"In stock","profitiProduktit":6.00},
+        {"servisProduktitID":7090,"servisimiID":8061,"produktiID":5014,"sasia":1,"cmimiShitjesPerCope":3.00,"totaliProduktit":3.00,"komenti":null,"profitiProduktit":1.00},
+        {"servisProduktitID":7091,"servisimiID":8064,"produktiID":5014,"sasia":1,"cmimiShitjesPerCope":10.00,"totaliProduktit":10.00,"komenti":null,"profitiProduktit":8.00}
+    ]
+
+
+}

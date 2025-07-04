@@ -1,0 +1,14 @@
+.tabela {
+    /* ensure this is the scrolling container */
+    max-height: 700px;  /* adjust as needed */
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  /* make every TH (or TD) in the footer sticky */
+  .my-Footer tr th {
+    position: sticky;
+    bottom: -1px;  /* adjust as needed */
+    background-color: #ffffff;  /* match your table’s background */
+    z-index: 2;              /* sit on top of the scrolling rows */
+  }

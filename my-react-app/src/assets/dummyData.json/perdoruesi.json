@@ -1,0 +1,25 @@
+{
+    "perdoruesi":[
+        {
+            "perdoruesiID":1,
+            "emri":"User Name 1",
+            "fjalekalimiHash":"$2b$10$.v7dXt3lgumDeMs6bgvOAeiYLvLIGg7c6P.6kahR7goBuWYpNjn/q",
+            "salt":"$2b$10$.v7dXt3lgumDeMs6bgvOAe",
+            "roli":"admin"
+        },
+        {
+            "perdoruesiID":2,
+            "emri":"User Name 2",
+            "fjalekalimiHash":"$2b$10$97e54wId0dEEW5QHgEzPmehq2HCxXN3LysxnlNUDv7bXSPhxfTEOm",
+            "salt":"$2b$10$97e54wId0dEEW5QHgEzPme",
+            "roli":"perdorues"
+        },
+        {
+            "perdoruesiID":3,
+            "emri":"User Name 3",
+            "fjalekalimiHash":"$2b$10$1TKkx1Ts0bJ7cUNiSCupJ.eBg.N2I1.sIWoIhaYCg6kvy3bR6QyQW",
+            "salt":"$2b$10$1TKkx1Ts0bJ7cUNiSCupJ.",
+            "roli":"perdorues"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "server": "DESKTOP-RJASQGG",
+    "database": "berdynaTechDBKryesore",
+    "user": "user1",
+    "password": "40f0b395e4609343faf55c71a000a98a:25100dd2d5223d04c8c5150349249fd7",
+    "options": {
+      "encrypt": true,
+      "trustServerCertificate": true
+    }
+  }
+  

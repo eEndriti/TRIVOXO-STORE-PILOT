@@ -1,0 +1,4 @@
+.drawing-canvas {
+  border: 1px solid #ccc;
+  cursor: crosshair; /* Change cursor to indicate drawing mode */
+}

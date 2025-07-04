@@ -1,0 +1,95 @@
+{
+    "llojetShpenzimeve":[
+      {
+        "llojetShpenzimeveID": 1,
+        "emertimi": "Office Supplies",
+        "shumaStandarde": 100.00
+      },
+      {
+        "llojetShpenzimeveID": 2,
+        "emertimi": "Travel Expenses",
+        "shumaStandarde": 300.00
+      },
+      {
+        "llojetShpenzimeveID": 3,
+        "emertimi": "e er",
+        "shumaStandarde": 123.00
+      },
+      {
+        "llojetShpenzimeveID": 4,
+        "emertimi": "as",
+        "shumaStandarde": 123.00
+      },
+      {
+        "llojetShpenzimeveID": 1010,
+        "emertimi": "Produkt",
+        "shumaStandarde": 0.00
+      },
+      {
+        "llojetShpenzimeveID": 2010,
+        "emertimi": "213",
+        "shumaStandarde": 123.00
+      },
+      {
+        "llojetShpenzimeveID": 3434,
+        "emertimi": "test",
+        "shumaStandarde": 21.00
+      },
+      {
+        "llojetShpenzimeveID": 3436,
+        "emertimi": "tesesest2",
+        "shumaStandarde": 21.00
+      },
+      {
+        "llojetShpenzimeveID": 4011,
+        "emertimi": "test",
+        "shumaStandarde": 22.00
+      }
+    ],
+
+    "shpenzimi":[
+        {"shpenzimID":4060,"shifra":"SHP-406025","shumaShpenzimit":45.00,"dataShpenzimit":"2025-02-23 19:26:19.000","komenti":"nga Stoku","llojetShpenzimeveID":1010,"perdoruesiID":5,"transaksioniID":8775,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":5050,"shifra":"SHP-406125","shumaShpenzimit":100.00,"dataShpenzimit":"2025-02-24 20:49:16.000","komenti":"nga Stoku","llojetShpenzimeveID":1010,"perdoruesiID":5,"transaksioniID":9753,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":5051,"shifra":"SHP-505125","shumaShpenzimit":19.00,"dataShpenzimit":"2025-02-24 20:50:33.000","komenti":"nga Stoku","llojetShpenzimeveID":1010,"perdoruesiID":5,"transaksioniID":9754,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":5052,"shifra":"SHP-505225","shumaShpenzimit":19.00,"dataShpenzimit":"2025-02-24 20:51:05.000","komenti":"nga Stoku","llojetShpenzimeveID":1010,"perdoruesiID":5,"transaksioniID":9755,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":5053,"shifra":"SHP-505325","shumaShpenzimit":45.00,"dataShpenzimit":"2025-02-24 20:55:00.000","komenti":"nga Stoku","llojetShpenzimeveID":1010,"perdoruesiID":5,"transaksioniID":9756,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":5054,"shifra":"SHP-505425","shumaShpenzimit":19.00,"dataShpenzimit":"2025-02-24 20:55:43.000","komenti":"nga Stoku","llojetShpenzimeveID":1010,"perdoruesiID":5,"transaksioniID":9757,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":5055,"shifra":"SHP-505525","shumaShpenzimit":2.00,"dataShpenzimit":"2025-02-10 11:10:23.000","komenti":null,"llojetShpenzimeveID":1,"perdoruesiID":5,"transaksioniID":9778,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":5056,"shifra":"SHP-505625","shumaShpenzimit":2.00,"dataShpenzimit":"2025-02-10 11:11:02.000","komenti":null,"llojetShpenzimeveID":1,"perdoruesiID":5,"transaksioniID":9779,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":5057,"shifra":"SHP-505725","shumaShpenzimit":19.00,"dataShpenzimit":"2025-02-10 21:23:29.000","komenti":null,"llojetShpenzimeveID":1,"perdoruesiID":5,"transaksioniID":9780,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":5058,"shifra":"SHP-505825","shumaShpenzimit":20.00,"dataShpenzimit":"2025-02-10 23:14:24.000","komenti":"nga Stoku","llojetShpenzimeveID":1010,"perdoruesiID":5,"transaksioniID":9781,"nenLloji":"ngaStoku","menyraPagesesID":1},
+        {"shpenzimID":6057,"shifra":"SHP-256057","shumaShpenzimit":100.00,"dataShpenzimit":"2025-02-07 23:11:21.000","komenti":"test","llojetShpenzimeveID":3,"perdoruesiID":1,"transaksioniID":10753,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":6059,"shifra":"SHP-256059","shumaShpenzimit":2.00,"dataShpenzimit":"2025-02-07 23:14:20.000","komenti":"nga Stoku","llojetShpenzimeveID":1,"perdoruesiID":1,"transaksioniID":10754,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":6073,"shifra":"SHP-256053","shumaShpenzimit":20.00,"dataShpenzimit":"2025-02-12 22:25:00.000","komenti":"cn","llojetShpenzimeveID":1,"perdoruesiID":1,"transaksioniID":11822,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":6074,"shifra":"SHP-256054","shumaShpenzimit":20.00,"dataShpenzimit":"2025-02-12 22:31:00.000","komenti":"nga Stoku","llojetShpenzimeveID":1010,"perdoruesiID":1,"transaksioniID":11843,"nenLloji":"ngaStoku","menyraPagesesID":1},
+        {"shpenzimID":6075,"shifra":"SHP-256060","shumaShpenzimit":10.00,"dataShpenzimit":"2025-04-21 11:48:29.000","komenti":"a","llojetShpenzimeveID":3,"perdoruesiID":1,"transaksioniID":11900,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":6076,"shifra":"SHP-256061","shumaShpenzimit":100.00,"dataShpenzimit":"2025-04-16 14:33:00.000","komenti":"test","llojetShpenzimeveID":3,"perdoruesiID":1,"transaksioniID":11901,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":6077,"shifra":"SHP-256062","shumaShpenzimit":123.00,"dataShpenzimit":"2025-04-16 14:43:00.000","komenti":"test","llojetShpenzimeveID":1,"perdoruesiID":1,"transaksioniID":11913,"nenLloji":null,"menyraPagesesID":2},
+        {"shpenzimID":6063,"shifra":"SHP-256063","shumaShpenzimit":19.00,"dataShpenzimit":"2025-05-10 11:27:44.000","komenti":"aa","llojetShpenzimeveID":1,"perdoruesiID":1,"transaksioniID":11961,"nenLloji":null,"menyraPagesesID":1},
+        {"shpenzimID":6064,"shifra":"SHP-256064","shumaShpenzimit":2.00,"dataShpenzimit":"2025-05-10 11:31:30.000","komenti":"test","llojetShpenzimeveID":1,"perdoruesiID":1,"transaksioniID":11962,"nenLloji":null,"menyraPagesesID":2},
+        {"shpenzimID":6072,"shifra":"SHP-256068","shumaShpenzimit":19.00,"dataShpenzimit":"2025-05-10 11:32:40.000","komenti":"nga Stoku","llojetShpenzimeveID":1010,"perdoruesiID":1,"transaksioniID":11921,"nenLloji":"ngaStoku","menyraPagesesID":null},
+        {"shpenzimID":6073,"shifra":"SHP-256073","shumaShpenzimit":123.00,"dataShpenzimit":"2025-05-10 22:07:41.000","komenti":"nga Stoku","llojetShpenzimeveID":3,"perdoruesiID":1,"transaksioniID":11925,"nenLloji":null,"menyraPagesesID":1}
+    ],
+
+    "shpenzimProdukti":[
+        {"shpenzimProduktitID":1,"shpenzimiID":1028,"produktiID":2,"sasia":1,"cmimiFurnizimit":100.00,"transaksioniID":null},
+        {"shpenzimProduktitID":2,"shpenzimiID":1029,"produktiID":3,"sasia":2,"cmimiFurnizimit":45.00,"transaksioniID":null},
+        {"shpenzimProduktitID":3,"shpenzimiID":1030,"produktiID":1003,"sasia":1,"cmimiFurnizimit":45.00,"transaksioniID":null},
+        {"shpenzimProduktitID":4,"shpenzimiID":1032,"produktiID":1003,"sasia":2,"cmimiFurnizimit":45.00,"transaksioniID":2480},
+        {"shpenzimProduktitID":11,"shpenzimiID":4057,"produktiID":1,"sasia":1,"cmimiFurnizimit":45.00,"transaksioniID":8772},
+        {"shpenzimProduktitID":12,"shpenzimiID":4058,"produktiID":1,"sasia":1,"cmimiFurnizimit":100.00,"transaksioniID":8773},
+        {"shpenzimProduktitID":13,"shpenzimiID":4059,"produktiID":3,"sasia":1,"cmimiFurnizimit":100.00,"transaksioniID":8774},
+        {"shpenzimProduktitID":14,"shpenzimiID":5050,"produktiID":1,"sasia":1,"cmimiFurnizimit":45.00,"transaksioniID":9753},
+        {"shpenzimProduktitID":1012,"shpenzimiID":5051,"produktiID":1,"sasia":1,"cmimiFurnizimit":19.00,"transaksioniID":9754},
+        {"shpenzimProduktitID":1013,"shpenzimiID":5052,"produktiID":1,"sasia":1,"cmimiFurnizimit":19.00,"transaksioniID":9755},
+        {"shpenzimProduktitID":1014,"shpenzimiID":5053,"produktiID":1,"sasia":1,"cmimiFurnizimit":45.00,"transaksioniID":9756},
+        {"shpenzimProduktitID":1015,"shpenzimiID":5054,"produktiID":1,"sasia":1,"cmimiFurnizimit":19.00,"transaksioniID":9757},
+        {"shpenzimProduktitID":1016,"shpenzimiID":5055,"produktiID":1,"sasia":1,"cmimiFurnizimit":2.00,"transaksioniID":9778},
+        {"shpenzimProduktitID":1017,"shpenzimiID":5056,"produktiID":1,"sasia":1,"cmimiFurnizimit":2.00,"transaksioniID":9779},
+        {"shpenzimProduktitID":2011,"shpenzimiID":6052,"produktiID":2005,"sasia":1,"cmimiFurnizimit":20.00,"transaksioniID":10771},
+        {"shpenzimProduktitID":2013,"shpenzimiID":6054,"produktiID":2005,"sasia":1,"cmimiFurnizimit":20.00,"transaksioniID":11843},
+        {"shpenzimProduktitID":2015,"shpenzimiID":6072,"produktiID":2005,"sasia":1,"cmimiFurnizimit":20.00,"transaksioniID":11923}
+    ]
+
+
+}

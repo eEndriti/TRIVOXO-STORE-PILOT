@@ -1,0 +1,46 @@
+:root {
+  --primary-color: #2A3D4E; /* Dark Blue */
+  --secondary-color: #24AD5D; /* Green */
+  --light-color: #F8F9FA; /* Light White */
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+   
+
+}
+*{
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+}
+.mainTextColor{
+  color: var(--primary-color);
+}
+
+span{
+    display:block;
+}
+.tabeleMeMaxHeight{
+    max-height: calc(7 * 2.5rem); /* Approximate height of 7 rows */
+    overflow-y: auto;
+}
+.tableHeight50{
+  max-height: calc(15 * 2.5rem);
+  overflow-y: auto;
+}
+
+.tableHeight80{
+  max-height: calc(20 * 2.8rem);
+  overflow-y: auto;
+}
+
+  .border-right{
+    border-right: 2px solid black;
+    border-radius: 10px;
+  }
+  .border{
+    border-right: 2px solid black;
+    border-radius: 10px;
+  }

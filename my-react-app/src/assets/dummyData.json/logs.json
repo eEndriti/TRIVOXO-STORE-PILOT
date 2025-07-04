@@ -1,0 +1,165 @@
+{
+    "logs":[
+  {
+    "logsID": 333,
+    "perdoruesiID": 1,
+    "komponenta": "Ndryshimi i gjendjes se arkes",
+    "pershkrimi": "Nderro gjendjen e arkes me + 12",
+    "dataDheOra": "2025-04-21 20:44:43.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 334,
+    "perdoruesiID": 1,
+    "komponenta": "Shitje",
+    "pershkrimi": "U shtua shitja me shifer: SH-2510322",
+    "dataDheOra": "2025-04-21 20:44:44.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 335,
+    "perdoruesiID": 1,
+    "komponenta": "Transaksioni",
+    "pershkrimi": "Shto transaksionin 11867",
+    "dataDheOra": "2025-04-21 20:32:17.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 336,
+    "perdoruesiID": 1,
+    "komponenta": "Profiti",
+    "pershkrimi": "U shtua profiti me shume: 11",
+    "dataDheOra": "2025-04-21 20:32:17.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 337,
+    "perdoruesiID": 1,
+    "komponenta": "Pagesa",
+    "pershkrimi": "U shtua pagesa per dokumentin: SH-2510323, me shumen: 12",
+    "dataDheOra": "2025-04-21 20:32:17.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 338,
+    "perdoruesiID": 1,
+    "komponenta": "Balancet",
+    "pershkrimi": "U nderhyua balanci i menyres se pageses me veprimin: +, shuma:12 ne: 1",
+    "dataDheOra": "2025-04-21 20:32:13.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 339,
+    "perdoruesiID": 1,
+    "komponenta": "Ndryshimi i gjendjes se arkes",
+    "pershkrimi": "Nderro gjendjen e arkes me + 12",
+    "dataDheOra": "2025-04-21 20:32:14.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 340,
+    "perdoruesiID": 1,
+    "komponenta": "Shitje",
+    "pershkrimi": "U shtua shitja me shifer: SH-2510323",
+    "dataDheOra": "2025-04-21 20:32:15.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 341,
+    "perdoruesiID": 1,
+    "komponenta": "Transaksioni",
+    "pershkrimi": "Shto transaksionin 11868",
+    "dataDheOra": "2025-04-21 20:33:17.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 342,
+    "perdoruesiID": 1,
+    "komponenta": "Profiti",
+    "pershkrimi": "U shtua profiti me shume: 11",
+    "dataDheOra": "2025-04-21 20:33:18.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 343,
+    "perdoruesiID": 1,
+    "komponenta": "Pagesa",
+    "pershkrimi": "U shtua pagesa per dokumentin: SH-2510324, me shumen: 12",
+    "dataDheOra": "2025-04-21 20:33:19.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 344,
+    "perdoruesiID": 1,
+    "komponenta": "Balancet",
+    "pershkrimi": "U nderhyua balanci i menyres se pageses me veprimin: +, shuma:12 ne: 1",
+    "dataDheOra": "2025-04-21 20:33:20.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 345,
+    "perdoruesiID": 1,
+    "komponenta": "Ndryshimi i gjendjes se arkes",
+    "pershkrimi": "Nderro gjendjen e arkes me + 22",
+    "dataDheOra": "2025-04-21 20:33:31.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 346,
+    "perdoruesiID": 1,
+    "komponenta": "Shitje",
+    "pershkrimi": "U shtua shitja me shifer: SH-2510325",
+    "dataDheOra": "2025-04-21 20:33:32.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 347,
+    "perdoruesiID": 1,
+    "komponenta": "Transaksioni",
+    "pershkrimi": "Shto transaksionin 11869",
+    "dataDheOra": "2025-04-21 20:33:34.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 348,
+    "perdoruesiID": 1,
+    "komponenta": "Profiti",
+    "pershkrimi": "U shtua profiti me shume: 22",
+    "dataDheOra": "2025-04-21 20:33:35.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 349,
+    "perdoruesiID": 1,
+    "komponenta": "Pagesa",
+    "pershkrimi": "U shtua pagesa per dokumentin: SH-2510325, me shumen: 22",
+    "dataDheOra": "2025-04-21 20:33:36.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 350,
+    "perdoruesiID": 1,
+    "komponenta": "Balancet",
+    "pershkrimi": "U nderhyua balanci i menyres se pageses me veprimin: +, shuma:22 ne: 1",
+    "dataDheOra": "2025-04-21 20:33:37.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 351,
+    "perdoruesiID": 1,
+    "komponenta": "Ndryshimi i gjendjes se arkes",
+    "pershkrimi": "Nderro gjendjen e arkes me + 22",
+    "dataDheOra": "2025-04-21 20:33:41.000",
+    "ndermimiID": 7175
+  },
+  {
+    "logsID": 352,
+    "perdoruesiID": 1,
+    "komponenta": "Shitje",
+    "pershkrimi": "U shtua shitja me shifer: SH-2510325",
+    "dataDheOra": "2025-04-21 20:33:42.000",
+    "ndermimiID": 7175
+  }
+]
+
+}

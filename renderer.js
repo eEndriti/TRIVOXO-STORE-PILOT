@@ -1,0 +1,111 @@
+const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('api', {
+
+    fetchTablePerdoruesi: () => ipcRenderer.invoke('fetchTablePerdoruesi'),
+    fetchTablePunonjesit: () => ipcRenderer.invoke('fetchTablePunonjesit'),
+    fetchTableNderrimi: () => ipcRenderer.invoke('fetchTableNderrimi'),
+    kontrolloNderriminAktual: () => ipcRenderer.invoke('kontrolloNderriminAktual'),
+    filloNderriminERi: (perdoruesiID, avans) => ipcRenderer.invoke('filloNderriminERi', perdoruesiID, avans),
+    mbyllNderriminAktual: (data) => ipcRenderer.invoke('mbyllNderriminAktual',data),
+    fetchTableTransaksionet: () => ipcRenderer.invoke('fetchTableTransaksionet'),
+    fetchDetailedTransactions: () => ipcRenderer.invoke('fetchDetailedTransactions'),
+    fetchTableShitje: () => ipcRenderer.invoke('fetchTableShitje'),
+    fetchTableShitjeOnline: () => ipcRenderer.invoke('fetchTableShitjeOnline'),
+    fetchTableQuery: (query) => ipcRenderer.invoke('fetchTableQuery',query),
+    fetchTableServisi: () => ipcRenderer.invoke('fetchTableServisi'),
+    fetchTableSubjekti: (lloji) => ipcRenderer.invoke('fetchTableSubjekti', lloji),
+    fetchTableProdukti: () => ipcRenderer.invoke('fetchTableProdukti'),
+    fetchTableMenyratPageses: () => ipcRenderer.invoke('fetchTableMenyratPageses'),
+    fetchTableLlojetShpenzimeve: () => ipcRenderer.invoke('fetchTableLlojetShpenzimeve'),
+    fetchTableShpenzimet: () => ipcRenderer.invoke('fetchTableShpenzimet'),
+    fetchTableKategoria: () => ipcRenderer.invoke('fetchTableKategoria'),
+    fetchTableBlerje: () => ipcRenderer.invoke('fetchTableBlerje'),
+    fetchTablePagesa: () => ipcRenderer.invoke('fetchTablePagesa'),
+    fetchTableProfiti: () => ipcRenderer.invoke('fetchTableProfiti'),
+    fetchTableProfitiDitor: () => ipcRenderer.invoke('fetchTableProfitiDitor'),
+    fetchTableBonuset: () => ipcRenderer.invoke('fetchTableBonuset'),
+    fetchTablePushimet: () => ipcRenderer.invoke('fetchTablePushimet'),
+    fetchTablePagat: () => ipcRenderer.invoke('fetchTablePagat'),
+    fetchTableParametrat: () => ipcRenderer.invoke('fetchTableParametrat'),
+    fetchTableLogs: () => ipcRenderer.invoke('fetchTableLogs'),
+    getTransferetBankare: () => ipcRenderer.invoke('getTransferetBankare'),
+
+    fetchTotaliArkes: (nderrimiID) => ipcRenderer.invoke('fetchTotaliArkes',nderrimiID),
+    
+    
+
+    insertShitje: (data) => ipcRenderer.invoke('insertShitje', data),
+    insertShpenzimi: (data) => ipcRenderer.invoke('insertShpenzimi', data),
+    kaloNgaStokuNeShpenzim: (data) => ipcRenderer.invoke('kaloNgaStokuNeShpenzim', data) ,
+    insertLlojiShpenzimit: (data) => ipcRenderer.invoke('insertLlojiShpenzimit', data) ,
+    insertLogs: (data) => ipcRenderer.invoke('insertLogs', data) ,
+    insertBlerje: (data) => ipcRenderer.invoke('insertBlerje', data) ,
+    insertProduktin: (data) => ipcRenderer.invoke('insertProduktin', data) ,
+    insertKategorine: (data) => ipcRenderer.invoke('insertKategorine', data) ,
+    insertSubjekti: (data) => ipcRenderer.invoke('insertSubjekti', data) ,
+    insertServisi: (data) => ipcRenderer.invoke('insertServisi', data) ,
+    shtoPunonjes: (data) => ipcRenderer.invoke('shtoPunonjes', data) ,
+    shtoPerdoruesin: (data) => ipcRenderer.invoke('shtoPerdoruesin', data) ,
+    shtoOpsionPagese: (data) => ipcRenderer.invoke('shtoOpsionPagese', data) ,
+    shtoPushimin: (data) => ipcRenderer.invoke('shtoPushimin', data) ,
+    ndryshoParametrat: (data) => ipcRenderer.invoke('ndryshoParametrat', data) ,
+    login: (data) => ipcRenderer.invoke('login', data),
+
+
+
+    
+    anuloShitjen: (data) => ipcRenderer.invoke('anuloShitjen', data) ,
+    anuloPorosineOnlineTePranuar: (data) => ipcRenderer.invoke('anuloPorosineOnlineTePranuar', data) ,
+    anuloBlerjen: (data) => ipcRenderer.invoke('anuloBlerjen', data) ,
+    anuloShpenzimin: (transaksioniID) => ipcRenderer.invoke('anuloShpenzimin', transaksioniID) ,
+    anuloPorosineOnline: (idPerAnulim) => ipcRenderer.invoke('anuloPorosineOnline', idPerAnulim) ,
+    fshijeProduktin: (data) => ipcRenderer.invoke('fshijeProduktin', data) ,
+    fshijePunonjesin: (data) => ipcRenderer.invoke('fshijePunonjesin', data) ,
+    fshijePagen: (idPerAnulim) => ipcRenderer.invoke('fshijePagen', idPerAnulim) ,
+    deleteKategoria: (data) => ipcRenderer.invoke('deleteKategoria', data) ,
+    deleteLlojiShpenzimit: (idPerAnulim) => ipcRenderer.invoke('deleteLlojiShpenzimit', idPerAnulim) ,
+    deleteSubjekti: (idPerAnulim) => ipcRenderer.invoke('deleteSubjekti', idPerAnulim) ,
+    deleteServisi: (data) => ipcRenderer.invoke('deleteServisi', data) ,
+    deletePerdoruesi: (idPerAnulim) => ipcRenderer.invoke('deletePerdoruesi', idPerAnulim) ,
+    deleteOpsionPagese: (idPerAnulim) => ipcRenderer.invoke('deleteOpsionPagese', idPerAnulim) ,
+    deletePushimi: (idPerAnulim) => ipcRenderer.invoke('deletePushimi', idPerAnulim) ,
+    deletePagesa: (data) => ipcRenderer.invoke('deletePagesa', data) ,
+    anuloBonusin: (data) => ipcRenderer.invoke('anuloBonusin', data) ,
+
+    paguajBonuset: (data) => ipcRenderer.invoke('paguajBonuset', data),
+    paguajPagen: (data) => ipcRenderer.invoke('paguajPagen', data),
+    transferoMjetet: (data) => ipcRenderer.invoke('transferoMjetet', data),
+    perfundoShitjenOnline: (data) => ipcRenderer.invoke('perfundoShitjenOnline', data),
+    shtoPagese: (data) => ipcRenderer.invoke('shtoPagese', data),
+
+
+    
+    ndryshoShpenzimin: (data) => ipcRenderer.invoke('ndryshoShpenzimin', data), 
+    ndryshoPushimin: (data) => ipcRenderer.invoke('ndryshoPushimin', data), 
+    ndryshoLlojinShpenzimit: (data) => ipcRenderer.invoke('ndryshoLlojinShpenzimit', data),
+    ndryshoPunonjes: (data) => ipcRenderer.invoke('ndryshoPunonjes', data),
+    ndryshoKategorine: (data) => ipcRenderer.invoke('ndryshoKategorine', data),
+    ndryshoServisin: (data) => ipcRenderer.invoke('ndryshoServisin', data),
+    ndryshoServisinPerfunduar: (data) => ipcRenderer.invoke('ndryshoServisinPerfunduar', data),
+    ndryshoShitje: (data) => ipcRenderer.invoke('ndryshoShitje', data),
+    ndryshoBlerje: (data) => ipcRenderer.invoke('ndryshoBlerje', data),
+    ndryshoPerdorues: (data) => ipcRenderer.invoke('ndryshoPerdorues', data),
+    ndryshoOpsionPagese: (data) => ipcRenderer.invoke('ndryshoOpsionPagese', data),
+    ndryshoPagen: (data) => ipcRenderer.invoke('ndryshoPagen', data),
+    ndryshoProduktin: (data) => ipcRenderer.invoke('ndryshoProduktin', data),
+    ndryshoSubjektin: (data) => ipcRenderer.invoke('ndryshoSubjektin', data),
+    ndryshojeAvansinNderrimitAktual: (data) => ipcRenderer.invoke('ndryshojeAvansinNderrimitAktual', data), 
+    ndryshoShitjenAprovuarOnline: (data) => ipcRenderer.invoke('ndryshoShitjenAprovuarOnline', data), 
+
+
+    savePDF: (data) => ipcRenderer.send('savePDF', data  ),
+    openFile: (filePath) => ipcRenderer.send('openFile', filePath),
+    getPrinters: () => ipcRenderer.invoke('get-printers'),
+    printLabel: (options) => ipcRenderer.invoke('print-label', options),
+    loadDbConfig: () => ipcRenderer.invoke('load-db-config'),
+    saveDbConfig: (data) => ipcRenderer.invoke('save-db-config', data),
+    selectPdfFolder: () => ipcRenderer.invoke('select-pdf-folder'),
+    saveExcel: (payload) => ipcRenderer.invoke('save-excel', payload)
+
+     })

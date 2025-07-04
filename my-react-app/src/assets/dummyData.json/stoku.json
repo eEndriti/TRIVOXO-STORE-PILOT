@@ -1,0 +1,62 @@
+{
+    "kategoria":[
+      {
+        "kategoriaID": 1,
+        "emertimi": "Monitor",
+        "tvsh": 18,
+        "komponenta": false
+      },
+      {
+        "kategoriaID": 2,
+        "emertimi": "Laptop",
+        "tvsh": 8,
+        "komponenta": true
+      },
+      {
+        "kategoriaID": 11,
+        "emertimi": "em",
+        "tvsh": 12,
+        "komponenta": false
+      },
+      {
+        "kategoriaID": 1004,
+        "emertimi": "HDD",
+        "tvsh": 18,
+        "komponenta": false
+      },
+      {
+        "kategoriaID": 1005,
+        "emertimi": "qqq",
+        "tvsh": 2,
+        "komponenta": true
+      },
+      {
+        "kategoriaID": 2006,
+        "emertimi": "test",
+        "tvsh": 12,
+        "komponenta": true
+      },
+      {
+        "kategoriaID": 3006,
+        "emertimi": "chartTest",
+        "tvsh": 9,
+        "komponenta": false
+      }
+    ],
+
+    "produkti":[
+        {"produktiID":1,"shifra":"P001","emertimi":"Laptop","pershkrimi":"High-end gaming laptop","sasia":16,"cmimiBlerjes":19.00,"cmimiShitjes":25.00,"kategoriaID":1,"dataKrijimit":"2024-08-15 08:00:00.000","komenti":"In stock","meFatureTeRregullt":"jo","cpu":null,"ram":null,"gpu":null,"disku":null,"sasiStatike":false},
+        {"produktiID":2,"shifra":"P002","emertimi":"Desk Chair","pershkrimi":"null//null//null//","sasia":0,"cmimiBlerjes":100.00,"cmimiShitjes":150.00,"kategoriaID":1005,"dataKrijimit":"2024-08-16 09:00:00.000","komenti":"In stock","meFatureTeRregullt":"jo","cpu":"null","ram":"null","gpu":"null","disku":"null","sasiStatike":false},
+        {"produktiID":3,"shifra":"P-1000","emertimi":"Lenovoa////","pershkrimi":"I7Gen7// 8GB RAM/// 512GB SSD// / Intel//","sasia":0,"cmimiBlerjes":1200.00,"cmimiShitjes":1902.00,"kategoriaID":2,"dataKrijimit":"2024-08-27 07:00:00.000","komenti":"komenticc","meFatureTeRregullt":"jo","cpu":"I7Gen7","ram":"8GB RAM//","gpu":"Intel//","disku":"512GB SSD//","sasiStatike":false},
+        {"produktiID":5,"shifra":"P-1003","emertimi":"emertimi","pershkrimi":"I5Gen6 / 8 / 256 / HD","sasia":0,"cmimiBlerjes":0.00,"cmimiShitjes":0.00,"kategoriaID":1,"dataKrijimit":"2024-09-05 09:00:00.000","komenti":"cm","meFatureTeRregullt":"jo","cpu":"I5Gen6","ram":"8","gpu":"HD","disku":"256","sasiStatike":false},
+        {"produktiID":17,"shifra":"P-1004","emertimi":"produkti1","pershkrimi":"aa","sasia":0,"cmimiBlerjes":45.00,"cmimiShitjes":90.00,"kategoriaID":1,"dataKrijimit":"2024-09-30 09:00:00.000","komenti":"aa","meFatureTeRregullt":"jo","cpu":"/","ram":"/","gpu":"/","disku":"/","sasiStatike":false},
+        {"produktiID":1003,"shifra":"P-1005","emertimi":"testim","pershkrimi":"24coll","sasia":0,"cmimiBlerjes":0.00,"cmimiShitjes":0.00,"kategoriaID":1,"dataKrijimit":"2024-09-30 09:00:00.000","komenti":"cm","meFatureTeRregullt":"jo","cpu":"/","ram":"/","gpu":"/","disku":"/","sasiStatike":false},
+        {"produktiID":2004,"shifra":"P-1006","emertimi":"Maus","pershkrimi":"Meetion Z23At+","sasia":0,"cmimiBlerjes":0.00,"cmimiShitjes":0.00,"kategoriaID":1,"dataKrijimit":"2025-01-22 00:00:00.000","komenti":"mos e shit ne 8","meFatureTeRregullt":"jo","cpu":"/","ram":"/","gpu":"/","disku":"/","sasiStatike":false},
+        {"produktiID":2005,"shifra":"P-1007","emertimi":"HP ZBOOK 15 g6","pershkrimi":"i7-5800H// 32 GB DDR4// 512 GB SSD / / NVIDIA/","sasia":223,"cmimiBlerjes":400.00,"cmimiShitjes":490.00,"kategoriaID":2,"dataKrijimit":"2025-01-22 00:00:00.000","komenti":"mos e shit ne 480","meFatureTeRregullt":"po","cpu":"i7-5800H","ram":"32 GB DDR4/","gpu":"NVIDIA/","disku":"512 GB SSD /","sasiStatike":false},
+        {"produktiID":2006,"shifra":"P-1008","emertimi":"produktiTestim","pershkrimi":"i5 / 8 / 256 / HD","sasia":0,"cmimiBlerjes":20.00,"cmimiShitjes":40.00,"kategoriaID":1,"dataKrijimit":"2024-11-11 00:00:00.000","komenti":"asdsad","meFatureTeRregullt":"jo","cpu":"/","ram":"/","gpu":"/","disku":"/","sasiStatike":false},
+        {"produktiID":2007,"shifra":"P-1010","emertimi":"asd","pershkrimi":"ads","sasia":0,"cmimiBlerjes":11.00,"cmimiShitjes":22.00,"kategoriaID":1,"dataKrijimit":"2024-11-11 00:00:00.000","komenti":"asd","meFatureTeRregullt":"jo","cpu":"/","ram":"/","gpu":"/","disku":"/","sasiStatike":false},
+        {"produktiID":2008,"shifra":"P-1011","emertimi":"asd","pershkrimi":"asd","sasia":null,"cmimiBlerjes":1.00,"cmimiShitjes":2.00,"kategoriaID":1,"dataKrijimit":"2024-11-11 00:00:00.000","komenti":"sad","meFatureTeRregullt":"jo","cpu":"/","ram":"/","gpu":"/","disku":"/","sasiStatike":false},
+        {"produktiID":2009,"shifra":"P-1012","emertimi":"ssd","pershkrimi":"256GB","sasia":null,"cmimiBlerjes":12.00,"cmimiShitjes":35.00,"kategoriaID":1004,"dataKrijimit":"2024-12-12 00:00:00.000","komenti":"sad","meFatureTeRregullt":"jo","cpu":"/","ram":"/","gpu":"/","disku":"/","sasiStatike":false},
+    ]
+
+}

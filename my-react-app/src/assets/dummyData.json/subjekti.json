@@ -1,0 +1,30 @@
+{
+    "subjekti":[
+        {"subjektiID":2994,"lloji":"furnitor","emertimi":"Emertimi_985","kontakti":"Kontakti_985","dataKrijimit":"2025-01-14 14:00:00.000"},
+        {"subjektiID":2995,"lloji":"klient","emertimi":"Emertimi_986","kontakti":"Kontakti_986","dataKrijimit":"2025-02-12 10:00:00.000"},
+        {"subjektiID":2996,"lloji":"furnitor","emertimi":"Emertimi_987","kontakti":"Kontakti_987","dataKrijimit":"2025-01-15 12:00:00.000"},
+        {"subjektiID":2997,"lloji":"klient","emertimi":"Emertimi_988","kontakti":"Kontakti_988","dataKrijimit":"2025-01-15 13:00:00.000"},
+        {"subjektiID":2998,"lloji":"furnitor","emertimi":"Emertimi_989","kontakti":"Kontakti_989","dataKrijimit":"2025-01-25 13:00:00.000"},
+        {"subjektiID":2999,"lloji":"klient","emertimi":"Emertimi_990","kontakti":"Kontakti_990","dataKrijimit":"2025-01-11 11:00:00.000"},
+        {"subjektiID":3001,"lloji":"klient","emertimi":"Emertimi_992","kontakti":"Kontakti_992","dataKrijimit":"2025-01-11 11:00:00.000"},
+        {"subjektiID":3002,"lloji":"klient","emertimi":"Emertimi_993","kontakti":"Kontakti_993","dataKrijimit":"2025-01-11 11:00:00.000"},
+        {"subjektiID":3003,"lloji":"klient","emertimi":"Emertimi_994","kontakti":"Kontakti_994","dataKrijimit":"2025-01-25 13:00:00.000"},
+        {"subjektiID":3004,"lloji":"klient","emertimi":"Emertimi_995","kontakti":"Kontakti_995","dataKrijimit":"2025-01-25 13:00:00.000"},
+        {"subjektiID":3005,"lloji":"klient","emertimi":"Emertimi_996","kontakti":"Kontakti_996","dataKrijimit":"2025-01-25 13:00:00.000"},
+        {"subjektiID":3006,"lloji":"klient","emertimi":"Emertimi_997","kontakti":"Kontakti_997","dataKrijimit":"2025-01-11 11:00:00.000"},
+        {"subjektiID":3007,"lloji":"klient","emertimi":"Emertimi_998","kontakti":"22123123","dataKrijimit":"2025-01-25 13:00:00.000"},
+        {"subjektiID":3008,"lloji":"furnitor","emertimi":"Emertimi_999","kontakti":"22123123","dataKrijimit":"2025-01-25 13:00:00.000"},
+        {"subjektiID":3009,"lloji":"klient","emertimi":"Emertimi_1000","kontakti":"Kontakti_1000","dataKrijimit":"2025-01-14 14:00:00.000"},
+        {"subjektiID":3010,"lloji":"klient","emertimi":"Ardit","kontakti":"44555222","dataKrijimit":"2025-02-11 11:00:00.000"},
+        {"subjektiID":3011,"lloji":"klient","emertimi":"erion","kontakti":"6546848","dataKrijimit":"2025-02-11 11:00:00.000"},
+        {"subjektiID":4010,"lloji":"klient","emertimi":"posta","kontakti":"0219839","dataKrijimit":"2025-01-25 13:00:00.000"},
+        {"subjektiID":4011,"lloji":"klient","emertimi":"adsd","kontakti":"123","dataKrijimit":"2025-01-25 13:00:00.000"},
+        {"subjektiID":4012,"lloji":"klient","emertimi":"oioio","kontakti":"234","dataKrijimit":"2025-01-25 14:00:00.000"},
+        {"subjektiID":5013,"lloji":"klient","emertimi":"chartTestim","kontakti":"1220151486","dataKrijimit":"2025-02-11 22:44:00.000"},
+        {"subjektiID":5014,"lloji":"klient","emertimi":"test","kontakti":"22","dataKrijimit":"2025-02-11 22:58:00.000"},
+        {"subjektiID":5015,"lloji":"klient","emertimi":"test","kontakti":"22123123","dataKrijimit":"2025-02-11 23:04:00.000"},
+        {"subjektiID":6018,"lloji":"furnitor","emertimi":"test","kontakti":"0","dataKrijimit":"2025-05-04 13:11:00.000"},
+        {"subjektiID":6018,"lloji":"klient","emertimi":"aaaaaa","kontakti":"232","dataKrijimit":"2025-05-04 13:07:25.000"}
+    ]
+
+}
