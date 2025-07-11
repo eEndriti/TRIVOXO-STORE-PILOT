@@ -11,7 +11,7 @@ const AnimatedSpinner = () => {
         <span className="visually-hidden">Loading...</span>
       </Spinner>
         {
-          "BerdynaTech".split("").map((char, index) => (
+          "TRIVOXO".split("").map((char, index) => (
             <span key={index} className="animated-char" style={{ animationDelay: `${index * 0.15}s` }}>
               {char}
             </span>

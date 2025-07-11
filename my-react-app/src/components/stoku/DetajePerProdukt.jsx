@@ -7,8 +7,9 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons';
 import { formatCurrency, formatLongDateToAlbanian } from "../AuthContext";
 import { useToast } from "../ToastProvider";
 import NdryshoServisinPerfunduar from "../NdryshoServisinPerfunduar";
-
+import { useTranslation } from "react-i18next";
 export default function DetajePerProdukt() {
+  const {t} = useTranslation('stoku')
   const navigate = useNavigate();
   const { produktiID } = useParams();
   const [loading, setLoading] = useState(true);
@@ -127,7 +128,7 @@ export default function DetajePerProdukt() {
           break;
       case 'Blerje' : navigate(`/ndryshoBlerjen/${item.llojiID}`)
           break;
-      case 'Shpenzim' : showToast('Ky Shpenzim eshte nga stoku dhe nuk mund te ndryshohet, vetem te fshihet', 'warning')
+      case 'Shpenzim' : showToast(t('Ky Shpenzim eshte nga stoku dhe nuk mund te ndryshohet, vetem te fshihet'), 'warning')
           break;
       case 'Servisim': showServisimModal(item.llojiID)
           break;   
@@ -142,7 +143,7 @@ export default function DetajePerProdukt() {
         const data = result.find(item => item.servisimiID == id);
         
         if (!data) {
-            showToast('Gabim: Nuk u gjet servisi me këtë ID', 'error');
+            showToast(t('Gabim: Nuk u gjet servisi me këtë ID'), 'error');
             return; 
         }
 
@@ -150,7 +151,7 @@ export default function DetajePerProdukt() {
         setModalNdryshoServisim(true); 
 
     } catch (error) {
-        showToast('Gabim gjatë marrjes së të dhënave për ndryshim: ' + error, 'error');
+        showToast(t('Gabim gjatë marrjes së të dhënave për ndryshim:') + error, 'error');
     }
 };
 
@@ -174,16 +175,16 @@ export default function DetajePerProdukt() {
           
             <Row>
               {produkti ? <Col className="border-top border-dark border px-2 py-3 d-flex flex-row flex-wrap justify-content-between">
-                <h5 className="m-2">Shifra: <span className="fs-5 fw-bold float-center">{produkti? produkti[0].shifra : ''}</span></h5>
-                <h5 className="m-2">Emertimi: <span className="fs-5 fw-bold float-center">{produkti[0].emertimi}</span></h5>
-                <h5 className="m-2">Cmimi i Blerjes: <span className="fs-5 fw-bold float-center">{formatCurrency(produkti[0].cmimiBlerjes)}</span></h5>
-                <h5 className="m-2">Cmimi i Shitjes: <span className="fs-5 fw-bold float-center">{formatCurrency(produkti[0].cmimiShitjes)}</span></h5>
-                <h5 className="m-2">Sasia Aktuale: <span className="fs-5 fw-bold float-center">{produkti[0].sasiStatike ? 'Sasi Statike' : produkti[0].sasia}</span></h5>
-                <h5 className="m-2">Sasia e Shitur: <span className="fs-5 fw-bold float-center">{sasiaShitur}</span></h5>
+                <h5 className="m-2">{t('Shifra')}: <span className="fs-5 fw-bold float-center">{produkti? produkti[0].shifra : ''}</span></h5>
+                <h5 className="m-2">{t('Emertimi')}: <span className="fs-5 fw-bold float-center">{produkti[0].emertimi}</span></h5>
+                <h5 className="m-2">{t('Cmimi i Blerjes')}: <span className="fs-5 fw-bold float-center">{formatCurrency(produkti[0].cmimiBlerjes)}</span></h5>
+                <h5 className="m-2">{t('Cmimi i Shitjes')}: <span className="fs-5 fw-bold float-center">{formatCurrency(produkti[0].cmimiShitjes)}</span></h5>
+                <h5 className="m-2">{t('Sasia Aktuale')}: <span className="fs-5 fw-bold float-center">{produkti[0].sasiStatike ? 'Sasi Statike' : produkti[0].sasia}</span></h5>
+                <h5 className="m-2">{t('Sasia e Shitur')}: <span className="fs-5 fw-bold float-center">{sasiaShitur}</span></h5>
                 {showProfiti && 
                   <>
-                    <h5 className="m-2">Profiti nga ky Produkt: <span className="fs-5 fw-bold float-center">{formatCurrency(profiti)}</span></h5>
-                    <h5 className="m-2">Margjina Aktuale e Profitit: <span className="fs-5 fw-bold float-center">{margjina}%</span></h5>
+                    <h5 className="m-2">{t('Profiti nga ky Produkt')}: <span className="fs-5 fw-bold float-center">{formatCurrency(profiti)}</span></h5>
+                    <h5 className="m-2">{t('Margjina Aktuale e Profitit')}: <span className="fs-5 fw-bold float-center">{margjina}%</span></h5>
                   </>
                 }
               </Col>:''}
@@ -198,7 +199,7 @@ export default function DetajePerProdukt() {
                   <Col>
                     <Form.Control
                       type="text"
-                      placeholder="Filtro me Shifer..."
+                      placeholder={t("Filtro me Shifer...")}
                       value={filterShifra}
                       onChange={(e) => setFilterShifra(e.target.value)}
                     />
@@ -206,7 +207,7 @@ export default function DetajePerProdukt() {
                   <Col>
                     <Form.Control
                       type="text"
-                      placeholder="Filtro me llojin..."
+                      placeholder={t("Filtro me llojin...")}
                       value={filterLloji}
                       onChange={(e) => setFilterLloji(e.target.value)}
                     />
@@ -214,7 +215,7 @@ export default function DetajePerProdukt() {
                   <Col>
                     <Form.Control
                       type="text"
-                      placeholder="Filtro me Subjektin..."
+                      placeholder={t("Filtro me Subjektin...")}
                       value={filterSubjekti}
                       onChange={(e) => setFilterSubjekti(e.target.value)}
                     />
@@ -230,14 +231,14 @@ export default function DetajePerProdukt() {
                 <table className="table table-sm table-striped border table-hover text-center">
                   <thead className="table-secondary">
                     <tr className="fs-5">
-                      <th scope="col">Nr</th>
-                      <th scope="col">Shifra</th>
-                      <th scope="col">Lloji</th>
-                      <th scope="col">Subjekti</th>
-                      <th scope="col">Data e Transaksionit</th>
-                      <th scope="col">Sasia</th>
-                      <th scope="col">Cmimi per Cope</th>
-                      <th scope="col">Totali</th>
+                     <th scope="col">{t('Nr')}</th>
+                    <th scope="col">{t('Shifra')}</th>
+                    <th scope="col">{t('Lloji')}</th>
+                    <th scope="col">{t('Subjekti')}</th>
+                    <th scope="col">{t('Data e Transaksionit')}</th>
+                    <th scope="col">{t('Sasia')}</th>
+                    <th scope="col">{t('Cmimi per Cope')}</th>
+                    <th scope="col">{t('Totali')}</th>
                     </tr>
                   </thead>
                   <tbody className="border-dark">
@@ -265,7 +266,7 @@ export default function DetajePerProdukt() {
                       })
                     ) : (
                       <tr>
-                        <td colSpan="8">Nuk ka të dhëna.</td>
+                        <td colSpan="8">{t('Nuk ka të dhëna.')}</td>
                       </tr>
                     )}
                   </tbody>

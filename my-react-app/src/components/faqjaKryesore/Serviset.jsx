@@ -7,8 +7,10 @@ import { useToast } from '../ToastProvider';
 import UpdateServise from '../UpdateServise';
 import AuthContext from '../AuthContext';
 import {ToastContainer } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 export default function Serviset() {
+  const {t} = useTranslation('faqjaKryesore')
   const [loading,setLoading] = useState(true)
   const [serviset,setServiset] = useState([])
   const [servisetAktive,setServisetAktive] = useState([])
@@ -57,13 +59,13 @@ export default function Serviset() {
       const result = await window.api.deleteServisi(idPerAnulim);
 
         if (result.success) {
-          showToast("Servisi u anulua me Sukses!", "success");
+          showToast(t("Servisi u anulua me Sukses!"), "success");
           fetchData();       
         } else {
-          showToast("Gabim gjatë Anulimit!", "error");
+          showToast(t("Gabim gjatë Anulimit!"), "error");
       }
     } catch (error) {
-      console.error("Gabim gjatë Anulimit të Servisit:", error);
+      console.error(t("Gabim gjatë Anulimit!"), error);
     }finally{
       updateAuthData({reloadLayout:!authData.reloadLayout})
       setShowModal(false)
@@ -83,18 +85,19 @@ export default function Serviset() {
   return (
     <Container fluid >
       <Col>
-              <h3 className="section-title">Serviset Aktive</h3>
+              <h3 className="section-title">{t('Serviset Aktive')}</h3>
               <div className="table-container">
                 <Table responsive striped bordered hover size="sm" className="custom-table">
                   <thead className="table-header">
                     <tr>
-                      <th>Nr</th>
-                      <th>Klienti</th>
-                      <th>Kontakti</th>
-                      <th>Data dhe Ora Pranimit</th>
-                      <th>Komenti</th>
-                      <th>Pajisjet Percjellese</th>
-                      <th>Opsionet</th>
+                      <th>{t('Nr')}</th>
+                      <th>{t('Klienti')}</th>
+                      <th>{t('Kontakti')}</th>
+                      <th>{t('Data dhe Ora Pranimit')}</th>
+                      <th>{t('Komenti')}</th>
+                      <th>{t('Pajisjet Percjellëse')}</th>
+                      <th>{t('Opsionet')}</th>
+
                     </tr>
                   </thead>
                   <tbody className='text-nowrap'>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Table, Form, Row, Col } from 'react-bootstrap';
 import {formatLongDateToAlbanian, formatTime, normalizoDaten} from './AuthContext'
+import { useTranslation } from 'react-i18next';
 const Logs = () => {
+    const {t} = useTranslation('others')
     const [logs, setLogs] = useState([]);
     const [filteredLogs, setFilteredLogs] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -58,12 +60,12 @@ const Logs = () => {
         <Container className="mt-4">
             <Row className="mb-3">
                 <Col>
-                    <h2>Logs</h2>
+                    <h2>{t('Logs')}</h2>
                 </Col>
                 <Col md="3">
                     <Form.Control
                         type="text"
-                        placeholder="Kërko në log-e..."
+                        placeholder={t('"Kërko në log-e..."')}
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
                     />
@@ -71,7 +73,7 @@ const Logs = () => {
                 <Col md="3">
                     <Form.Control
                         type="date"
-                        placeholder="Data fillestare"
+                        placeholder={t("Data fillestare")}
                         value={startDate}
                         onChange={e => setStartDate(e.target.value)}
                     />
@@ -79,7 +81,7 @@ const Logs = () => {
                 <Col md="3">
                     <Form.Control
                         type="date"
-                        placeholder="Data mbarimit"
+                        placeholder={t("Data mbarimit")}
                         value={endDate}
                         onChange={e => setEndDate(e.target.value)}
                     />
@@ -90,10 +92,10 @@ const Logs = () => {
                     <Table striped bordered hover responsive >
                         <thead>
                             <tr>
-                                <th>Komponenta</th>
-                                <th>Pershkrimi</th>
-                                <th>Nderrimi, Data dhe Ora</th>
-                                <th>Perdoruesi</th>
+                                <th>{t('Komponenta')}</th>
+                                <th>{t('Pershkrimi')}</th>
+                                <th>{t('Nderrimi, Data dhe Ora')}</th>
+                                <th>{t('Perdoruesi')}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -108,7 +110,7 @@ const Logs = () => {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="5" className="text-center">Nuk u gjet asnjë log</td>
+                                    <td colSpan="5" className="text-center">{t('Nuk u gjet asnjë log')}</td>
                                 </tr>
                             )}
                         </tbody>

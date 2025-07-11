@@ -11,8 +11,11 @@ import AuthContext, { formatCurrency } from "../components/AuthContext";
 import NdryshoServisinPerfunduar from './NdryshoServisinPerfunduar';
 import ShtoPagese from './ShtoPagese';
 import AnimatedSpinner from './AnimatedSpinner';
+import { useTranslation } from 'react-i18next';
 
 export default function Serviset() {
+    
+    const {t} = useTranslation('others')
     const [loading,setLoading] = useState(true)
     const [selectedSubjekti, setSelectedSubjekti] = useState({ emertimi: "", kontakti: "", subjektiID: null });
     const [serviset,setServiset] = useState([])
@@ -66,7 +69,6 @@ export default function Serviset() {
 
        const filteredServiset2 = useMemo(() => {
         // 1) normalize filters
-        console.log('filterServiset',filterServiset)
         const statusFilter   = filterStatusi;
         const shifraFilter   = filterShifra ? filterShifra.toLowerCase() : null;
         const subjFilter     = filterSubjekti ? filterSubjekti.toLowerCase() : null;
@@ -79,10 +81,8 @@ export default function Serviset() {
         const endTs   = hasDateFilter
           ? new Date(filterDataEnd).setHours(23, 59, 59, 999)
           : null;
-        console.log('statusi useState',statusFilter)
         return filterServiset.filter(item => {
           if (statusFilter != null && item.statusi !== statusFilter) {
-            console.log('Statusiiiii',item.statusi)
             return false;
           }
           if (shifraFilter && !item.shifra.toLowerCase().includes(shifraFilter)) {
@@ -126,7 +126,7 @@ export default function Serviset() {
         if(selectedSubjekti.emertimi.length > 1){
             if(aKaGarancion){
                 if(shifraGarancionit.length < 1) {
-                    showToast('Duhet te shenoni shifren e garancionit!','warning')
+                    showToast(t('Duhet te shenoni shifren e garancionit!'),'warning')
                 }else{
                     handleShtoServisin()
                 }
@@ -134,7 +134,7 @@ export default function Serviset() {
                 handleShtoServisin()
             }
         }else{
-            showToast('Selektoni subjektin per te vazhduar!','warning')
+            showToast(t('Selektoni subjektin per te vazhduar!'),'warning')
         }
     }
 
@@ -159,12 +159,12 @@ export default function Serviset() {
                 try {
                     const result = await window.api.insertServisi(data);
                     if (result.success) {
-                        showToast('Servisi u Regjistrua me Sukses!', 'success'); 
+                        showToast(t('Servisi u Regjistrua me Sukses!'), 'success'); 
                     } else {
-                        showToast('Gabim gjate regjistrimit: ' + result.error,'error');
+                        showToast(t('Gabim gjate regjistrimit:') + result.error,'error');
                     }
                   } catch (error) {
-                    showToast('Gabim gjate komunikimit me server: ' + error.message,'error');
+                    showToast(t('Gabim gjate komunikimit me server:') + error.message,'error');
                   } finally {
                     setLoading(false);
                     fetchData();
@@ -199,12 +199,12 @@ export default function Serviset() {
         const result = await window.api.deleteServisi(dataPerAnulim);
 
         if (result.success) {
-            showToast(`Servisi u Anulua me Sukses !`, 'success');
+            showToast(t('Servisi u Anulua me Sukses !'), 'success');
         } else {
-            showToast('Gabim gjate Anulimit: ' + result.error,'error');
+            showToast(t('Gabim gjate Anulimit:') + result.error,'error');
         }
         }catch(e){
-            showToast('Gabim gjate Anulimit: ' + e,'error');
+            showToast(t('Gabim gjate Anulimit:') + e,'error');
         }finally{
             fetchData()
             updateAuthData({reloadLayout:!authData.reloadLayout})
@@ -239,7 +239,6 @@ export default function Serviset() {
             IDDokumentit:item.servisimiID,
             mbetjaPerPagese:item.mbetjaPageses
         })
-        console.log('prejblej',dataPerShtoPagese)
         setShowShtoPagese(true)
     }
 
@@ -254,11 +253,11 @@ export default function Serviset() {
     <Container fluid className='mt-5'>
         <Row className='bg-light border-bottom border-1 border-dark'>
             <Form className=" rounded-3 ">
-                <h4 className="text-center mb-3 fw-bold border-bottom">Prano Servisin:</h4>
+                <h4 className="text-center mb-3 fw-bold border-bottom">{t('Prano Servisin')}:</h4>
             
                 <Col className="d-flex flex-row justify-content-start mb-2">
                     <Form.Group className="me-3" >
-                        <Form.Label className="fw-bold">Klienti</Form.Label>
+                        <Form.Label className="fw-bold">{t('Klienti')}</Form.Label>
                         <KerkoSubjektin
                             filter="klient"
                             value={selectedSubjekti.emertimi}
@@ -268,7 +267,7 @@ export default function Serviset() {
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label className="fw-bold">Kontakti</Form.Label>
+                        <Form.Label className="fw-bold">{t('Kontakti')}</Form.Label>
                         <Form.Control
                             type="number"
                             value={kontakti} onChange={(e) => setKontakti(e.target.value)}
@@ -276,36 +275,36 @@ export default function Serviset() {
                         />
                     </Form.Group>
                     <Form.Group className="ms-3" style={{ flex: 0.5 }}>
-                        <Form.Label className="fw-bold">Data</Form.Label>
+                        <Form.Label className="fw-bold">{t('Data')}</Form.Label>
                         <Form.Check className="fs-4 text-info" checked={aKaData} onClick={() => setAKaData(!aKaData)}/>
                     </Form.Group>
 
                     <Form.Group className="ms-3" style={{ flex: 0.5 }}>
-                        <Form.Label className="fw-bold">Adapter</Form.Label>
+                        <Form.Label className="fw-bold">{t('Adapter')}</Form.Label>
                         <Form.Check className="fs-4 text-info" checked={aKaAdapter} onClick={() => setAKaAdapter(!aKaAdapter)}/>
                     </Form.Group>
 
                     <Form.Group className="ms-3" style={{ flex: 0.5 }}>
-                        <Form.Label className="fw-bold">Çantë</Form.Label>
+                        <Form.Label className="fw-bold">{t('Çantë')}</Form.Label>
                         <Form.Check className="fs-4 text-info" checked={aKaÇante} onClick={() => setAKaÇante(!aKaÇante)}/>
                     </Form.Group>
 
                     <Form.Group className="ms-3" style={{ flex: 0.5 }}>
-                        <Form.Label className="fw-bold">Garancion:</Form.Label>
+                        <Form.Label className="fw-bold">{t('Garancion')}:</Form.Label>
                         <Form.Check className="fs-4 text-info" checked={aKaGarancion} onClick={() => setAKaGarancion(!aKaGarancion)}/>
                         {aKaGarancion && <Form.Control type='text' className='mt-3'                             onChange={(e) => setShifraGarancionit(e.target.value)}
-                        placeholder='Shifren e Garancionit...'/>}
+                        placeholder={t('Shifren e Garancionit...')}/>}
                     </Form.Group>
                 </Col>
 
                 <Col className="d-flex flex-row justify-content-between">
                     <Form.Group >
-                        <Form.Label className="fw-bold ">Komenti:</Form.Label>
+                        <Form.Label className="fw-bold ">{t('Komenti')}:</Form.Label>
                         <Form.Control
                             as="textarea"
                             rows={3}
                             className="form-control-lg"
-                            placeholder="Shto komente për servisin..."
+                            placeholder={t("Shto komente për servisin...")}
                             onChange={(e) => setKomenti(e.target.value)}
                         />
                     </Form.Group>
@@ -319,10 +318,10 @@ export default function Serviset() {
                             role="status"
                             aria-hidden="true"
                         />{' '}
-                        Duke ruajtur...
+                            {t('Duke ruajtur...')}
                         </>
                     ) : (
-                        'Shto Servisin...'
+                        t('Shto Servisin...')
                     )}
                 </Button>
                     
@@ -337,7 +336,7 @@ export default function Serviset() {
                     <Row>
                         <Col>
                             <Form.Group>
-                                <Form.Label>Periudha Kohore</Form.Label>
+                                <Form.Label>{t('Periudha Kohore')}</Form.Label>
                                 <Form.Control className='mb-1'
                                     type="date"
                                     value={filterDataStart}
@@ -354,42 +353,42 @@ export default function Serviset() {
                         </Col>
                         <Col>
                             <Form.Group>
-                                <Form.Label>Shifra</Form.Label>
+                                <Form.Label>{t('Shifra')}</Form.Label>
                                 <Form.Control
                                     type="text"
                                     value={filterShifra}
-                                    placeholder="Shifra..."
+                                    placeholder={t("Shifra...")}
                                     onChange={(e) => setFilterShifra(e.target.value)}
                                 />
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group>
-                                <Form.Label>Subjekti</Form.Label>
+                                <Form.Label>{t('Subjekti')}</Form.Label>
                                 <Form.Control
                                     type="text"
                                     value={filterSubjekti}
-                                    placeholder="Subjekti..."
+                                    placeholder={t("Subjekti...")}
                                     onChange={(e) => setFilterSubjekti(e.target.value)}
                                 />
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group>
-                                <Form.Label>Kontakti</Form.Label>
+                                <Form.Label>{t('Kontakti')}</Form.Label>
                                 <Form.Control
                                     type="text"
                                     value={filterKontakti}
-                                    placeholder="Kontakti..."
+                                    placeholder={t("Kontakti...")}
                                     onChange={(e) => setFilterKontakti(e.target.value)}
                                 />
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group>
-                               <Form.Label>Statusi</Form.Label>
+                               <Form.Label>{t('Statusi')}</Form.Label>
                                     <div
-                                    onClick={() => setFilterStatusi(filterStatusi == 'Aktiv' ? 'Perfunduar' : 'Aktiv')} style={{
+                                    onClick={() => setFilterStatusi(filterStatusi == 'Aktiv' ? t('Perfunduar') : t('Aktiv'))} style={{
                                         display: 'flex',
                                         alignItems: 'center',
                                         cursor: 'pointer',
@@ -403,7 +402,7 @@ export default function Serviset() {
                                         gap: '10px', }}
                                     >
                                     <FontAwesomeIcon icon={filterStatusi ? faCheckCircle : faTimesCircle} />
-                                    <span>{filterStatusi === 'Aktiv' ? 'Aktiv' : 'Perfunduar'}</span>
+                                    <span>{filterStatusi === 'Aktiv' ? t('Aktiv') : t('Perfunduar')}</span>
                                     </div>
                             </Form.Group>
                         </Col>
@@ -416,20 +415,27 @@ export default function Serviset() {
             <Table striped bordered hover >
                 <thead>
                 <tr className='fs-5 '>
-                    <th scope="col">Nr</th>
-                    <th scope="col">Shifra</th>
-                    <th scope="col">Subjekti</th>
-                    <th scope="col">Kontakti</th>
-                    <th scope="col">Komenti</th>
-                    <th scope="col">Pajisjet Percjellese</th>
-                    {filterStatusi != 'Aktiv' ? <><th scope="col">Totali per Pagese</th>
-                        <th scope="col">Mbetja per Pagese</th></>:null}
-                    <th scope="col">Data dhe Ora e Pranimit</th>
-                    {filterStatusi == 'Aktiv' ? null : <th scope="col">Data e Perfundimit</th>}
-                    <th scope="col">Perdoruesi</th>
-                    <th scope="col">Statusi</th>
-                    <th scope="col">Garancioni</th>
-                    <th scope="col">Opsionet</th>
+                    <th scope="col">{t('Nr')}</th>
+                    <th scope="col">{t('Shifra')}</th>
+                    <th scope="col">{t('Subjekti')}</th>
+                    <th scope="col">{t('Kontakti')}</th>
+                    <th scope="col">{t('Komenti')}</th>
+                    <th scope="col">{t('Pajisjet Percjellese')}</th>
+                    {filterStatusi != 'Aktiv' ? (
+                    <>
+                        <th scope="col">{t('Totali per Pagese')}</th>
+                        <th scope="col">{t('Mbetja per Pagese')}</th>
+                    </>
+                    ) : null}
+                    <th scope="col">{t('Data dhe Ora e Pranimit')}</th>
+                    {filterStatusi == 'Aktiv' ? null : (
+                    <th scope="col">{t('Data e Perfundimit')}</th>
+                    )}
+                    <th scope="col">{t('Perdoruesi')}</th>
+                    <th scope="col">{t('Statusi')}</th>
+                    <th scope="col">{t('Garancioni')}</th>
+                    <th scope="col">{t('Opsionet')}</th>
+
                 </tr>
                 </thead>
                 <tbody className='text-nowrap'>
@@ -489,7 +495,7 @@ export default function Serviset() {
                                 ) : null}
                             </tr>
                             ))}
-                    </> : <td colSpan={14}><h5 className='text-center'>Nuk ka te dhena per tu shfaqur!</h5></td>}
+                    </> : <td colSpan={14}><h5 className='text-center'>{t('Nuk ka te dhena per tu shfaqur!')}</h5></td>}
                 </>}
 
                 </tbody>

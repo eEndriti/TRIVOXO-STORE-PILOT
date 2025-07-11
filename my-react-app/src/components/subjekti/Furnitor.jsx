@@ -1,18 +1,17 @@
 import { useState, useEffect, useContext } from 'react';
 import { Container, Row, Col, Button, Form, Spinner, Card, Badge } from 'react-bootstrap';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faEdit,faPlus,faEuro,faCheckCircle,faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import {ToastContainer } from 'react-toastify';
 import { useToast } from '../ToastProvider';
 import ModalPerPyetje from '../ModalPerPyetje';
 import { useNavigate } from 'react-router-dom';
-import ShtoNdryshoSubjektin from '../ShtoNdryshoSubjektin';
+import ShtoNdryshoSubjektin from './ShtoNdryshoSubjektin';
 import AuthProvider ,{  formatCurrency } from "../AuthContext";
-import SubjectTotalsData from '../SubjectTotalsData';
-
+import SubjectTotalsData from './SubjectTotalsData';
+import { useTranslation } from 'react-i18next';
 export default function Furnitor() {
-
+    const {t} = useTranslation('subjekti')
     const navigate = useNavigate();
     const [furnitoret, setFurnitoret] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -42,7 +41,7 @@ export default function Furnitor() {
                     kalkuloTotalin(filteredData)
                 });
             } catch (error) {
-                showToast('Gabim gjate ngarkimit te furnitoreve: ' + error, 'error');
+                showToast(t('Gabim gjate ngarkimit te furnitoreve!') + error, 'error');
             }finally{
                 setLoading(false);
 
@@ -90,16 +89,16 @@ export default function Furnitor() {
                     nderrimiID:authData.nderrimiID
                 }
                 await window.api.deleteSubjekti(data);
-                showToast('Furnitori u Anulua me Sukses!', 'success');
+                showToast(t('Furnitori u Anulua me Sukses!'), 'success');
                 
             } catch (error) {
-                showToast('Gabim gjate Fshirjes: ' + error, 'error');
+                showToast(t('Gabim gjate Fshirjes!') + error, 'error');
             } finally {
                 setLoading(false);
                 setTriggerReload(!triggerReload);
             }
         } else {
-            showToast('Gabim, Rifreskoni faqen dhe provoni serish: ','error');
+            showToast(t('Gabim, Rifreskoni faqen dhe provoni serish!'),'error');
         }
     }
 
@@ -133,11 +132,11 @@ export default function Furnitor() {
         <Container className='mt-5'>
             <Row className="justify-content-end border-bottom">
                 <Col>
-                    <h4 className="text-center fw-bold mb-4">Furnitorët:</h4>
+                    <h4 className="text-center fw-bold mb-4">{t('Furnitorët')}:</h4>
                 </Col>
                 <Col md={4}>
                     <Button className='w-75 ' variant='success' onClick={handleShow}>
-                        Krijo një Furnitor <FontAwesomeIcon icon={faPlus} />
+                        {t('Krijo një Furnitor')} <FontAwesomeIcon icon={faPlus} />
                     </Button>
                 </Col>
             </Row>
@@ -147,7 +146,7 @@ export default function Furnitor() {
                 <Col md={4} className="">
                     <Form.Control
                         type="text"
-                        placeholder="Kërko sipas emërtimit"
+                        placeholder={t("Kërko sipas emërtimit")}
                         value={emertimiSearch}
                         onChange={(e) => setEmertimiSearch(e.target.value)}
                     />
@@ -155,7 +154,7 @@ export default function Furnitor() {
                 <Col md={4} className="">
                     <Form.Control
                         type="text"
-                        placeholder="Kërko sipas emërtimit"
+                        placeholder={t("Kërko sipas emërtimit")}
                         value={kontaktiSearch}
                         onChange={(e) => setKontaktiSearch(e.target.value)}
                     />
@@ -171,7 +170,7 @@ export default function Furnitor() {
                     <Col>
                         {filteredFurnitoret.length < 1 ? (
                             <h5 className="text-center text-danger mt-5">
-                                Ende nuk keni ndonjë furnitor të regjistruar!
+                                {t('Ende nuk keni ndonjë furnitor të regjistruar!')}
                             </h5>
                         ) : (
                             <Card className="my-3">
@@ -180,13 +179,14 @@ export default function Furnitor() {
                                         <table className="table table-bordered table-hover text-center ">
                                             <thead className="table-secondary">
                                                 <tr className="fs-5">
-                                                    <th scope="col">Nr</th>
-                                                    <th scope="col">Emërtimi</th>
-                                                    <th scope="col">Kontakti</th>
-                                                    <th scope="col">Totali për Pagesë</th>
-                                                    <th scope="col">Totali Pagesave</th>
-                                                    <th scope="col">Mbetja për Pagesë</th>
-                                                    <th scope="col">Opsionet</th>
+                                                    <th scope="col">{t('Nr')}</th>
+                                                    <th scope="col">{t('Emërtimi')}</th>
+                                                    <th scope="col">{t('Kontakti')}</th>
+                                                    <th scope="col">{t('Totali për Pagesë')}</th>
+                                                    <th scope="col">{t('Totali Pagesave')}</th>
+                                                    <th scope="col">{t('Mbetja për Pagesë')}</th>
+                                                    <th scope="col">{t('Opsionet')}</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -202,7 +202,7 @@ export default function Furnitor() {
                                                         </td>
                                                         <td>
                                                             <Button variant="btn btn-outline-secondary" className="mx-1" onClick={() => handleDetaje(item.subjektiID)}>
-                                                                Detaje...
+                                                                {t('Detaje...')}
                                                             </Button>
                                                             <Button variant="btn btn-outline-primary" className="mx-1" onClick={() => handleShowNdrysho(item)}>
                                                                 <FontAwesomeIcon icon={faEdit} />

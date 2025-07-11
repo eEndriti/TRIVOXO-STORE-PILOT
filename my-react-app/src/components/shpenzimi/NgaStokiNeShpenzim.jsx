@@ -4,8 +4,9 @@ import {ToastContainer } from 'react-toastify';
 import { useToast } from '../ToastProvider';
 import KerkoProduktin from '../stoku/KerkoProduktin';
 import AuthContext from '../AuthContext';
-
+import { useTranslation } from 'react-i18next';
 export default function NgaStokiNeShpenzim() {
+    const {t} = useTranslation('shpenzimi')
     const [loading,setLoading] = useState(false)
     const [buttonLoading,setButtonLoading] = useState(false)
     const [produktiSelektuar,setProduktiSelektuar] = useState([])
@@ -16,13 +17,13 @@ export default function NgaStokiNeShpenzim() {
     const [kategoriaID,setKategoriaID] = useState()
     const {authData} = useContext(AuthContext)
     const showToast = useToast();
+
     useEffect(() => {
             const fetchData = async () => {
               setLoading(true)
              try{
                 await window.api.fetchTableLlojetShpenzimeve().then(receivedData => {
                     setLlojetShpenzimeve(receivedData);
-                    console.log('llojet',llojetShpenzimeve)
                   });
                   
              }catch(e){
@@ -64,12 +65,11 @@ export default function NgaStokiNeShpenzim() {
     };
     
     try {
-      console.log('data',data)
       await window.api.kaloNgaStokuNeShpenzim(data);
-      showToast('Produkti u Regjistrua me Sukses si Shpenzim!', 'success');            
+      showToast(t('Produkti u Regjistrua me Sukses si Shpenzim!'), 'success');            
 
     } catch (error) {
-      showToast('Gabim gjate regjistrimit: ' ,'error');
+      showToast(t('Gabim gjate regjistrimit!') ,'error');
 
     }finally{
       setLoading(false)
@@ -86,38 +86,38 @@ export default function NgaStokiNeShpenzim() {
         <Row className='d-flex justify-content-center pt-5'>
             <Form className='d-flex flex-wrap flex-row w-50 justify-content-between bg-light p-4'>
             <Form.Group>
-                <Form.Label>Shifra:</Form.Label>
+                <Form.Label>{t('Shifra:')}</Form.Label>
                 <Form.Control value={produktiSelektuar.shifra} disabled/>
             </Form.Group>
             <Form.Group>
-                <Form.Label>Emertimi:</Form.Label>
+                <Form.Label>{t('Emertimi:')}</Form.Label>
                 <Form.Control value={produktiSelektuar.emertimi} disabled/>
             </Form.Group>
             <Form.Group>
-                <Form.Label>Kosto per Cope:</Form.Label>
+                <Form.Label>{t('Kosto per Cope:')}</Form.Label>
                 <InputGroup>
                 <Form.Control  value={produktiSelektuar.cmimiBlerjes} disabled/>
                 <InputGroup.Text>€</InputGroup.Text>
                 </InputGroup>
             </Form.Group>
             <Form.Group>
-                <Form.Label>Sasia:</Form.Label>
+                <Form.Label>{t('Sasia:')}</Form.Label>
                 <Form.Control type='number' min={0} value={sasiaPerProdukt} onChange={(e) => kalkuloTotalin(e)} />
             </Form.Group>
             <Form.Group>
-                <Form.Label>Kosto Totale:</Form.Label>
+                <Form.Label>{t('Kosto Totale:')}</Form.Label>
                 <InputGroup>
                 <Form.Control value={kostoTotale} disabled/>
                 <InputGroup.Text>€</InputGroup.Text>
                 </InputGroup>
             </Form.Group>
             <Form.Group>
-                <Form.Label>Kategoria</Form.Label>
+                <Form.Label>{t('Kategoria')}</Form.Label>
                 <Form.Control type='text' disabled value={`Produkt ID:${kategoriaID}`}/>
             </Form.Group>
 
-            <Button variant='success' className='mt-3 w-100' disabled={sasiaPerProdukt < 1 || !sasiaPerProdukt|| buttonLoading || !produktiSelektuar?.shifra} onClick={() => handleKaloNgaStoki()}>{loading ? <><Spinner as="span" animation='border' size='sm' role='status' aria-hidden={true}/>{''}Duke Ruajtur...
-            </> :'Ruaj Ndryshimet'}</Button>
+            <Button variant='success' className='mt-3 w-100' disabled={sasiaPerProdukt < 1 || !sasiaPerProdukt|| buttonLoading || !produktiSelektuar?.shifra} onClick={() => handleKaloNgaStoki()}>{loading ? <><Spinner as="span" animation='border' size='sm' role='status' aria-hidden={true}/>{''}{t('Duke Ruajtur...')}
+            </> :t('Ruaj Ndryshimet')}</Button>
             </Form>
 
             </Row>

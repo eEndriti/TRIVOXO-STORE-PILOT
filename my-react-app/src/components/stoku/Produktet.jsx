@@ -10,9 +10,11 @@ import { useNavigate } from 'react-router-dom';
 import AnimatedSpinner from '../AnimatedSpinner';
 import AuthContext,{ formatCurrency } from "../AuthContext";
 import SaveExcelOneSheet from '../SaveExcelOneSheet';
-
+import { useTranslation } from 'react-i18next';
 
 export default function Produktet() {
+
+  const {t} = useTranslation('stoku')
   const navigate = useNavigate();
   const [produktet, setProduktet] = useState([]);
   const [filteredProduktet, setFilteredProduktet] = useState([]);
@@ -67,12 +69,12 @@ export default function Produktet() {
     try {
       const response = await window.api.fshijeProduktin(data);
       if (response.success) {
-        showToast( "Produkti u Anulua me sukses!" ,"success");
+        showToast( t("Produkti u Anulua me sukses!") ,"success");
       } else {
-        showToast(response.error || "Fshirja e produktit dështoi!" , "error");
+        showToast(response.error || t("Fshirja e produktit dështoi!") , "error");
       }
     } catch (error) {
-      showToast("Diçka shkoi keq!",'error');
+      showToast(t("Diçka shkoi keq!"),'error');
     }finally{
       setShowModalPerPyetje(false);
       setTriggerReload(prev => !prev)
@@ -126,8 +128,8 @@ export default function Produktet() {
     <Container fluid className='mt-5'>
       <Row>
         <Col className='d-flex justify-content-start'>
-          <Button variant='success' className='text-light p-3 fs-5 mx-3' onClick={() => thirreShtoProduktin()}>Krijo Nje Produkt</Button>
-          <Button variant='info' className='text-dark p-3 fs-5 mx-3' onClick={() => navigate('/kategorite')}>Kategorite</Button>
+          <Button variant='success' className='text-light p-3 fs-5 mx-3' onClick={() => thirreShtoProduktin()}>{t('Krijo Nje Produkt')}</Button>
+          <Button variant='info' className='text-dark p-3 fs-5 mx-3' onClick={() => navigate('/kategorite')}>{t('Kategorite')}</Button>
         </Col>
       </Row>
 
@@ -138,7 +140,7 @@ export default function Produktet() {
               <Col>
                 <Form.Control
                   type="text"
-                  placeholder="Filter by Shifra"
+                  placeholder={t("Filtro me Shifer")}
                   value={filterShifra}
                   onChange={(e) => setFilterShifra(e.target.value)}
                 />
@@ -146,7 +148,7 @@ export default function Produktet() {
               <Col>
                 <Form.Control
                   type="text"
-                  placeholder="Filter by Emertimi"
+                  placeholder={t("Filtro me Emertimin")}
                   value={filterEmertimi}
                   onChange={(e) => setFilterEmertimi(e.target.value)}
                 />
@@ -154,7 +156,7 @@ export default function Produktet() {
               <Col>
                 <Form.Control
                   type="text"
-                  placeholder="Filter by Sasia"
+                  placeholder={t("Filtro nga Sasia")}
                   value={filterSasia}
                   onChange={(e) => setFilterSasia(e.target.value)}
                 />
@@ -162,14 +164,14 @@ export default function Produktet() {
               <Col>
                 <Form.Control
                   type="text"
-                  placeholder="Filter by Kategoria"
+                  placeholder={t("Filtro me Kategori")}
                   value={filterKategoria}
                   onChange={(e) => setFilterKategoria(e.target.value)}
                 />
               </Col>
               <Col>
               <Form.Group className='d-flex mt-2'>
-              <Form.Label className='mx-3'>Elimino Vlerat Zero</Form.Label>
+              <Form.Label className='mx-3'>{t('Elimino Vlerat Zero')}</Form.Label>
                 <Form.Check
                   checked = {eliminoVleratZero}
                   onChange={() => setEliminoVleratZero(prev => !prev)}
@@ -187,18 +189,19 @@ export default function Produktet() {
                 <Table responsive striped bordered hover className="text-center">
                 <thead className="table-light">
                 <tr className='fs-5 '>
-                  <th scope="col">Nr</th>
-                  <th scope="col">Shifra</th>
-                  <th scope="col">Emertimi</th>
-                  <th scope="col">Pershkrimi</th>
-                  <th scope="col">Sasia</th>
-                  {authData.aKaUser == 'admin' ? <th scope="col">CmimiBlerjes</th>: null}
-                  <th scope="col">CmimiShitjes</th>
-                  <th scope="col">Komenti</th>
-                  <th scope="col">me Fature te Rregullt</th>
-                  <th scope="col">Kategoria</th>
-                  <th scope="col">TVSH %</th>
-                  <th scope="col">Opsionet</th>
+                  <th scope="col">{t('Nr')}</th>
+                  <th scope="col">{t('Shifra')}</th>
+                  <th scope="col">{t('Emertimi')}</th>
+                  <th scope="col">{t('Pershkrimi')}</th>
+                  <th scope="col">{t('Sasia')}</th>
+                  {authData.aKaUser == 'admin' ? <th scope="col">{t('CmimiBlerjes')}</th> : null}
+                  <th scope="col">{t('CmimiShitjes')}</th>
+                  <th scope="col">{t('Komenti')}</th>
+                  <th scope="col">{t('me Fature te Rregullt')}</th>
+                  <th scope="col">{t('Kategoria')}</th>
+                  <th scope="col">{t('TVSH %')}</th>
+                  <th scope="col">{t('Opsionet')}</th>
+
                 </tr>
               </thead>
               <tbody className=' text-nowrap'>
@@ -213,11 +216,11 @@ export default function Produktet() {
                       : item.shifra}</td>
                     <td>{item.emertimi}</td>
                     <td>{item.pershkrimi}</td>
-                    <td>{item.sasiStatike ? 'Sasi Statike' : item.sasia}</td>
+                    <td>{item.sasiStatike ? t('Sasi Statike') : item.sasia}</td>
                     {authData.aKaUser == 'admin' ? <td>{formatCurrency(item.cmimiBlerjes)}</td> : null}
                     <td>{formatCurrency(item.cmimiShitjes)}</td>
                     <td>{item.komenti}</td>
-                    <td>{<Badge bg={item.meFatureTeRregullt == 'po' ? 'success' : 'danger'}>{item.meFatureTeRregullt}</Badge>}</td>
+                    <td>{<Badge bg={item.meFatureTeRregullt == 'po' ? 'success' : 'danger'}>{item.meFatureTeRregullt == 'po' ? t('po') : t('jo')}</Badge>}</td>
                     <td>{item.emertimiKategorise}</td>
                     <td>{item.tvsh} %</td>
                     <td className='d-flex flex-row justify-content-between'>
@@ -247,14 +250,14 @@ export default function Produktet() {
           Shifra:rest.shifra,
           Emertimi: rest.emertimi,
           Pershkrimi: rest.pershkrimi,
-          Sasia: sasiStatike ? 'Sasi Statike' : sasia,
+          Sasia: sasiStatike ? t('Sasi Statike') : sasia,
           CmimiBlerjes: formatCurrency(rest.cmimiBlerjes),
           CmimiShitjes: formatCurrency(rest.cmimiShitjes),
           Komenti: rest.komenti,
           MeFatureTeRregullt: rest.meFatureTeRregullt,
           Kategoria: rest.emertimiKategorise,
           TVSH: rest.tvsh + ' %',
-        }))} fileName = 'Stoku'
+        }))} fileName = {t('Stoku')}
       />
       <ShtoNjeProdukt show={showModal} prejardhja={'meRefresh'} handleClose={() => setShowModal(false)} produkti = {produkti} handleConfirm={fetchData}/>
       <ModalPerPyetje show={showModalPerPyetje} handleConfirm={handleConfirmModalPerPyetje} handleClose={handleCloseModalPerPyetje} />

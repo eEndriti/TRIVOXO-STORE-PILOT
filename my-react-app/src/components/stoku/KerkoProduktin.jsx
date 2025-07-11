@@ -5,8 +5,9 @@ import {ToastContainer } from 'react-toastify';
 import { useToast } from '../ToastProvider';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
-
+import { useTranslation } from "react-i18next";
 export default function KerkoProduktin({ show, onHide, onSelect, meFatureProp }) {
+  const {t} = useTranslation('stoku')
   const [searchFields, setSearchFields] = useState({
     shifra: "",
     emertimi: "",
@@ -30,7 +31,7 @@ export default function KerkoProduktin({ show, onHide, onSelect, meFatureProp })
       const data = await window.api.fetchTableProdukti();
       setProduktet(data);
     } catch (error) {
-      showToast("Nuk u arrit të tërhiqeshin produktet!",'error');
+      showToast(t("Nuk u arrit të tërhiqeshin produktet!"),'error');
     } finally {
       setLoading(false);
     }
@@ -43,7 +44,6 @@ export default function KerkoProduktin({ show, onHide, onSelect, meFatureProp })
 
 
   const filterProducts = () => {
-    console.log('mefature', meFatureProp);
 
     const filtered = produktet.filter((product) => {
       const matchesShifra = searchFields.shifra 
@@ -101,13 +101,12 @@ export default function KerkoProduktin({ show, onHide, onSelect, meFatureProp })
         <Modal show={show} onHide={onHide} size="lg">
           <Modal.Header closeButton>
             <Modal.Title>
-              Kërko Produktin
+              {t('Kërko Produktin')}
               {meFatureProp != null && (
                 <Alert variant="warning" className="d-flex align-items-center mt-3">
                   <FontAwesomeIcon icon={faTriangleExclamation} size="lg" className="me-2" />
                   <span>
-                    <strong>Kujdes!</strong> Keni zgjedhur opsionin {meFatureProp ? "me" : "pa"} fature të rregullt. Produktet e
-                    shfaqura janë të filtruara!
+                    <strong>{t('Kujdes!')}</strong> {t('Keni zgjedhur opsionin')} {meFatureProp ? "me" : "pa"} {t('fature të rregullt. Produktet e shfaqura janë të filtruara!')}
                   </span>
                 </Alert>
               )}
@@ -124,12 +123,12 @@ export default function KerkoProduktin({ show, onHide, onSelect, meFatureProp })
                     autoFocus={field === "shifra"}
                     value={searchFields[field]}
                     onChange={handleInputChange}
-                    placeholder={`Kërko ${field}...`}
+                    placeholder={t('Kërko') + ` ${field}...`}
                   />
                 </Form.Group>
               ))}
               <Form.Group className="mb-3">
-                <Form.Label>Elimino Vlerat Zero</Form.Label>
+                <Form.Label>{t('Elimino Vlerat Zero')}</Form.Label>
                 <Form.Check
                   type="checkbox"
                   checked={eliminoVleratZero}
@@ -139,17 +138,17 @@ export default function KerkoProduktin({ show, onHide, onSelect, meFatureProp })
               </Form.Group>
             </div>
             {results.length === 0 ? (
-              <p>Asnjë produkt nuk u gjet.</p>
+              <p>{t('Asnjë produkt nuk u gjet.')}</p>
             ) : (
               <div className="tableHeight50" style={{ overflowY: "auto" }}>
                 <Table striped bordered hover size="sm" >
                 <thead>
                   <tr>
-                    <th>Shifra</th>
-                    <th>Emërtimi</th>
-                    <th>Përshkrimi</th>
-                    <th>Sasia</th>
-                    <th>Me Fature te Rregullt</th>
+                    <th>{t('Shifra')}</th>
+                    <th>{t('Emërtimi')}</th>
+                    <th>{t('Përshkrimi')}</th>
+                    <th>{t('Sasia')}</th>
+                    <th>{t('Me Fature te Rregullt')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -170,10 +169,10 @@ export default function KerkoProduktin({ show, onHide, onSelect, meFatureProp })
           </Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={() => setShowShtoProduktinModal(true)}>
-              Shto Një Produkt
+              {t('Shto Një Produkt')}
             </Button>
             <Button variant="secondary" onClick={onHide}>
-              Mbyll
+              {t('Mbyll')}
             </Button>
           </Modal.Footer>
           <ShtoNjeProdukt

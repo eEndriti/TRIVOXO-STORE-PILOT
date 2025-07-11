@@ -1,0 +1,18 @@
+{
+  "Gabim gjat komunikimit me databaze!": "Error communicating with the database!",
+  "Ndryshimet u Ruajten me Sukses!": "Changes saved successfully!",
+  "Të Dhënat e Biznesit": "Business Information",
+  "Emri i Biznesit": "Business Name",
+  "Shkruani emrin e biznesit...": "Enter business name...",
+  "Adresa e Biznesit": "Business Address",
+  "Shkruani adresën...": "Enter address...",
+  "Nr. Telefonit të Biznesit": "Business Phone Number",
+  "Shkruani numrin e telefonit...": "Enter phone number...",
+  "Folderi per Garancione:": "Warranty Folder:",
+  "Folder Path per Garancione": "Warranty Folder Path",
+  "Kushtet e Garancionit:": "Warranty Conditions:",
+  "Nuk ka kushte!": "No conditions set!",
+  "Shto Kushte": "Add Condition",
+  "Duke Ruajtur...": "Saving...",
+  "Ruaj Ndryshimet": "Save Changes"
+}

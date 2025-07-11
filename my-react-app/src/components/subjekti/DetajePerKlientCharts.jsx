@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Line,LineChart, PieChart, Pie, Cell, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { Card } from "react-bootstrap";
+import { useTranslation } from 'react-i18next';
 
 const COLORS = ["#00C49F", "#0088FE", "#FFBB28", "#FF8042", "#D72638"];
 
@@ -9,6 +10,7 @@ const DetajePerKlientCharts = ({ totals = {},nrTransaksioneve,totalsFormatiMujor
   //mduhet totals.totaliPageses edhe mduhet lengthi i combinedData per pieChart
   //mduhet totaliPagesaveFormatiMujor e njejta edhe per totalinBorgjeve
 
+const {t} = useTranslation('subjekti')
 
   const performanceData = totalsFormatiMujore.map((payment) => {
    
@@ -36,13 +38,13 @@ const DetajePerKlientCharts = ({ totals = {},nrTransaksioneve,totalsFormatiMujor
     <div className="d-flex flex-wrap justify-content-center gap-4 p-3">
       {/* Grafiku i Pagesave */}
       <Card className="p-3 shadow" style={{ width: "45%" }}>
-        <h5 className="text-center">Kompletimi i Pagesave ne %</h5>
+        <h5 className="text-center">{t('Kompletimi i Pagesave ne %')}</h5>
         <ResponsiveContainer width="100%" height={300}>
             <PieChart>
             <Pie
                 data={[
-                { name: "Te Paguara", value:tePaguara },
-                { name: "Te Mbetura Per Pagese", value: tePaPaguara }
+                { name: t("Te Paguara"), value:tePaguara },
+                { name: t("Te Mbetura Per Pagese"), value: tePaPaguara }
                 ]}
                 dataKey="value"
                 nameKey="name"
@@ -64,15 +66,15 @@ const DetajePerKlientCharts = ({ totals = {},nrTransaksioneve,totalsFormatiMujor
       {/* Grafiku i Borxhit Mujor */}
       {lloji == 'klient' && 
       <Card className="p-3 shadow"  style={{ width: "45%" }}>
-        <h5 className="text-center">Trendi i Perfomances se Klientit</h5>
+        <h5 className="text-center">{t('Trendi i Perfomances se Klientit')}</h5>
         <ResponsiveContainer width="100%" height={300}>
             <LineChart data={performanceData}>
             <XAxis dataKey="month" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="totalPaid" stroke="#00C49F" name="Totali i Pageses" />
-            <Line type="monotone" dataKey="due" stroke="#FF0000" name="Totali per Pagese" />
+            <Line type="monotone" dataKey="totalPaid" stroke="#00C49F" name={t("Totali i Pageses")} />
+            <Line type="monotone" dataKey="due" stroke="#FF0000" name={t("Totali per Pagese")} />
             </LineChart>
         </ResponsiveContainer>
         </Card>}

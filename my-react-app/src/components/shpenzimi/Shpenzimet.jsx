@@ -8,8 +8,9 @@ import ModalPerPyetje from '../ModalPerPyetje'
 import NdryshoShpenzimin from './NdryshoShpenzimin';
 import {ToastContainer } from 'react-toastify';
 import { useToast } from '../ToastProvider';
-
+import { useTranslation } from 'react-i18next';
 export default function Shpenzimet() {
+    const {t} = useTranslation('shpenzimi')
     const [loading,setLoading] = useState(true)
     const [buttonLoading,setButtonLoading] = useState(false)
     const {authData} = useContext(AuthProvider)
@@ -127,14 +128,14 @@ export default function Shpenzimet() {
           
           
           if(result.success){
-            showToast(`Shpenzimi eshte fshirë me sukses!`, 'success');
+            showToast(t(`Shpenzimi eshte fshirë me sukses!`), 'success');
           }else{
-            showToast(`Diqka shkoi keq!`, 'erorr');
+            showToast(t(`Gabim gjate fshirjes!`), 'erorr');
           }
 
         }catch(e){
             console.log(e)
-            showToast('Gabim gjate fshirjes: ' + result.error);
+            showToast(t(`Gabim gjate fshirjes!`) + result.error);
 
         }finally{
             setLoading(false)
@@ -148,7 +149,7 @@ export default function Shpenzimet() {
     <Row className='d-flex flex-column mx-1'>
 
           <Col className='d-flex flex-row justify-content-center'>
-            <h4 className='px-3 '>Shpenzimet brenda Periudhes :</h4>
+            <h4 className='px-3 '>{t('Shpenzimet brenda Periudhes :')}</h4>
             <Form.Group className='mx-1'>
               <Form.Control
                 type='date'
@@ -169,13 +170,13 @@ export default function Shpenzimet() {
 
           <Col className='d-flex flex-row justify-content-around m-3'>
             <FormGroup>
-              <Form.Control placeholder='Kerko me Shifer...'  onChange={(e) => setShifraSearch(e.target.value)}/>
+              <Form.Control placeholder={t('Kerko me Shifer...')}  onChange={(e) => setShifraSearch(e.target.value)}/>
             </FormGroup>
             <FormGroup>
-              <Form.Control  placeholder='Kerko me Emertim...'  onChange={(e) => setEmertimiSearch(e.target.value)}/>
+              <Form.Control  placeholder={t('Kerko me Emertim...')}  onChange={(e) => setEmertimiSearch(e.target.value)}/>
             </FormGroup>
             <FormGroup>
-              <Form.Control  placeholder='Kerko me Shumen e Shpenzuar...' onChange={(e) => setShumaSearch(e.target.value)}/>
+              <Form.Control  placeholder={t('Kerko me Shumen e Shpenzuar...')}  onChange={(e) => setShumaSearch(e.target.value)}/>
             </FormGroup>
           </Col>
 
@@ -187,15 +188,15 @@ export default function Shpenzimet() {
                 <table className="table table-sm table-striped text-center text-nowrap">
                     <thead className="table-light">
                     <tr className='fs-5'>
-                        <th scope="col">Nr</th>
-                        <th scope="col">Shifra</th>
-                        <th scope="col">Emertimi</th>
-                        <th scope="col">Data dhe Ora</th>
-                        <th scope="col">Shuma</th>
-                        <th scope="col">Komenti</th>
-                        <th scope="col">Perdoruesi</th>
-                        <th scope="col">Menyra e Pageses</th>
-                        <th scope="col">Opsionet</th>
+                        <th scope="col">{t('Nr')}</th>
+                        <th scope="col">{t('Shifra')}</th>
+                        <th scope="col">{t('Emertimi')}</th>
+                        <th scope="col">{t('Data dhe Ora')}</th>
+                        <th scope="col">{t('Shuma')}</th>
+                        <th scope="col">{t('Komenti')}</th>
+                        <th scope="col">{t('Perdoruesi')}</th>
+                        <th scope="col">{t('Menyra e Pageses')}</th>
+                        <th scope="col">{t('Opsionet')}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -221,7 +222,7 @@ export default function Shpenzimet() {
             </div>
             ): (
                 <h5 className='text-center mt-5 text-danger'>
-                    Nuk Egzistojne te Dhena ne kete Interval Kohor !
+                    {t('Nuk Egzistojne te Dhena ne kete Interval Kohor !')}
                 </h5>
             )}
             </>}

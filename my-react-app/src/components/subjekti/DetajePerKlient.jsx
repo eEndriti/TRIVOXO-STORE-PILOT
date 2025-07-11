@@ -8,14 +8,15 @@ import AnimatedSpinner from '../AnimatedSpinner';
 import ModalPerPyetje from '../ModalPerPyetje'
 import {ToastContainer } from 'react-toastify';
 import { useToast } from '../ToastProvider';
-import PerfomancaKlientit from '../PerfomancaKlientit'
+import PerfomancaKlientit from './PerfomancaKlientit'
 import DetajePerKlientCharts from './DetajePerKlientCharts';
 import { useNavigate } from 'react-router-dom';
 import NdryshoServisinPerfunduar from '../NdryshoServisinPerfunduar';
 import ShtoPagese from '../ShtoPagese';
 import handleExport  from './SaveSubjectExcel';
-
+import { useTranslation } from 'react-i18next';
 export default function DetajePerKlient() {
+    const {t} = useTranslation('subjekti')
     const navigate = useNavigate();
     const { subjektiID, lloji } = useParams();
     const [subjekti, setSubjekti] = useState([]);
@@ -199,7 +200,7 @@ export default function DetajePerKlient() {
     }
 
     if (subjekti.length == 0) {
-        return <h5 className="text-center text-danger mt-5">Nuk u gjet asnjë {lloji}!</h5>;
+        return <h5 className="text-center text-danger mt-5">{t('Nuk u gjet asnjë')} {lloji}!</h5>;
     }
 
     const deletePagesa = (item) =>{
@@ -225,10 +226,10 @@ export default function DetajePerKlient() {
         try{
 
             await window.api.deletePagesa(dataPerAnulimPagese)
-            showToast('Pagesa u Anulua me sukses!' , 'success')
+            showToast(t("Pagesa u Anulua me sukses!") , 'success')
             
         }catch(e){
-            showToast('Pagesa nuk mund te Anulohet!' , 'error')
+            showToast(t('Pagesa nuk mund te Anulohet!') , 'error')
         }finally{
             setButtonLoading(false)
             setTriggerReload(!triggerReload)
@@ -262,7 +263,7 @@ export default function DetajePerKlient() {
             const data = result.find(item => item.servisimiID == id);
             
             if (!data) {
-                showToast('Gabim: Nuk u gjet servisi me këtë ID', 'error');
+                showToast(t('Gabim: Nuk u gjet servisi me këtë ID'), 'error');
                 return; 
             }
     
@@ -270,7 +271,7 @@ export default function DetajePerKlient() {
             setModalNdryshoServisim(true); 
     
         } catch (error) {
-            showToast('Gabim gjatë marrjes së të dhënave për ndryshim: ' + error, 'error');
+            showToast(t('Gabim gjatë marrjes së të dhënave për ndryshim:') + error, 'error');
         }
     };
     
@@ -374,12 +375,12 @@ const hapeShtoPagese = (item) =>{
             
 
             if (result) {
-                showToast('Eksporti ne Excel u krye me sukses!', 'success');
+                showToast(t('Eksporti ne Excel u krye me sukses!'), 'success');
             }else {
-                showToast('Eksporti ne Excel dështoi!', 'error');
+                showToast(t('Eksporti ne Excel dështoi!'), 'error');
             }
         } catch (error) {
-            showToast('Gabim gjatë eksportit në Excel: ' + error, 'error');
+            showToast(t('Eksporti ne Excel dështoi!') + error, 'error');
         }
           
 
@@ -391,19 +392,19 @@ const hapeShtoPagese = (item) =>{
            <Row className='my-4'>
             <Col className='d-flex flex-row'>
                 <Form.Group className='d-flex align-items-center me-3'>
-                <Form.Label className='me-2 fw-bold'>{lloji == 'klient' ? 'Klienti:' : 'Furnitori:'}</Form.Label>
+                <Form.Label className='me-2 fw-bold'>{lloji == 'klient' ? t('Klienti:') : t('Furnitori:')}</Form.Label>
                 <Form.Control type="text" value={subjekti[0].emertimi} disabled />
                 </Form.Group>
 
                 <Form.Group className='d-flex align-items-center'>
-                <Form.Label className='me-2 fw-bold'>Kontakti:</Form.Label>
+                <Form.Label className='me-2 fw-bold'>{t('Kontakti:')}</Form.Label>
                 <Form.Control type="number" value={subjekti[0].kontakti} disabled />
                 </Form.Group>
 
                 <OverlayTrigger placement="right" 
                     overlay={
                         <Tooltip id="tooltip-right">
-                            Totali i Fitimit nga ky Klient eshte : {formatCurrency(profiti)} 
+                            {t('Totali i Fitimit nga ky Klient eshte')} : {formatCurrency(profiti)} 
                         </Tooltip>
                     }
                 >
@@ -414,7 +415,7 @@ const hapeShtoPagese = (item) =>{
                 <PerfomancaKlientit totaliPerPagese = {totals.totalTotaliPerPagese} totaliPageses = {totals.totalTotaliPageses} lloji={lloji}/>
             </Col>
             <Col className='d-flex flex-column align-items-end'>
-                <h4 className='px-3 mb-3'>Transaksionet brenda Periudhes:</h4>
+                <h4 className='px-3 mb-3'>{t('Transaksionet brenda Periudhes:')}</h4>
 
                 <Col className='d-flex flex-row'>
                 <Form.Group className='mx-1'>
@@ -442,7 +443,7 @@ const hapeShtoPagese = (item) =>{
                 <Col lg={2} >
                     <Form.Control
                         type="text"
-                        placeholder="Kërko sipas Shifres"
+                        placeholder={t("Kërko sipas Shifres")}
                         value={shifraSearch}
                         onChange={(e) => setShifraSearch(e.target.value)}
                     />
@@ -453,14 +454,19 @@ const hapeShtoPagese = (item) =>{
                                 <table className="table table-lg table-striped border table-hover text-center">
                                     <thead className="table-secondary">
                                         <tr className="fs-5">
-                                            <th scope="col">Nr</th>
-                                            <th scope="col">Shifra e {lloji == 'klient' ? 'Shitjes' : 'Blerjes'}</th>
-                                            <th scope="col">Totali Per Pagese</th>
-                                            <th scope="col">Totali Pageses</th>
-                                            <th scope="col">Mbetja Per Pagese</th>
-                                            <th scope="col">Data e {lloji == 'klient' ? 'Shitjes' : 'Blerjes'}</th>
-                                            <th scope="col">Nr Pagesave</th>
-                                            <th scope="col">Opsionet</th>
+                                            <th scope="col">{t('Nr')}</th>
+                                            <th scope="col">
+                                            {t('Shifra e')} {lloji === 'klient' ? t('Shitjes') : t('Blerjes')}
+                                            </th>
+                                            <th scope="col">{t('Totali Per Pagese')}</th>
+                                            <th scope="col">{t('Totali Pageses')}</th>
+                                            <th scope="col">{t('Mbetja Per Pagese')}</th>
+                                            <th scope="col">
+                                            {t('Data e')} {lloji === 'klient' ? t('Shitjes') : t('Blerjes')}
+                                            </th>
+                                            <th scope="col">{t('Nr Pagesave')}</th>
+                                            <th scope="col">{t('Opsionet')}</th>
+
                                         </tr>
                                     </thead>
                                     <tbody className="border-dark">
@@ -516,7 +522,7 @@ const hapeShtoPagese = (item) =>{
 
             <Button variant="btn btn-outline-success" className='float-end' onClick={(e) => eksportoExcel()} onMouseEnter={() => setMeMaus(true)} onMouseLeave={() => setMeMaus(false)}>
                 <FontAwesomeIcon icon={faFileExcel}  className= {` mx-2 ${meMaus ? 'primary' : 'success'}`} />
-                    Eksporto ne Excel 
+                    {t('Eksporto ne Excel')} 
             </Button>
 
            {activeShifra ?
@@ -527,18 +533,18 @@ const hapeShtoPagese = (item) =>{
                     <div className='text-center'>
                         <h5>Pagesat e {activeShifra.startsWith('S-')  ? 'Servisit' : null} 
                             {activeShifra.startsWith('SH')  ? 'Shitjes' : null}
-                            {activeShifra.startsWith('B')  ? 'Blerjes' : null} me Shifer: <span className='fs-3 fw-bold'>{activeShifra}</span></h5>
+                            {activeShifra.startsWith('B')  ? 'Blerjes' : null} {t('me Shifer:')} <span className='fs-3 fw-bold'>{activeShifra}</span></h5>
                     </div>
                     <div className="w-50 my-3">
                         <div className="table-responsive tableHeight50">
                             <table className="table table-sm table-striped border table-hover text-center">
                                 <thead className="table-secondary">
                                     <tr className="fs-5">
-                                        <th scope="col">Nr</th>
-                                        <th scope="col">Vlera e Pageses</th>
-                                        <th scope="col">Data e Pageses</th>
-                                        <th scope="col">Menyra e Pageses</th>
-                                        <th scope="col">Opsionet</th>
+                                       <th scope="col">{t('Nr')}</th>
+                                        <th scope="col">{t('Vlera e Pageses')}</th>
+                                        <th scope="col">{t('Data e Pageses')}</th>
+                                        <th scope="col">{t('Menyra e Pageses')}</th>
+                                        <th scope="col">{t('Opsionet')}</th>
                                     </tr>
                                 </thead>
                                 <tbody className="border-dark">
@@ -573,9 +579,9 @@ const hapeShtoPagese = (item) =>{
     
         <Row >
             <Col className='d-flex flex-row m-5 pt-5 justify-content-center'>
-                <Button variant='info' className='p-3 m-3 w-25 rounded fs-4'>Totali Per Pagese : <span className='fs-2'>{formatCurrency(totals.totalTotaliPerPagese)} </span></Button> 
-               <Button variant='success' className='p-3 m-3 w-25 rounded fs-4'>Totali i Paguar :<span className='fs-2'>{formatCurrency(totals.totalTotaliPageses)}</span></Button>                     
-               <Button variant='danger' className='p-3 m-3 w-25 rounded fs-4'>Mbetja per Pagese :<span className='fs-2'>{formatCurrency(totals.totalMbetjaPerPagese)}</span></Button> 
+                <Button variant='info' className='p-3 m-3 w-25 rounded fs-4'>{t('Totali Per Pagese')} : <span className='fs-2'>{formatCurrency(totals.totalTotaliPerPagese)} </span></Button> 
+               <Button variant='success' className='p-3 m-3 w-25 rounded fs-4'>{t('Totali i Paguar')} :<span className='fs-2'>{formatCurrency(totals.totalTotaliPageses)}</span></Button>                     
+               <Button variant='danger' className='p-3 m-3 w-25 rounded fs-4'>{t('Mbetja per Pagese')} :<span className='fs-2'>{formatCurrency(totals.totalMbetjaPerPagese)}</span></Button> 
             </Col>                                           
         </Row>
         <Row>

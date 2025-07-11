@@ -6,10 +6,11 @@ import {ToastContainer } from 'react-toastify';
 import { useToast } from '../ToastProvider';
 import ModalPerPyetje from '../ModalPerPyetje';
 import { useNavigate } from 'react-router-dom';
-import ShtoNdryshoSubjektin from '../ShtoNdryshoSubjektin';
+import ShtoNdryshoSubjektin from './ShtoNdryshoSubjektin';
 import { formatCurrency } from "../AuthContext";
 import  AuthProvider from '../AuthContext';
-import SubjectTotalsData from '../SubjectTotalsData';
+import SubjectTotalsData from './SubjectTotalsData';
+import { useTranslation } from 'react-i18next';
 
 export default function Klient() {
     const navigate = useNavigate();
@@ -26,7 +27,7 @@ export default function Klient() {
     const [triggerReload, setTriggerReload] = useState(false);
     const {authData} = useContext(AuthProvider)
     const [totals, setTotals] = useState();
-    
+    const {t} = useTranslation('subjekti')
     useEffect(() => {
         fetchData();
     }, [triggerReload]);
@@ -115,16 +116,16 @@ export default function Klient() {
                     nderrimiID:authData.nderrimiID
                 }
                 await window.api.deleteSubjekti(data);
-                showToast('Klienti u Anulua me Sukses!', 'success');
+                showToast(t('Klienti u Anulua me Sukses!'), 'success');
 
             } catch (error) {
-                showToast('Gabim gjate Fshirjes: ' + error , 'error');
+                showToast(t('Gabim gjate Fshirjes!') + error , 'error');
             } finally {
                 setLoading(false);
                 setTriggerReload(!triggerReload);
             }
         } else {
-            showToast('Gabim, Rifreskoni faqen dhe provoni serish: ', 'error');
+            showToast(t('Gabim, Rifreskoni faqen dhe provoni serish!'), 'error');
         }
     };
 
@@ -161,10 +162,10 @@ export default function Klient() {
         <Container className='mt-5'>
             <Row className='mb-4'>
                 <Col className='text-center'>
-                    <h4 className="fw-bold">Klientet:</h4>
+                    <h4 className="fw-bold">{t('Klientet')}:</h4>
                 </Col>
                 <Col md={2}>
-                    <Button className='fs-5 w-100' variant='success' onClick={handleShow}>Krijo nje Klient <FontAwesomeIcon icon={faPlus} /></Button>
+                    <Button className='fs-5 w-100' variant='success' onClick={handleShow}>{t('Krijo nje Klient')} <FontAwesomeIcon icon={faPlus} /></Button>
                 </Col>
             </Row>
 
@@ -174,7 +175,7 @@ export default function Klient() {
                 <Col md={4}>
                     <Form.Control
                         type="text"
-                        placeholder="Kërko sipas emertimit"
+                        placeholder={t("Kërko sipas emertimit")}
                         value={emertimiSearch}
                         onChange={(e) => setEmertimiSearch(e.target.value)}
                     />
@@ -182,7 +183,7 @@ export default function Klient() {
                 <Col md={4}>
                     <Form.Control
                         type="text"
-                        placeholder="Kërko sipas Kontakti"
+                        placeholder={t("Kërko sipas Kontakti")}
                         value={kontaktiSearch}
                         onChange={(e) => setKontaktiSearch(e.target.value)}
                     />
@@ -198,7 +199,7 @@ export default function Klient() {
                     <Col>
                         {filteredKlientet.length < 1 ? (
                             <h5 className="text-center text-danger mt-5">
-                                Ende nuk keni ndonje klient te regjistruar!
+                                {t('Ende nuk keni ndonje klient te regjistruar!')}
                             </h5>
                         ) : (
                             <Card className="my-3">
@@ -207,13 +208,13 @@ export default function Klient() {
                                         <table className="table table-bordered table-hover text-center">
                                             <thead className="table-secondary">
                                         <tr>
-                                            <th scope="col">Nr</th>
-                                            <th scope="col">Emertimi</th>
-                                            <th scope="col">Kontakti</th>
-                                            <th scope="col">Totali Per Pagese</th>
-                                            <th scope="col">Totali Pageses</th>
-                                            <th scope="col">Mbetja Per Pagese</th>
-                                            <th scope="col">Opsionet</th>
+                                            <th scope="col">{t('Nr')}</th>
+                                            <th scope="col">{t('Emërtimi')}</th>
+                                            <th scope="col">{t('Kontakti')}</th>
+                                            <th scope="col">{t('Totali për Pagesë')}</th>
+                                            <th scope="col">{t('Totali Pagesave')}</th>
+                                            <th scope="col">{t('Mbetja për Pagesë')}</th>
+                                            <th scope="col">{t('Opsionet')}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -233,7 +234,7 @@ export default function Klient() {
                                                         className="mx-1"
                                                         onClick={() => handleDetaje(item.subjektiID)}
                                                     >
-                                                        Detaje...
+                                                       {t('Detaje...')}
                                                     </Button>}
                                                     <Button
                                                         variant="btn btn-outline-primary"

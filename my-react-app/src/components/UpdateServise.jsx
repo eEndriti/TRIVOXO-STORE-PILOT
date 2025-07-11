@@ -7,8 +7,12 @@ import KerkoProduktin from './stoku/KerkoProduktin'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import AnimatedSpinner from './AnimatedSpinner';
+import { useTranslation } from 'react-i18next';
+
 
 function UpdateServise({ show, handleClose, updateType, data = {} , handleConfirm }) {
+
+    const {t} = useTranslation('others')
     const [loading, setLoading] = useState(false);
     const [aKaData, setAKaData] = useState(false);
     const [aKaAdapter, setKaAdapter] = useState(false);
@@ -80,15 +84,14 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
             products:products.slice(0, products.length - 1)
         }
         try {
-            console.log('dataPerndryshim',dataPerNdryshim)
             const result = await window.api.ndryshoServisin(dataPerNdryshim);
             if (result.success) {
-                showToast(`Servisi u ${updateType != 'perfundo' ? 'Ndryshua' : 'Perfundua'} me Sukses!`, 'success'); 
+                showToast(`${t('Servisi u')} ${updateType != 'perfundo' ? t('Ndryshua') : t('Perfundua')} ${t('me Sukses!')}`, 'success'); 
             } else {
-                showToast('Gabim gjate Ndryshimit: ' + result.error , 'error');
+                showToast(t('Gabim gjate Ndryshimit:') + result.error , 'error');
             }
           } catch (error) {
-            showToast('Gabim gjate komunikimit me server: ' + error.message , 'error');
+            showToast(t('Gabim gjate komunikimit me server:') + error.message , 'error');
           } finally {
             setLoading(false);
             handleConfirm()
@@ -143,7 +146,7 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
         if (value <= totaliPerPagese) {
             setTotaliIPageses(value);
         } else {
-            showToast('Shuma e paguar nuk mund të jetë më e madhe se totali!' , 'warning');
+            showToast(t('Shuma e paguar nuk mund të jetë më e madhe se totali!') , 'warning');
         }
         setMbetjaPerPagese(totaliPerPagese - totaliIPageses)
 
@@ -157,17 +160,17 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
     return (
         <Modal show={show} onHide={handleClose} size={updateType === 'perfundo' ? 'xl' : 'md'}>
             <Modal.Header closeButton>
-                <Modal.Title>{updateType === 'perfundo' ? <>{data.ndryshoServisinPerfunduar ? 'Ndrysho Servisin' : 'Mbyll Servisimin'}</> : 'Ndrysho te Dhenat'}</Modal.Title>
+                <Modal.Title>{updateType === 'perfundo' ? <>{data.ndryshoServisinPerfunduar ? t('Ndrysho Servisin') : t('Mbyll Servisimin')}</> : t('Ndrysho te Dhenat')}</Modal.Title>
             </Modal.Header> {loading ? <AnimatedSpinner /> :
             <Modal.Body>
                 
                <Form className='d-flex d-row justify-content-start'>
                     <Form.Group>
-                        <Form.Label>Shifra:</Form.Label>
+                        <Form.Label>{t('Shifra')}:</Form.Label>
                         <Form.Control type="text" value={data?.shifra || ''} disabled />
                     </Form.Group>
                     <Form.Group className='mx-3'>
-                        <Form.Label >Klienti:</Form.Label>
+                        <Form.Label >{t('Klienti')}:</Form.Label>
                         <Form.Control type="text" value={data?.subjekti || ''} disabled />
                     </Form.Group>
                </Form>
@@ -180,16 +183,16 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
                             <Table striped bordered hover size="sm">
                             <thead>
                                 <tr className="fs-5">
-                                <th scope="col">Nr</th>
-                                <th scope="col">Shifra</th>
-                                <th scope="col">Emertimi</th>
-                                <th scope="col">Pershkrimi</th>
-                                <th scope="col">Cmimi Per Cope</th>
-                                <th scope="col">Sasia e Disponueshme</th>
-                                <th scope="col">Sasia e Shitjes</th>
-                                <th scope="col">Totali</th>
-                                <th scope="col">Komenti</th>
-                                <th scope="col">Opsionet</th>
+                                <th scope="col">{t('Nr')}</th>
+                                <th scope="col">{t('Shifra')}</th>
+                                <th scope="col">{t('Emertimi')}</th>
+                                <th scope="col">{t('Pershkrimi')}</th>
+                                <th scope="col">{t('Cmimi Per Cope')}</th>
+                                <th scope="col">{t('Sasia e Disponueshme')}</th>
+                                <th scope="col">{t('Sasia e Shitjes')}</th>
+                                <th scope="col">{t('Totali')}</th>
+                                <th scope="col">{t('Komenti')}</th>
+                                <th scope="col">{t('Opsionet')}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -203,7 +206,7 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
                                     <td>{index + 1}</td>
                                     <td>
                                         {product.shifra || (
-                                        <Button onClick={() => openModalForRow(index)}>Kerko</Button>
+                                        <Button onClick={() => openModalForRow(index)}>{t('Kerko')}</Button>
                                         )}
                                     </td>
                                     <td>{product.emertimi}</td>
@@ -273,7 +276,7 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
                             <hr/>  
                        <Row className='d-flex flex-row flex-wrap justify-content-between mt-5'>
                             <Col xs={12} md={6} className="d-flex justify-content-center align-items-end ">
-                                <Button variant="danger" size="lg" className="mx-2 fs-1" onClick={handleClose}>Anulo</Button>
+                                <Button variant="danger" size="lg" className="mx-2 fs-1" onClick={handleClose}>{t('Anulo')}</Button>
                                 <Button variant="success" size="lg" className="mx-2 fs-1" onClick={handleConfirmClick} 
                                 disabled={loading || (updateType != 'Perfundo' && menyraPagesesID == null) || products.some(product => product.sasiaShitjes < 1)}>{loading ? (
                                 <>
@@ -284,15 +287,15 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
                                     role="status"
                                     aria-hidden="true"
                                     />{' '}
-                                    Duke ruajtur...
+                                    {t('Duke ruajtur...')}
                                 </>
                                 ) : (
-                                'Regjistro...'
+                                    t('Regjistro...')
                                 )}</Button>
                             </Col>
                         <Form className='w-25 '>
                                 <Form.Group>
-                                    <Form.Label>Totali per Pagese:</Form.Label>
+                                    <Form.Label>{t('Totali per Pagese')}:</Form.Label>
                                         <InputGroup>
                                             <Form.Control
                                                 type="text"
@@ -303,7 +306,7 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
                                         </InputGroup>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label>Totali i Pageses:</Form.Label>
+                                    <Form.Label>{t('Totali i Pageses')}:</Form.Label>
                                     <InputGroup>
                                         <Form.Control
                                         type="number"
@@ -316,7 +319,7 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
                                     </InputGroup>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label>Mbetja Per Pagese:</Form.Label>
+                                    <Form.Label>{t('Mbetja Per Pagese')}:</Form.Label>
                                     <InputGroup>
                                         <Form.Control type="number" value={mbetjaPerPagese} disabled />
                                         <InputGroup.Text>€</InputGroup.Text>
@@ -342,7 +345,7 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
                 ) : (
                     <Form> 
                         <Form.Group style={{ flex: 1 }}>
-                            <Form.Label className="fw-bold">Komenti:</Form.Label>
+                            <Form.Label className="fw-bold">{t('Komenti')}:</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={2}
@@ -353,19 +356,19 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
                         </Form.Group>
                         <Form className="d-flex flex-row m-2">
                             <Form.Group className="p-1 mx-3">
-                                <Form.Label>Data:</Form.Label>
+                                <Form.Label>{t('Data')}:</Form.Label>
                                 <Form.Check checked={aKaData} onChange={() => setAKaData(!aKaData)} />
                             </Form.Group>
                             <Form.Group className="p-1 mx-3">
-                                <Form.Label>Adapter:</Form.Label>
+                                <Form.Label>{t('Adapter')}:</Form.Label>
                                 <Form.Check checked={aKaAdapter} onChange={() => setKaAdapter(!aKaAdapter)} />
                             </Form.Group>
                             <Form.Group className="p-1 mx-3">
-                                <Form.Label>Çantë:</Form.Label>
+                                <Form.Label>{t('Çantë')}:</Form.Label>
                                 <Form.Check checked={aKaÇante} onChange={() => setAKaÇante(!aKaÇante)} />
                             </Form.Group>
                             <Form.Group className="p-1 mx-3">
-                                <Form.Label>Garancion:</Form.Label>
+                                <Form.Label>{t('Garancion')}:</Form.Label>
                                 <Form.Check checked={aKaGarancion} onChange={() => setAKaGarancion(!aKaGarancion)} />
                                 {aKaGarancion && (
                                     <Form.Control
@@ -382,7 +385,7 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
             }
             {updateType != 'perfundo' ? <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                    Anulo
+                    {t('Anulo')}
                 </Button>
                 <Button variant="primary" onClick={handleConfirmClick} disabled={loading}>
                     {loading ? (
@@ -395,10 +398,10 @@ function UpdateServise({ show, handleClose, updateType, data = {} , handleConfir
                                 role="status"
                                 aria-hidden="true"
                             />{' '}
-                            Duke ruajtur...
+                            {t('Duke ruajtur...')}
                         </>
                     ) : (
-                        'Ruaj Ndryshimet...'
+                        t('Ruaj Ndryshimet...')
                     )}
                 </Button>
             </Modal.Footer> : null}

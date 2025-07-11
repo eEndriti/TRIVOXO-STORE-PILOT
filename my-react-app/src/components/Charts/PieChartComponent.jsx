@@ -2,10 +2,12 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Container, Row } from 'react-bootstrap';
-
+import { useTranslation } from 'react-i18next';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 export default function PieChartComponent({ teDhenat = [], labels = [] , lloji = ''}) {
+      const { t } = useTranslation('charts');
+  
 
   // Group data by type ('online' or 'dyqan')
   const groupBySales = () => {
@@ -43,13 +45,13 @@ export default function PieChartComponent({ teDhenat = [], labels = [] , lloji =
   }else{
     nrLLojit = labels.map((label) => groupedBoughts[label] || 0);
   }
-
+console.log(labels)
   // Chart data
   const pieChartData = {
-    labels, // ['Shitje ne Dyqan', 'Shitje Online']
+    labels : [t(labels[0]),t(labels[1])],
     datasets: [
       {
-        label: `Nr i ${lloji}`, // Label for each segment
+        label: t('Numri i')+` ${lloji == ' Shitjeve' ? t('Shitjeve') : t('Blerjeve')}`, // Label for each segment
         data: nrLLojit, // Corresponding data for each label
         backgroundColor: ['#3e95cd', '#8e5ea2'], // Colors for each segment
       },
@@ -66,7 +68,7 @@ export default function PieChartComponent({ teDhenat = [], labels = [] , lloji =
               plugins: {
                 title: {
                   display: true,
-                  text: 'Totali i Të Dhënave',
+                  text: t('Totali i Të Dhënave'),
                 },
               },
             }}

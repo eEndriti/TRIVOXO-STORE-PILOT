@@ -10,7 +10,6 @@ export const useToast = () => useContext(ToastContext);
 const TOAST_CONTAINER_ID = "global-toast-container";
 
 export const ToastProvider = ({ children }) => {
-  console.log("ToastProvider rendered");
 
   const showToast = (message = '', type = "info") => {
     toast(message, {

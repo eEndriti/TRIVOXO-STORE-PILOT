@@ -5,8 +5,11 @@ import { useToast } from './ToastProvider';
 import AuthContext, { formatCurrency } from "../components/AuthContext";
 import AnimatedSpinner from './AnimatedSpinner';
 import MenyratPagesesExport from './MenyratPagesesExport'
+import { useTranslation } from 'react-i18next';
 
 const ShtoPagese = ({ show, handleClose,data = {} }) => {
+
+   const {t} = useTranslation('others')
    const [loading,setLoading] = useState()
    const [buttonLoading,setButtonLoading] = useState()
    const [shumaPerPagese,setShumaPerPagese] = useState()
@@ -70,7 +73,7 @@ const ShtoPagese = ({ show, handleClose,data = {} }) => {
             setLoading(false)
             setButtonLoading(false)
             handleClose()
-            showToast('Pagesa u regjistrua me sukses!', 'success');
+            showToast(t('Pagesa u regjistrua me sukses!'), 'success');
           }, 2000);
         }
     }catch(e){
@@ -78,7 +81,7 @@ const ShtoPagese = ({ show, handleClose,data = {} }) => {
         setLoading(false)
         setButtonLoading(false)
         handleClose()
-        showToast('Pagesa nuk regjistrua me sukses!', 'error');
+        showToast(t('Pagesa nuk regjistrua me sukses!'), 'error');
       }, 2000);
     }finally{
       window.location.reload()
@@ -89,14 +92,14 @@ const ShtoPagese = ({ show, handleClose,data = {} }) => {
     return (
     <Modal show={show} onHide={loading ? null : handleClose} size='md'>
       <Modal.Header closeButton>
-        <Modal.Title> Shto nje Pagese te Re</Modal.Title>
+        <Modal.Title> {t('Shto nje Pagese te Re')}</Modal.Title>
       </Modal.Header>{loading ? <AnimatedSpinner/>:
       <Modal.Body>
       <Form>
         <Row className="mb-3">
           <Col md={4}>
             <Form.Group>
-              <Form.Label>Lloji</Form.Label>
+              <Form.Label>{t('Lloji')}</Form.Label>
               <Form.Control 
                 type="text" 
                 name="lloji" 
@@ -108,7 +111,7 @@ const ShtoPagese = ({ show, handleClose,data = {} }) => {
           </Col>
           <Col md={4}>
             <Form.Group>
-              <Form.Label>Shifra</Form.Label>
+              <Form.Label>{t('Shifra')}</Form.Label>
               <Form.Control 
                 type="text" 
                 name="shifra" 
@@ -120,7 +123,7 @@ const ShtoPagese = ({ show, handleClose,data = {} }) => {
           </Col>
           <Col md={4}>
             <Form.Group>
-              <Form.Label>Subjekti</Form.Label>
+              <Form.Label>{t('Subjekti')}</Form.Label>
               <Form.Control 
                 type="text" 
                 name="subjekti" 
@@ -136,7 +139,7 @@ const ShtoPagese = ({ show, handleClose,data = {} }) => {
     
         <Row>
           <Col md={12} className="mb-3">
-            <Form.Label>Totali i Shitjes:</Form.Label>
+            <Form.Label>{t('Totali i Shitjes')}:</Form.Label>
             <InputGroup>
               <Form.Control 
                 type="text" 
@@ -148,7 +151,7 @@ const ShtoPagese = ({ show, handleClose,data = {} }) => {
             </InputGroup>
           </Col>
           <Col md={12} className="mb-3">
-            <Form.Label>Shuma per Pagese:</Form.Label>
+            <Form.Label>{t('Shuma per Pagese')}:</Form.Label>
             <InputGroup>
               <Form.Control 
                 type="number" 
@@ -162,7 +165,7 @@ const ShtoPagese = ({ show, handleClose,data = {} }) => {
             </InputGroup>
           </Col>
           <Col md={12}>
-            <Form.Label>Mbetja Për Pagesë:</Form.Label>
+            <Form.Label>{t('Mbetja Për Pagesë')}:</Form.Label>
             <InputGroup>
               <Form.Control 
                 type="text" 
@@ -186,7 +189,7 @@ const ShtoPagese = ({ show, handleClose,data = {} }) => {
     }
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose} disabled={loading}>
-          Anulo
+          {t('Anulo')}
         </Button>
         <Button
           variant="primary"
@@ -202,10 +205,10 @@ const ShtoPagese = ({ show, handleClose,data = {} }) => {
                 role="status"
                 aria-hidden="true"
               />{' '}
-              Duke ruajtur...
+              {t('Duke ruajtur...')}
             </>
           ) : (
-            <>{'Regjistro Pagesen'}</>
+            <>{t('Regjistro Pagesen')}</>
           )}
         </Button>
       </Modal.Footer>

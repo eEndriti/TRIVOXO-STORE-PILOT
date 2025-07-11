@@ -8,8 +8,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 import {ToastContainer } from 'react-toastify';
 import { useToast } from './ToastProvider';
-
+import { useTranslation } from 'react-i18next';
 export default function Evidenca() {
+
+  const {t} = useTranslation('others')
   const [loading, setLoading] = useState(true);
   const [menyratEPageses, setMenyratEPageses] = useState([]);
   const [vleraShitjevePaPaguar, setVleraShitjevePaPaguar] = useState([]);
@@ -25,9 +27,9 @@ export default function Evidenca() {
   const [triggerReload, setTriggerReload] = useState(false);
   const showToast = useToast();
   const [vleraServisevePaPaguar, setVleraServisevePaPaguar] = useState([])
-  useEffect(() => {
-  
 
+
+  useEffect(() => {
     fetchData();
   }, [triggerReload]);
 
@@ -63,7 +65,7 @@ export default function Evidenca() {
       setEndDate(() => new Date().toISOString().split('T')[0])
       setLoading(false);
     } catch (err) {
-      showToast('Gabim gjate marrjes se te dhenave', 'error');
+      showToast(t('Gabim gjate marrjes se te dhenave'), 'error');
     }finally{
       setLoading(false)
     }
@@ -190,7 +192,7 @@ export default function Evidenca() {
     const end = new Date(startDate);
   
     if (isNaN(end)) {
-      throw new Error("Invalid end date provided.");
+      throw new Error(t("Data eshte shenuar gabim!"));
     }
   
     end.setDate(end.getDate() + daysBack);
@@ -271,7 +273,7 @@ export default function Evidenca() {
 
       <Row className='d-flex flex-column'>
           <Col className='d-flex flex-row justify-content-center '>
-            <h4 className='px-3 '>Evidenca brenda Periudhes :</h4>
+            <h4 className='px-3 '>{t('Evidenca brenda Periudhes')} :</h4>
               <Col className='d-flex'>
                 <Form.Group className='mx-1'>
                   <Form.Control
@@ -288,7 +290,7 @@ export default function Evidenca() {
                   />
                 </Form.Group>
               </Col>
-              <Button variant='outline-primary' onClick={() => setTregoGrafikun(!tregoGrafikun)}>{tregoGrafikun ? 'Mbylle Grafikun' : 'Trego Grafikun'}</Button>
+              <Button variant='outline-primary' onClick={() => setTregoGrafikun(!tregoGrafikun)}>{tregoGrafikun ? t('Mbylle Grafikun') : t('Trego Grafikun')}</Button>
           </Col>
          {loading2 ? <AnimatedSpinner/> : 
             <Col>
@@ -298,16 +300,16 @@ export default function Evidenca() {
               
               <Col className="d-flex flex-wrap justify-content-start align-items-center gap-3 p-3">
                 {[
-                  { label: 'Totali i Qarkullimit', value: diferencat.totalQarkullimi,diff: diferencat.totalQarkullimiPercentageDiff },
-                  { label: 'Totali i Shitjeve', value: diferencat.totaliPagesesShitje ,diff: diferencat.totaliPagesesShitjePercentageDiff || ''},
-                  { label: 'Totali i Hyrjeve', value: diferencat.totalHyrje,diff: diferencat.totalHyrjePercentageDiff || ''},
-                  { label: 'Totali i Blerjeve', value: diferencat.totaliPagesesBlerje,diff: diferencat.totaliPagesesBlerjePercentageDiff || ''},
-                  { label: 'Totali i Servisimeve', value: diferencat.totaliPagesesServisim,diff: diferencat.totaliPagesesServisimPercentageDiff|| '' },
-                  { label: 'Totali i Shpenzimeve', value: diferencat.totaliPagesesShpenzim,diff: diferencat.totaliPagesesShpenzimPercentageDiff|| '' },
-                  { label: 'Klient te Rinje', value: diferencat.klientTeRinje,diff: diferencat.klientTeRinjePercentageDiff || ''},
+                  { label: t('Totali i Qarkullimit'), value: diferencat.totalQarkullimi,diff: diferencat.totalQarkullimiPercentageDiff },
+                  { label: t('Totali i Shitjeve'), value: diferencat.totaliPagesesShitje ,diff: diferencat.totaliPagesesShitjePercentageDiff || ''},
+                  { label: t('Totali i Hyrjeve'), value: diferencat.totalHyrje,diff: diferencat.totalHyrjePercentageDiff || ''},
+                  { label: t('Totali i Blerjeve'), value: diferencat.totaliPagesesBlerje,diff: diferencat.totaliPagesesBlerjePercentageDiff || ''},
+                  { label: t('Totali i Servisimeve'), value: diferencat.totaliPagesesServisim,diff: diferencat.totaliPagesesServisimPercentageDiff|| '' },
+                  { label: t('Totali i Shpenzimeve'), value: diferencat.totaliPagesesShpenzim,diff: diferencat.totaliPagesesShpenzimPercentageDiff|| '' },
+                  { label: t('Klient te Rinje'), value: diferencat.klientTeRinje,diff: diferencat.klientTeRinjePercentageDiff || ''},
                 ].map((item, index) => (
                   <>
-                    <DashboardStats title = {item.label} value = {item.label == 'Klient te Rinje' ? item.value :formatCurrency(item.value)}  diff = {item.diff} periudhaKohore={diferencaDitore} />
+                    <DashboardStats title = {item.label} value = {item.label == t('Klient te Rinje') ? item.value :formatCurrency(item.value)}  diff = {item.diff} periudhaKohore={diferencaDitore} />
                   </>
                 ))}
               </Col>}
@@ -318,18 +320,18 @@ export default function Evidenca() {
           <hr/><br/>
 
           <Row>
-            <h4 className="text-center mb-4">Evidenca e Pergjithshme:</h4>
+            <h4 className="text-center mb-4">{t('Evidenca e Pergjithshme:')}</h4>
             <Col className="d-flex flex-wrap justify-content-start align-items-center gap-3 p-3">
               {[
-                { label: 'Vlera e Stokit Aktual ne Blerje', value: produktiData[0]?.vleraEBlerjeve, isCurrency: true },
-                { label: 'Vlera e Stokit Aktual ne Shitje', value: produktiData[0]?.VleraShitjeve, isCurrency: true },
-                { label: 'Nr. i Produkteve', value: produktiData[0]?.nrProdukteve, isCurrency: false },
-                { label: 'Vlera e Shitjeve te Pa Paguara', value: vleraShitjevePaPaguar[0]?.vleraShitjevePaPaguar, isCurrency: true },
-                { label: 'Vlera e Serviseve te Pa Paguara', value: vleraServisevePaPaguar[0]?.vleraServisevePaPaguar, isCurrency: true },
-                { label: 'Vlera e Blerjeve te Pa Paguara', value: vleraBlerjevePaPaguar[0]?.vleraBlerjevePaPaguar, isCurrency: true },
-                { label: 'Nr. i Produkteve me Fature', value: produktiData[0]?.meFatureTeRregulltCount, isCurrency: false },
-                { label: 'Totali i Sasise', value: produktiData[0]?.sasiaTotale, isCurrency: false },
-                { label: 'Kalkulimi Perfundimtar', value: '', isCurrency: false },
+                { label: t('Vlera e Stokit Aktual ne Blerje'), value: produktiData[0]?.vleraEBlerjeve, isCurrency: true },
+                { label: t('Vlera e Stokit Aktual ne Shitje'), value: produktiData[0]?.VleraShitjeve, isCurrency: true },
+                { label: t('Nr. i Produkteve'), value: produktiData[0]?.nrProdukteve, isCurrency: false },
+                { label: t('Vlera e Shitjeve te Pa Paguara'), value: vleraShitjevePaPaguar[0]?.vleraShitjevePaPaguar, isCurrency: true },
+                { label: t('Vlera e Serviseve te Pa Paguara'), value: vleraServisevePaPaguar[0]?.vleraServisevePaPaguar, isCurrency: true },
+                { label: t('Vlera e Blerjeve te Pa Paguara'), value: vleraBlerjevePaPaguar[0]?.vleraBlerjevePaPaguar, isCurrency: true },
+                { label: t('Nr. i Produkteve me Fature'), value: produktiData[0]?.meFatureTeRregulltCount, isCurrency: false },
+                { label: t('Totali i Sasise'), value: produktiData[0]?.sasiaTotale, isCurrency: false },
+                { label: t('Kalkulimi Perfundimtar'), value: '', isCurrency: false },
               ].map((item, index) => (
                 <Card
                   key={index}

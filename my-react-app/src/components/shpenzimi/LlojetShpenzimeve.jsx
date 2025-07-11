@@ -8,8 +8,9 @@ import { useToast } from '../ToastProvider';
 import ModalPerPyetje from '../ModalPerPyetje'
 import NdryshoLlojin from './NdryshoLlojin';
 import  AuthProvider  from '../AuthContext';
-
+import { useTranslation } from 'react-i18next';
 export default function LlojetShpenzimeve() {
+    const {t} = useTranslation('shpenzimi')
     const [loading,setLoading] = useState(true)
     const [buttonLoading,setButtonLoading] = useState(false)
     const [shtoLlojinData,setShtoLlojinData] = useState({emertimi:'' , shumaStandarde:0})
@@ -34,7 +35,6 @@ export default function LlojetShpenzimeve() {
        try{
           await window.api.fetchTableLlojetShpenzimeve().then(receivedData => {
               setLlojetShpenzimeve(receivedData);
-              console.log('llojet',llojetShpenzimeve)
             });
             
        }catch(e){
@@ -71,10 +71,10 @@ export default function LlojetShpenzimeve() {
             nderrimiID:authData.nderrimiID,
           }
           await window.api.insertLlojiShpenzimit(data);
-          showToast("Lloji i Shpenzimit u Regjistrua me Sukses!", "success");
+          showToast(t("Lloji i Shpenzimit u Regjistrua me Sukses!"), "success");
           setShtoLlojinData({emertimi:'',shumaStandarde:0})
         } catch (e) {
-          showToast("Gabim gjate regjistrimit!", "error"); 
+          showToast(t("Gabim gjate regjistrimit!"), "error"); 
  
         }finally{
           setLoading(false)
@@ -106,10 +106,10 @@ export default function LlojetShpenzimeve() {
                   nderrimiID:authData.nderrimiID,
                 }
                   await window.api.deleteLlojiShpenzimit(data)
-                  showToast("Lloji i Shpenzimit eshte fshirë me sukses !", "success");
+                  showToast(t("Lloji i Shpenzimit eshte fshirë me sukses !"), "success");
           
               }catch(e){
-                showToast("Gabim gjate fshirjes!", "error"); 
+                showToast(t("Gabim gjate fshirjes!"), "error"); 
  
               }finally{
                   setButtonLoading(false)
@@ -122,25 +122,25 @@ export default function LlojetShpenzimeve() {
     <Container>
          <Row className='d-flex flex-row justify-content-start m-5 '>
             <Col lg={4} className='d-flex flex-column justify-content-start bg-light border p-3'>
-            <h3>Shto nje Lloj Shpenzimi</h3>
+            <h3>{t('Shto nje Lloj Shpenzimi')}</h3>
             <Form.Group>
-                <Form.Label>Emertimi:</Form.Label>
+                <Form.Label>{t('Emertimi:')}</Form.Label>
                 <Form.Control
                 type='text'
                 name = 'emertimi'
-                placeholder='P.sh Mbeturina , Rryme, etj...'
+                placeholder={t('P.sh Mbeturina , Rryme, etj...')}
                 value={shtoLlojinData?.emertimi || ''}
                 onChange={(e) => handleShtoDataChange(e)}
                 />
             </Form.Group>
             <Form.Group>
-                <Form.Label>Shuma Standarde:</Form.Label>
+                <Form.Label>{t('Shuma Standarde:')}</Form.Label>
                 <InputGroup>
                     <Form.Control
                     type='number'
                     name = 'shumaStandarde'
                     value={shtoLlojinData?.shumaStandarde || ''}
-                    placeholder='P.sh 20€ , 50€, etj...'
+                    placeholder={t('P.sh 20€ , 50€, etj...')}
                     onChange={(e) => handleShtoDataChange(e)}
                     />
                     <InputGroup.Text>€</InputGroup.Text>
@@ -148,24 +148,24 @@ export default function LlojetShpenzimeve() {
             </Form.Group>
 
             <Button variant='success' className='my-4' onClick={() => shtoLlojinShpenzimit()} disabled={buttonLoading || !shtoLlojinData.emertimi || !shtoLlojinData.shumaStandarde }>{buttonLoading ? <>
-                <Spinner as="span" animation='border' size='sm' role='status' aria-hidden={true}/>{''}Duke Ruajtur...
-                </>:'Regjistro Llojin e Shpenzimit'}
+                <Spinner as="span" animation='border' size='sm' role='status' aria-hidden={true}/>{''}{t('Duke Ruajtur...')}
+                </>:t('Regjistro Llojin e Shpenzimit')}
             </Button>
             </Col>
 
             <Col lg = {8} className='tabelaLlojeveShpenzimeve col-xs-12 col-sm-12 col-md-6 col-lg-6 px-5'>
               <Col className='d-flex justify-content-between mb-3'>
-                  <h2>Llojet e Shpenzimeve:</h2>
-                  <Form.Control placeholder='Kerko permes Emertimit...'  value={emertimiSearch} onChange={(e) => setEmertimiSearch(e.target.value)} className='w-50 my-2'/>
+                  <h2>{t('Llojet e Shpenzimeve:')}</h2>
+                  <Form.Control placeholder={t('Kerko permes Emertimit...')}  value={emertimiSearch} onChange={(e) => setEmertimiSearch(e.target.value)} className='w-50 my-2'/>
               </Col>
               <Col className="table-responsive tabeleMeMaxHeight">
                   <table className="table table-sm table-striped text-center">
                   <thead className="table-light">
                       <tr className='fs-5'>
-                      <th scope="col">Nr</th>
-                      <th scope="col">Emertimi</th>
-                      <th scope="col">Shuma Standarde</th>
-                      <th scope="col">Opsionet</th>
+                      <th scope="col">{t('Nr')}</th>
+                      <th scope="col">{t('Emertimi')}</th>
+                      <th scope="col">{t('Shuma Standarde')}</th>
+                      <th scope="col">{t('Opsionet')}</th>
                       </tr>
                   </thead>
                   <tbody>

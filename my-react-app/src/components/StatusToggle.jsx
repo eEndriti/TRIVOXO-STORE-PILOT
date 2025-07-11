@@ -2,8 +2,9 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-
+import { useTranslation } from "react-i18next";
 const StatusToggle = ({ label, status, onToggle }) => {
+  const {t} = useTranslation('administrimi')
   return (
     <Form.Group className="d-flex flex-column ">
       <Form.Label>{label}</Form.Label>
@@ -24,7 +25,7 @@ const StatusToggle = ({ label, status, onToggle }) => {
         }}
       >
         <FontAwesomeIcon icon={status ? faCheckCircle : faTimesCircle} />
-        <span>{status ? "Aktiv" : "Jo Aktiv"}</span>
+        <span>{status ? t("Aktiv") : t("Jo Aktiv")}</span>
       </div>
     </Form.Group>
   );

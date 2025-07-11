@@ -5268,7 +5268,7 @@ const createWindow = () => {
     }
   });
   win.maximize()
-  win.loadURL('http://localhost:5174'); // Assuming your React app is running on localhost:3000
+  win.loadURL('http://localhost:5173'); // Assuming your React app is running on localhost:3000
  
   const filePath = path.join(__dirname, 'my-react-app', 'dist', 'index.html');
   

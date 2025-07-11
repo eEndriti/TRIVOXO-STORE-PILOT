@@ -11,11 +11,14 @@ import NdryshoServisinPerfunduar from './NdryshoServisinPerfunduar';
 import NdryshoShpenzimin from './shpenzimi/NdryshoShpenzimin';
 import  AuthProvider  from './AuthContext';
 import AnimatedSpinner from './AnimatedSpinner';
-import FilterPaymentOptions from './FilterPaymentOptions';
+import FilterPaymentOptions from './administrimi/FilterPaymentOptions';
 import SaveExcelOneSheet from './SaveExcelOneSheet';
 import '../assets/css/transaksionet.css'
+import { useTranslation } from 'react-i18next';
 
 export default function Transaksionet() {
+
+  const {t} = useTranslation('others')
   const navigate = useNavigate()
   const [transaksionet, setTransaksionet] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -97,24 +100,24 @@ const confirmModalPerPyetje = async () => {
             break;
         case 'Shpenzim' : result = await window.api.anuloShpenzimin(data)
             break;
-        case 'Servisim' : showToast('Servisi mund te anulohet vetem nga sektori i Servisimit!', 'warning')
+        case 'Servisim' : showToast(t('Servisi mund te anulohet vetem nga sektori i Servisimit!'), 'warning')
             break;
-        case 'Pagese Bonuseve' : showToast('Pagesa e Bonuseve mund te Anulohet vetem nga sektori i Administrimit', 'warning') 
+        case 'Pagese Bonuseve' : showToast(t('Pagesa e Bonuseve mund te Anulohet vetem nga sektori i Administrimit'), 'warning') 
             break;
         case 'Pagese per Blerje':
         case 'Pagese per Shitje':
-        case 'Pagese per Servisimi': showToast('Pagesa e Dokumentit mund te Anulohet vetem nga sektori i Dokumentit Perkates', 'warning')
+        case 'Pagese per Servisimi': showToast(t('Pagesa e Dokumentit mund te Anulohet vetem nga sektori i Dokumentit Perkates'), 'warning')
             break;
-        case 'Pagese Page' : showToast('Pagesa e Pages mund te Anulohet vetem nga sektori i Administrimit', 'warning')
+        case 'Pagese Page' : showToast(t('Pagesa e Pages mund te Anulohet vetem nga sektori i Administrimit'), 'warning')
             break;
-        default : showToast('Veprimi nuk Lejohet!','warning')
+        default : showToast(t('Veprimi nuk Lejohet!'),'warning')
           }
 
       if (result.success) {
-        showToast(`Transaksioni i llojit ${dataPerPerdorim.lloji} u Anulua me Sukses!`, "success");
+        showToast(`${t('Transaksioni i llojit')} ${dataPerPerdorim.lloji} ${t(' u Anulua me Sukses!')}`, "success");
          fetchData();
         } else {
-          showToast("Gabim gjatë Anulimit!", "error"); 
+          showToast(t('Gabim gjatë Anulimit!'), "error"); 
 
         }
   }catch(e){
@@ -141,13 +144,13 @@ const shifraClick = (item) => {
     case 'Servisim':
     case 'Modifikim Servisi': showServisimModal(item.llojiID)
         break;
-    case 'Pagese Bonuseve' : showToast('Pagesa e Bonuseve mund te ndryshohet vetem nga sektori i Administrimit', 'warning') 
+    case 'Pagese Bonuseve' : showToast(t('Pagesa e Bonuseve mund te Anulohet vetem nga sektori i Administrimit'), 'warning') 
         break;
     case 'Pagese per Blerje':
     case 'Pagese per Shitje':
-    case 'Pagese per Servisimi': showToast('Pagesa e Dokumentit mund te ndryshohet vetem nga sektori i Dokumentit Perkates', 'warning')
+    case 'Pagese per Servisimi': showToast(t('Pagesa e Pages mund te Anulohet vetem nga sektori i Administrimit'), 'warning')
         break;
-    case 'Pagese Page' : showToast('Pagesa e Pages mund te ndryshohet vetem nga sektori i Administrimit', 'warning')
+    case 'Pagese Page' : showToast(t('Pagesa e Pages mund te Anulohet vetem nga sektori i Administrimit'), 'warning')
         break;
      
   }
@@ -160,7 +163,7 @@ const showShpenzimModal = async (id) => {
       setDataNdryshoShpenzim(data) 
 
   } catch (error) {
-     showToast('Gabim gjate marrjes se te dhenave per ndryshim' + error, 'error')
+     showToast(t('Gabim gjate marrjes se te dhenave per ndryshim') + error, 'error')
   }finally{
       setModalNdryshoShpenzim(true)
   }
@@ -172,7 +175,7 @@ const showServisimModal = async (id) => {
       const data = result.find(item => item.servisimiID == id);
       
       if (!data) {
-          showToast('Gabim: Nuk u gjet servisi me këtë ID', 'error');
+          showToast(t('Gabim: Nuk u gjet servisi me këtë ID'), 'error');
           return; 
       }
 
@@ -180,7 +183,7 @@ const showServisimModal = async (id) => {
       setModalNdryshoServisim(true); 
 
   } catch (error) {
-      showToast('Gabim gjatë marrjes së të dhënave për ndryshim: ' + error, 'error');
+      showToast(t('Gabim gjatë marrjes së të dhënave për ndryshim:') + error, 'error');
   }
 };
 
@@ -205,40 +208,40 @@ const handleFilterSelect = (e) =>{
       <Row className="mb-3 d-flex flex-wrap justify-content-between align-items-center">
         <Col>
           <Form.Group>
-            <Form.Label>Shifra</Form.Label>
+            <Form.Label>{t('Shifra')}</Form.Label>
             <Form.Control
               type="text"
               value={filterShifra}
               onChange={(e) => setFilterShifra(e.target.value)}
-              placeholder="Filtroni sipas shifres"
+              placeholder={t("Filtroni sipas shifres")}
             />
           </Form.Group>
         </Col>
         <Col>
           <Form.Group>
-            <Form.Label>Lloji</Form.Label>
+            <Form.Label>{t('Lloji')}</Form.Label>
             <Form.Control
               type="text"
               value={filterLloji}
               onChange={(e) => setFilterLloji(e.target.value)}
-              placeholder="Filtroni sipas llojit"
+              placeholder={t("Filtroni sipas llojit")}
             />
           </Form.Group>
         </Col>
         <Col>
           <Form.Group>
-            <Form.Label>Perdoruesi</Form.Label>
+            <Form.Label>{t('Perdoruesi')}</Form.Label>
             <Form.Control
               type="text"
               value={filterPerdoruesi}
               onChange={(e) => setFilterPerdoruesi(e.target.value)}
-              placeholder="Filtroni sipas perdoruesit"
+              placeholder={t("Filtroni sipas perdoruesit")}
             />
           </Form.Group>
         </Col>
         <Col>
           <Form.Group>
-            <Form.Label>Data e fillimit</Form.Label>
+            <Form.Label>{t('Data e fillimit')}</Form.Label>
             <Form.Control
               type="date"
               value={filterDataTransaksionitStart}
@@ -248,7 +251,7 @@ const handleFilterSelect = (e) =>{
         </Col>
         <Col>
           <Form.Group>
-            <Form.Label>Data e mbarimit</Form.Label>
+            <Form.Label>{t('Data e mbarimit')}</Form.Label>
             <Form.Control
               type="date"
               value={filterDataTransaksionitEnd}
@@ -278,7 +281,7 @@ const handleFilterSelect = (e) =>{
                       width: '60px'
                     }}
                   >
-                    Nr.
+                    {t('Nr.')}
                   </th>
                   <th
                     style={{
@@ -289,18 +292,19 @@ const handleFilterSelect = (e) =>{
                       minWidth: '120px'
                     }}
                   >
-                    Shifra
+                    {t('Shifra')}
                   </th>
-                  <th>Lloji</th>
-                  <th style={{ minWidth: '200px' }}>Përshkrimi</th>
-                  <th>Totali për Pagesë</th>
-                  <th>Totali i Pagesës</th>
-                  <th>Mbetja për Pagesë</th>
-                  <th>Mënyra e Pagesës</th>
-                  <th style={{ minWidth: '200px' }}>Komenti</th>
-                  <th>Ndërrimi / Data dhe Ora</th>
-                  <th>Përdoruesi</th>
-                  <th>Opsionet</th>
+                  <th>{t('Lloji')}</th>
+                  <th style={{ minWidth: '200px' }}>{t('Përshkrimi')}</th>
+                  <th>{t('Totali për Pagesë')}</th>
+                  <th>{t('Totali i Pagesës')}</th>
+                  <th>{t('Mbetja për Pagesë')}</th>
+                  <th>{t('Mënyra e Pagesës')}</th>
+                  <th style={{ minWidth: '200px' }}>{t('Komenti')}</th>
+                  <th>{t('Ndërrimi / Data dhe Ora')}</th>
+                  <th>{t('Përdoruesi')}</th>
+                  <th>{t('Opsionet')}</th>
+
                 </tr>
               </thead>
               <tbody className="text-nowrap">
@@ -370,11 +374,10 @@ const handleFilterSelect = (e) =>{
 
                       <td>
                         <Badge bg="info" pill>
-                          {t.emertimiMenyresPageses || 'E Pa Përcaktuar!'}
+                          {t.emertimiMenyresPageses || t('E Pa Përcaktuar!')}
                         </Badge>
                       </td>
 
-                      {/* 7) Ellipsis + tooltip for Komenti */}
                       <td
                         className="text-truncate"
                         style={{ maxWidth: '200px' }}
@@ -406,12 +409,12 @@ const handleFilterSelect = (e) =>{
                       </td>
                     </tr>
                   ))} 
-               </>: <td colSpan={12}><h5 className='text-center'>Nuk Egzistojne te Dhena!</h5></td>}
+               </>: <td colSpan={12}><h5 className='text-center'>{t('Nuk Egzistojne te Dhena!')}</h5></td>}
               </tbody>
 
              {filteredTransaksionet?.length > 0 &&  <tfoot className="my-Footer " >
                 <tr  >
-                  <th colSpan={4} className="text-end">Totali:</th>
+                  <th colSpan={4} className="text-end">{t('Totali')}:</th>
                   <th className=''>{formatCurrency(totals.totalPerPagese)}</th>
                   <th>{formatCurrency(totals.totalIPageses)}</th>
                   <th>{formatCurrency(totals.totalMbetja)}</th>
@@ -466,7 +469,7 @@ const handleFilterSelect = (e) =>{
             />
 
             <Link to="logs" className="btn btn-primary">
-              Logs
+              {t('Logs')}
             </Link>
           </div>
         </Col>

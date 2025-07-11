@@ -6,9 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import AnimatedSpinner from './AnimatedSpinner';
 import { useToast } from './ToastProvider';
-
+import { useTranslation } from 'react-i18next';
 function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}) {
 
+    const {t} = useTranslation('others')
     const [loading, setLoading] = useState(false);
     const [komenti, setKomenti] = useState();
     const [totaliPerPagese, setTotaliPerPagese] = useState(0);
@@ -61,7 +62,6 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
             }));
     
             setProducts(prevProducts => [...queryProduktetResponse, ...prevProducts]);
-            console.log('a',queryResponse[0])
             updateMenyraPageses(queryResponse[0]?.menyraPagesesID);
             setTotaliPerPageseFillestare(queryResponse[0]?.totaliPerPagese)
             setTotaliPagesesFillestare(queryResponse[0]?.totaliPageses)
@@ -109,12 +109,12 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
 
             const result = await window.api.ndryshoServisinPerfunduar(dataPerNdryshim);
             if (result.success) {
-              showToast(`Servisi u Ndryshua me Sukses!`, 'success'); 
+              showToast(t('Servisi u Ndryshua me Sukses!'), 'success'); 
             } else {
-                showToast('Gabim gjate Ndryshimit: ' + result.error , 'error');
+                showToast(t('Gabim gjate Ndryshimit') + result.error , 'error');
             }
           } catch (error) {
-            showToast('Gabim gjate komunikimit me server: ' + error.message, 'error');
+            showToast(t('Gabim gjate komunikimit me server') + error.message, 'error');
           } finally {
             setLoading(false);
             handleConfirm(true)
@@ -170,7 +170,7 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
         if (value <= totaliPerPagese) {
             setTotaliIPageses(value);
         } else {
-          showToast('Shuma e paguar nuk mund të jetë më e madhe se totali!' ,'warn');
+          showToast(t('Shuma e paguar nuk mund të jetë më e madhe se totali!') ,'warn');
         }
         setMbetjaPerPagese(totaliPerPagese - totaliIPageses)
 
@@ -184,17 +184,17 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
     return (
         <Modal show={show} onHide={handleClose} size='xl'>
             <Modal.Header closeButton>
-                <Modal.Title>Ndrysho Servisin</Modal.Title>
+                <Modal.Title>{t('Ndrysho Servisin')}</Modal.Title>
             </Modal.Header> {loading ? <AnimatedSpinner /> : 
             <Modal.Body>
                 
                <Form className='d-flex d-row justify-content-start'>
                     <Form.Group>
-                        <Form.Label>Shifra:</Form.Label>
+                        <Form.Label>{t('Shifra')}:</Form.Label>
                         <Form.Control type="text" value={data?.shifra || ''} disabled />
                     </Form.Group>
                     <Form.Group className='mx-3'>
-                        <Form.Label >Klienti:</Form.Label>
+                        <Form.Label >{t('Klienti')}:</Form.Label>
                         <Form.Control type="text" value={data?.subjekti || ''} disabled />
                     </Form.Group>
                </Form>
@@ -205,16 +205,17 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
                             <Table striped bordered hover size="sm">
                             <thead>
                                 <tr className="fs-5">
-                                <th scope="col">Nr</th>
-                                <th scope="col">Shifra</th>
-                                <th scope="col">Emertimi</th>
-                                <th scope="col">Pershkrimi</th>
-                                <th scope="col">Cmimi Per Cope</th>
-                                <th scope="col">Sasia e Disponueshme</th>
-                                <th scope="col">Sasia e Shitjes</th>
-                                <th scope="col">Totali</th>
-                                <th scope="col">Komenti</th>
-                                <th scope="col">Opsionet</th>
+                                    <th scope="col">{t('Nr')}</th>
+                                    <th scope="col">{t('Shifra')}</th>
+                                    <th scope="col">{t('Emertimi')}</th>
+                                    <th scope="col">{t('Pershkrimi')}</th>
+                                    <th scope="col">{t('Cmimi Per Cope')}</th>
+                                    <th scope="col">{t('Sasia e Disponueshme')}</th>
+                                    <th scope="col">{t('Sasia e Shitjes')}</th>
+                                    <th scope="col">{t('Totali')}</th>
+                                    <th scope="col">{t('Komenti')}</th>
+                                    <th scope="col">{t('Opsionet')}</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -300,7 +301,7 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
                             <Col className='d-flex flex-column flex-wrap'>
                                 <Col>
                                     <Form.Group className='w-50'>
-                                        <Form.Label className="fw-bold">Komenti:</Form.Label>
+                                        <Form.Label className="fw-bold">{t('Komenti:')}</Form.Label>
                                         <Form.Control
                                             as="textarea"
                                             rows={2}
@@ -312,7 +313,7 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
                                     </Form.Group>
                                 </Col>
                                 <Col xs={12} md={6} className="d-flex justify-content-center align-items-end ">
-                                    <Button variant="danger" size="lg" className="mx-2 fs-1" onClick={handleClose}>Anulo</Button>
+                                    <Button variant="danger" size="lg" className="mx-2 fs-1" onClick={handleClose}>{t('Anulo')}</Button>
                                     <Button variant="success" size="lg" className="mx-2 fs-1" onClick={handleConfirmClick} disabled={loading || products.some(product => product.sasiaShitjes < 1)}>{loading ? (
                                     <>
                                         <Spinner
@@ -322,16 +323,16 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
                                         role="status"
                                         aria-hidden="true"
                                         />{' '}
-                                        Duke ruajtur...
+                                        {t('Duke ruajtur...')}
                                     </>
                                     ) : (
-                                    'Regjistro...'
+                                    t('Regjistro...')
                                     )}</Button>
                                 </Col>
                             </Col>
                         <Form className='w-25 '>
                                 <Form.Group>
-                                    <Form.Label>Totali per Pagese:</Form.Label>
+                                    <Form.Label>{t('Totali per Pagese')}:</Form.Label>
                                         <InputGroup>
                                             <Form.Control
                                                 type="text"
@@ -342,7 +343,7 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
                                         </InputGroup>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label>Totali i Pageses:</Form.Label>
+                                    <Form.Label>{t('Totali i Pageses')}:</Form.Label>
                                     <InputGroup>
                                         <Form.Control
                                         type="number"
@@ -356,7 +357,7 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
                                     </InputGroup>
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Label>Mbetja Per Pagese:</Form.Label>
+                                    <Form.Label>{t('Mbetja Per Pagese')}:</Form.Label>
                                     <InputGroup>
                                         <Form.Control type="number" value={mbetjaPerPagese} disabled />
                                         <InputGroup.Text>€</InputGroup.Text>
@@ -380,7 +381,7 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
             </Modal.Body>}
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                    Anulo
+                    {t('Anulo')}
                 </Button>
                 <Button variant="primary" onClick={handleConfirmClick} disabled={loading}>
                     {loading ? (
@@ -393,10 +394,10 @@ function NdryshoServisinPerfunduar({ show, handleClose,data = {}, handleConfirm}
                                 role="status"
                                 aria-hidden="true"
                             />{' '}
-                            Duke ruajtur...
+                            {t('Duke ruajtur...')}
                         </>
                     ) : (
-                        'Ruaj Ndryshimet...'
+                        t('Ruaj Ndryshimet...')
                     )}
                 </Button>
             </Modal.Footer> 

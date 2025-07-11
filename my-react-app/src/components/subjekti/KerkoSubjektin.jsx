@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Form, Button, InputGroup, ListGroup } from "react-bootstrap";
 import { IoSearchSharp,IoAddSharp } from "react-icons/io5";
-import ShtoNdryshoSubjektin from "../ShtoNdryshoSubjektin";
+import ShtoNdryshoSubjektin from "./ShtoNdryshoSubjektin";
 import AuthContext from "../AuthContext";
 import AnimatedSpinner from "../AnimatedSpinner";
+import { useTranslation } from 'react-i18next';
 
 export default function SearchInput({ filter,value, onSelect,lloji }) {
   const [loading,setLoading] = useState(true)
@@ -14,7 +15,8 @@ export default function SearchInput({ filter,value, onSelect,lloji }) {
   const [showModal,setShowModal] = useState(false)
   const [data,setData] = useState({ndrysho:false,refresh:false,lloji:filter})
   const {authData} = useContext(AuthContext);
-  
+  const {t} = useTranslation('subjekti')
+
   useEffect(() => {
 
     const fetchData = async () => {
@@ -76,7 +78,7 @@ export default function SearchInput({ filter,value, onSelect,lloji }) {
               type="text"
               value={query}
               onChange={handleSearch}
-              placeholder="Subjekti..."
+              placeholder={t("Subjekti...")}
               autoFocus
               onFocus={() => setShowDropdown(true)}
               onClick={() => setShowDropdown(!showDropdown)}

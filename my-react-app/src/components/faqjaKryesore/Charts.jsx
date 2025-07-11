@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { CardBody, CardTitle, Container,Card } from 'react-bootstrap';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,LineChart,Line,PieChart,Pie,Area,AreaChart,ScatterChart,Scatter,Radar,RadarChart,PolarGrid,PolarAngleAxis } from 'recharts';
+import { useTranslation } from 'react-i18next';
 
 export default function Charts({ transaksionet = [], nderrimiAktual, nderrimiSelektuar, nrPercjelles,dataNderrimitSelektuar }) {
+
+    const {t} = useTranslation('charts')
+
     const [chartData, setChartData] = useState([]);
     const [dataAktual1,setDataAktual] = useState()
     const [dataSelektuar1,setDataSelektuar] = useState()
@@ -52,7 +56,7 @@ export default function Charts({ transaksionet = [], nderrimiAktual, nderrimiSel
     return (
         <Container>
             <Card>
-              <CardTitle className='text-center'>{`Krahasimi i Nderrimit Aktual me Nderrimin : ${nrPercjelles} / ${dataNderrimitSelektuar}`}</CardTitle>
+              <CardTitle className='text-center'>{t('Krahasimi i Nderrimit Aktual me Nderrimin')+` : ${nrPercjelles} / ${dataNderrimitSelektuar}`}</CardTitle>
               <CardBody className='d-flex'>
                 <ResponsiveContainer width="100%" height={350}>
                   <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
@@ -61,8 +65,8 @@ export default function Charts({ transaksionet = [], nderrimiAktual, nderrimiSel
                       <YAxis />
                       <Tooltip />
                       <Legend />
-                      <Bar dataKey="nderrimiAktual" fill="#8884d8" name="Nderrimi Aktual" />
-                      <Bar dataKey="nderrimiSelektuar" fill="#82ca9d" name="Nderrimi Selektuar" />
+                      <Bar dataKey="nderrimiAktual" fill="#8884d8" name={t("Nderrimi Aktual")} />
+                      <Bar dataKey="nderrimiSelektuar" fill="#82ca9d" name={t("Nderrimi Selektuar")} />
                   </BarChart>
               </ResponsiveContainer>
               <ResponsiveContainer width="100%" height={350}>
@@ -72,8 +76,8 @@ export default function Charts({ transaksionet = [], nderrimiAktual, nderrimiSel
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Line type="monotone" dataKey="nderrimiAktual" stroke="#8884d8" name="Nderrimi Aktual" />
-                  <Line type="monotone" dataKey="nderrimiSelektuar" stroke="#82ca9d" name="Nderrimi Selektuar" />
+                  <Line type="monotone" dataKey="nderrimiAktual" stroke="#8884d8" name={t("Nderrimi Aktual")} />
+                  <Line type="monotone" dataKey="nderrimiSelektuar" stroke="#82ca9d" name={t("Nderrimi Selektuar")} />
                 </LineChart>
               </ResponsiveContainer>
               </CardBody>

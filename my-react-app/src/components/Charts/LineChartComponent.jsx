@@ -3,6 +3,7 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import { Container, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 // Register required Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, zoomPlugin);
@@ -28,6 +29,8 @@ const generateDateLabels = (startDate, endDate) => {
   return labels;
 };
 const LineChartComponent = ({ dataFillimit, dataMbarimit, teDhenat = [], lloji }) => {
+    const { t } = useTranslation('charts');
+  
   const labels = [];
   const start = new Date(dataFillimit);
   const end = new Date(dataMbarimit);
@@ -56,12 +59,11 @@ const LineChartComponent = ({ dataFillimit, dataMbarimit, teDhenat = [], lloji }
 
   const groupedSales = groupByDay(filteredSales);
   const nrLLojit = labels.map((label) => groupedSales[label] || 0);
-
   const chartData = {
     labels,
     datasets: [
       {
-        label: `Numri i ${lloji}`,
+        label: t('Numri i')+`${lloji == 'Shitjeve' ? t('Shitjeve'):t('Blerjeve')}`,
         data: nrLLojit,
         backgroundColor: 'white',
         borderColor: '#24AD5D',
@@ -75,7 +77,7 @@ const LineChartComponent = ({ dataFillimit, dataMbarimit, teDhenat = [], lloji }
     plugins: {
       title: {
         display: false,
-        text: `Numri i ${lloji} per Ditë`,
+        text: t('Numri i') + `${lloji == 'Shitjeve' ? t('Shitjeve'):t('Blerjeve')} `+t('per Ditë'),
       }, 
       zoom: {
         pan: {
@@ -96,10 +98,10 @@ const LineChartComponent = ({ dataFillimit, dataMbarimit, teDhenat = [], lloji }
    
     scales: {
       x: {
-        title: { display: true, text: 'Dita Muaji dhe Viti' }
+        title: { display: true, text: t('Dita Muaji dhe Viti') }
       },
       y: {
-        title: { display: true, text: `Numri i ${lloji}`},
+        title: { display: true, text: t('Numri i')+`${lloji == 'Shitjeve' ? t('Shitjeve'):t('Blerjeve')} `},
         ticks: {
           stepSize: 1, // Ensure only integers are shown
           beginAtZero: true, // Start the scale at 0

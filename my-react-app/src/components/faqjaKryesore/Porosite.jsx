@@ -7,8 +7,9 @@ import AuthContext,{formatCurrency} from '../AuthContext';
 import { useToast } from '../ToastProvider';
 import { useNavigate } from 'react-router-dom';
 import {ToastContainer } from 'react-toastify';
-
+import { useTranslation } from 'react-i18next';
 export default function Porosite() {
+  const {t} = useTranslation('faqjaKryesore')
   const navigate  = useNavigate()
   const [loading,setLoading] = useState(false)
   const [shitjetOnline,setShitjetOnline] = useState([])
@@ -86,9 +87,9 @@ export default function Porosite() {
   
     try {
       await window.api.perfundoShitjenOnline(updatedDataPerAprovim);
-      showToast("Shitja u regjistrua me sukses!", "success");
+      showToast(t("Shitja u regjistrua me sukses!"), "success");
     } catch (e) {
-      showToast("Gabim gjatë aprovimit të shitjes!", "error");
+      showToast(t("Gabim gjatë aprovimit të shitjes!"), "error");
     } finally {
       setButtonLoading(false);
       setAprovoShitjenOnlineModal(false);
@@ -106,18 +107,17 @@ export default function Porosite() {
         perdoruesiID: authData.perdoruesiID,
         nderrimiID: authData.nderrimiID,
       }
-      console.log('data per anylim',data)
       const result = await window.api.anuloPorosineOnline(data)
 
     if (result.success) {
-      showToast("Shitja u aprovua me sukses!", "success"); 
+      showToast(t("Shitja u anulua me sukses!"), "success"); 
       fetchData()
 
     } else {
-      showToast("Gabim gjatë aprovimit të shitjes!", "error");
+      showToast(t("Gabim gjatë aprovimit të shitjes!"), "error");
       }
     } catch (error) {
-      showToast("Gabim gjatë aprovimit të shitjes!" + error, "error");
+      showToast(t("Gabim gjatë aprovimit të shitjes!") + error, "error");
     }finally{
       fetchData()
       updateAuthData({reloadLayout:!authData.reloadLayout})
@@ -131,19 +131,19 @@ export default function Porosite() {
   return (
    <Container fluid >
      <Col>
-              <h3 className="section-title">Porosite ne Pritje</h3>
+              <h3 className="section-title">{t('Porosite ne Pritje')}</h3>
               <div className="table-container">
                 <Table responsive striped bordered hover size="sm" className="custom-table">
                   <thead className="table-header">
                     <tr>
-                      <th>Nr</th>
-                      <th>Shifra</th>
-                      <th>NrPorosise</th>
-                      <th>Data dhe Ora</th>
-                      <th>Subjekti</th>
-                      <th>Totali</th>
-                      <th>Komenti</th>
-                      <th>Opsionet</th>
+                      <th>{t('Nr')}</th>
+                      <th>{t('Shifra')}</th>
+                      <th>{t('NrPorosise')}</th>
+                      <th>{t('Data dhe Ora')}</th>
+                      <th>{t('Subjekti')}</th>
+                      <th>{t('Totali')}</th>
+                      <th>{t('Komenti')}</th>
+                      <th>{t('Opsionet')}</th>
                     </tr>
                   </thead>
                   <tbody className='text-nowrap'>
@@ -192,27 +192,27 @@ export default function Porosite() {
 
               <Modal show={aprovoShitjenOnlineModal} onHide={() => {buttonLoading ? null : setAprovoShitjenOnlineModal(false)}}>
                 <Modal.Header closeButton>
-                  <Modal.Title>Aprovo Perfundimin e Shitjes Online</Modal.Title>
+                  <Modal.Title>{t('Aprovo Perfundimin e Shitjes Online')}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   {dataPerAprovim &&  <Form>
                         <Col className='d-flex flex-row justify-content-around'>
                           <Form.Group>
-                            <Form.Label>Shifra e Shitjes:</Form.Label>
+                            <Form.Label>{t('Shifra e Shitjes')}:</Form.Label>
                             <Form.Control disabled value={dataPerAprovim.shifra} />
                           </Form.Group>
                           <Form.Group>
-                            <Form.Label>Nr Porosise:</Form.Label>
+                            <Form.Label>{t('NrPorosise')}:</Form.Label>
                             <Form.Control disabled value={dataPerAprovim.nrPorosise} />
                           </Form.Group>
                         </Col>
                         <Col className='d-flex flex-row mt-3 justify-content-around'>
                           <Form.Group>
-                            <Form.Label>Subjekti:</Form.Label>
+                            <Form.Label>{t('Subjekti')}:</Form.Label>
                             <Form.Control disabled value={dataPerAprovim.subjekti} />
                           </Form.Group>
                           <Form.Group>
-                            <Form.Label>Totali i Shitjes:</Form.Label>
+                            <Form.Label>{t('Totali i Shitjes')}:</Form.Label>
                             <InputGroup >
                               <Form.Control  disabled value={formatCurrency(dataPerAprovim.totaliPerPagese,true)} />
                               <InputGroup.Text>€</InputGroup.Text>
@@ -221,14 +221,14 @@ export default function Porosite() {
                         </Col>
                         <Col className='d-flex flex-row mt-3 justify-content-around'>
                           <Form.Group>
-                            <Form.Label>Kosto e Postes:</Form.Label>
+                            <Form.Label>{t('Kosto e Postes')}:</Form.Label>
                             <InputGroup >
                               <Form.Control min={0} type='number' name='kostoPostes' value={dataPerAprovim.kostoPostes} onChange={handleDataPerAprovimChange}/>
                               <InputGroup.Text>€</InputGroup.Text>
                             </InputGroup>
                           </Form.Group>
                           <Form.Group>
-                            <Form.Label>Totali i Pranuar nga Posta:</Form.Label>
+                            <Form.Label>{t('Totali i Pranuar nga Posta')}:</Form.Label>
                             <InputGroup >
                               <Form.Control min={0} type='number' name='totaliIPranuar' value={dataPerAprovim.totaliIPranuar} onChange={handleDataPerAprovimChange}/>
                               <InputGroup.Text>€</InputGroup.Text>
@@ -239,7 +239,7 @@ export default function Porosite() {
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={() => {buttonLoading ? null : setAprovoShitjenOnlineModal(false)}} disabled={buttonLoading}>
-                    Mbyll
+                    {t('Mbyll')}
                   </Button>
                   <Button
                     variant="success"
@@ -255,10 +255,10 @@ export default function Porosite() {
                           role="status"
                           aria-hidden="true"
                         />{' '}
-                        Duke ruajtur...
+                        {t('Duke ruajtur...')}
                       </>
                     ) : (
-                        'Aprovo'
+                        t('Aprovo')
                     )}
                   </Button>
                 </Modal.Footer>

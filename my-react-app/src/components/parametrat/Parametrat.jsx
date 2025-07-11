@@ -6,7 +6,9 @@ import AnimatedSpinner from '../AnimatedSpinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBuilding, faFileInvoice, faFolder, faMapMarkerAlt, faPhone, faSave, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import  AuthProvider  from '../AuthContext';
+import { useTranslation } from 'react-i18next';
 function Parametrat() {
+  const {t} = useTranslation('parametrat')
   const [triggerReload,setTriggerReload] = useState(false)
   const [parametratGarancionit,setParametratGarancionit] = useState({})
   const showToast = useToast()
@@ -26,7 +28,7 @@ function Parametrat() {
           setKushtet(JSON.parse(receivedData[0].kushtet))
         })
       } catch (error) {
-        showToast('Gabim gjat komunikimit me databaze' + error,'error')
+        showToast(t('Gabim gjat komunikimit me databaze!') + error,'error')
       }finally{
         setLoading(false);
   
@@ -50,10 +52,10 @@ function Parametrat() {
 
           const result = await window.api.ndryshoParametrat(data)
           if(result.success){
-            showToast('Ndryshimet u Ruajten me Sukses!','success')
+            showToast(t('Ndryshimet u Ruajten me Sukses!'),'success')
           }
       } catch (error) {
-        showToast('Gabim gjate Procesit '+error, 'error')
+        showToast(t('Gabim gjat komunikimit me databaze!')+error, 'error')
       }finally{
         setTriggerReload(!triggerReload)
         setButtonLoading(false)
@@ -75,50 +77,50 @@ function Parametrat() {
             <Col md={12} lg={12}>
                 <Card className="shadow-sm border-0">
                     <Card.Header className=" text-white text-center fw-bold" style={{backgroundColor:'#2A3D4E'}}>
-                        <FontAwesomeIcon className="me-2" icon={faBuilding} /> Të Dhënat e Biznesit
+                        <FontAwesomeIcon className="me-2" icon={faBuilding} /> {t('Të Dhënat e Biznesit')}
                     </Card.Header>
                     <Card.Body >
                         <Form className='d-flex flex-row justify-content-between'>
                             <Form.Group className="mb-3">
-                                <Form.Label>Emri i Biznesit</Form.Label>
+                                <Form.Label>{t('Emri i Biznesit')}</Form.Label>
                                 <InputGroup>
                                     <InputGroup.Text>
                                     <FontAwesomeIcon icon={faBuilding} />
                                     </InputGroup.Text>
                                     <Form.Control
                                         type="text"
-                                        placeholder="Shkruani emrin e biznesit..."
-                                        value={parametratGarancionit.emriBiznesit}
+                                        placeholder={t("Shkruani emrin e biznesit...")}
+                                        value={parametratGarancionit?.emriBiznesit}
                                         onChange={(e) => handleChange("emriBiznesit", e.target.value)}
                                     />
                                 </InputGroup>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Adresa e Biznesit</Form.Label>
+                                <Form.Label>{t('Adresa e Biznesit')}</Form.Label>
                                 <InputGroup>
                                     <InputGroup.Text>
                                       <FontAwesomeIcon icon={faMapMarkerAlt} />
                                     </InputGroup.Text>
                                     <Form.Control
                                         type="text"
-                                        placeholder="Shkruani adresën..."
-                                        value={parametratGarancionit.adresa}
+                                        placeholder={t("Shkruani adresën...")}
+                                        value={parametratGarancionit?.adresa}
                                         onChange={(e) => handleChange("adresa", e.target.value)}
                                     />
                                 </InputGroup>
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Nr. Telefonit të Biznesit</Form.Label>
+                                <Form.Label>{t('Nr. Telefonit të Biznesit')}</Form.Label>
                                 <InputGroup>
                                     <InputGroup.Text>
                                       <FontAwesomeIcon icon={faPhone} />
                                     </InputGroup.Text>
                                     <Form.Control
                                         type="text"
-                                        placeholder="Shkruani numrin e telefonit..."
-                                        value={parametratGarancionit.telefoni}
+                                        placeholder={t("Shkruani numrin e telefonit...")}
+                                        value={parametratGarancionit?.telefoni}
                                         onChange={(e) => handleChange("telefoni", e.target.value)}
                                     />
                                 </InputGroup>
@@ -135,17 +137,17 @@ function Parametrat() {
           <Col md={12}>
             <Card>
             <Card.Header className=" text-white text-center fw-bold" style={{backgroundColor:'#2A3D4E'}}>
-            <FontAwesomeIcon className="me-2" icon={faFileInvoice} />Folderi per Garancione:</Card.Header>
+            <FontAwesomeIcon className="me-2" icon={faFileInvoice} />{t('Folderi per Garancione:')}</Card.Header>
               <Card.Body>
                 <Form.Group className="mb-3">
-                    <Form.Label>Folder Path per Garancione</Form.Label>
+                    <Form.Label>{t('Folder Path per Garancione')}</Form.Label>
                     <InputGroup>
                         <InputGroup.Text>
                           <FontAwesomeIcon icon={faFolder} />
                         </InputGroup.Text>
                         <Form.Control
                             type="text"
-                            value={parametratGarancionit.filePath}
+                            value={parametratGarancionit?.filePath}
                             onChange={(e) => handleChange("filePath", e.target.value)}
                         />
                     </InputGroup>
@@ -160,9 +162,9 @@ function Parametrat() {
             <Col md={12}>
                 <Card>
                     <Card.Header className=" text-white text-center fw-bold" style={{backgroundColor:'#2A3D4E'}}>
-                    <FontAwesomeIcon className="me-2" icon={faFileInvoice} />Kushtet e Garancionit:</Card.Header>
+                    <FontAwesomeIcon className="me-2" icon={faFileInvoice} />{t('Kushtet e Garancionit:')}</Card.Header>
                     <Card.Body>
-                        {kushtet.length > 0 ? (
+                        {kushtet?.length > 0 ? (
                             <>
                                 {kushtet.map((kusht, index) => (
                                     <Row key={index} className="mb-2">
@@ -181,17 +183,17 @@ function Parametrat() {
                                 ))}
                             </>
                         ) : (
-                            "Nuk ka kushte!"
+                            t("Nuk ka kushte!")
                         )}
                     </Card.Body>
                     <Card.Footer className="d-flex justify-content-between">
                         <Button variant="primary" onClick={() => setKushtet([...kushtet,''])}>
-                            Shto Kushte
+                            {t("Shto Kushte")}
                         </Button>
                         <div className="text-end">
                                 <Button variant="success" disabled = {buttonLoading} onClick={() => ruajNdryshimet()}>
                                 <FontAwesomeIcon icon={faSave} className="me-2" />
-                                  {buttonLoading ? <><Spinner size='sm' /> Duke Ruajtur...</> : 'Ruaj Ndryshimet'}
+                                  {buttonLoading ? <><Spinner size='sm' /> {t("Duke Ruajtur...")}</> : t('Ruaj Ndryshimet')}
                                 </Button>
                             </div>
                     </Card.Footer>

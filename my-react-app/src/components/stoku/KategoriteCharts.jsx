@@ -1,10 +1,12 @@
 import {useState,useEffect, useContext} from "react";
 import {BarChart,Bar,PieChart,Pie,LineChart,Line,CartesianGrid,XAxis,YAxis,Tooltip,Legend,Cell} from "recharts";
 import { Card, CardBody ,Row} from "react-bootstrap";
-
+import { useTranslation } from "react-i18next";
 const colors = ["#8884d8", "#82ca9d", "#ffc658", "#ff7300"];
 
 const KategoriteCharts = ({chartData = {}}) => {
+  console.log(chartData)
+  const {t} = useTranslation('stoku')
     const [selectedCategory, setSelectedCategory] = useState('');
     const [filteredData, setFilteredData] = useState(chartData);
     const [trendiKategoriseData, setTrendiKategoriseData] = useState([]);
@@ -103,13 +105,12 @@ const handleCategoryChange = (e) => {
     setFilteredData(filtered);
   };
 
-    console.log('chartsData',chartData)
     return (
         <div className="d-flex flex-column gap-4 p-4">
           <Row className="d-flex flex-row gap-4">
             <Card  style={{width: '45%'}}>
               <CardBody>
-                <h2 className="text-xl font-semibold">Shitjet per Kategori</h2>
+                <h2 className="text-xl font-semibold">{t('Shitjet per Kategori')}</h2>
                 <PieChart width={300} height={300}>
                   <Pie
                     data={chartData}
@@ -132,14 +133,14 @@ const handleCategoryChange = (e) => {
       
             <Card  style={{width: '45%'}}>
               <CardBody>
-                <h2 className="text-xl font-semibold">Stoku per Kategori</h2>
+                <h2 className="text-xl font-semibold">{t('Stoku per Kategori')}</h2>
                 <BarChart width={400} height={300} data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="emertimi" />
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="total_sasia" fill="#24AD5D" />
+                  <Bar dataKey="total_sasia" fill="#24AD5D" name={t('Sasia Totale')}/>
                 </BarChart>
               </CardBody>
             </Card>
@@ -148,14 +149,14 @@ const handleCategoryChange = (e) => {
           <Row className="d-flex flex-row gap-4">
           <Card  style={{width: '45%'}}>
             <CardBody>
-                <h2 className="text-xl font-semibold">Profiti per Kategori</h2>
+                <h2 className="text-xl font-semibold">{t('Profiti per Kategori')}</h2>
                 <BarChart width={400} height={300} data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="emertimi" />
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="TotaliFitimit" fill="#2A3D4E" />
+                  <Bar dataKey="TotaliFitimit" fill="#2A3D4E" name = {t('Totali i Profitit')} />
                 </BarChart>
               </CardBody>
             </Card>
@@ -163,18 +164,18 @@ const handleCategoryChange = (e) => {
             
             <Card style={{ width: '45%' }}>
                 <CardBody>
-                    <h2 className="text-xl font-semibold">Trendi i Shitjeve</h2>
+                    <h2 className="text-xl font-semibold">{t('Trendi i Shitjeve')}</h2>
 
                     {/* Category Dropdown */}
                     <div className="mb-4">
-                    <label htmlFor="categorySelect" className="mr-2">Zgjidh Kategorinë</label>
+                    <label htmlFor="categorySelect" className="mr-2">{t('Zgjidh Kategorinë')}</label>
                     <select
                         id="categorySelect"
                         value={selectedCategory}
                         onChange={handleCategoryChange}
                         className="form-select"
                     >
-                        <option value="">Përzgjedh Kategorinë</option>
+                        <option value="">{t('Përzgjedh Kategorinë')}</option>
                         {chartData.map((category) => (
                         <option key={category.kategoriaID} value={category.kategoriaID}>
                             {category.emertimi}
@@ -190,8 +191,8 @@ const handleCategoryChange = (e) => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="NrProdukteve" stroke="#ff7300" />
-                    </LineChart>:<p>Nuk ka të dhëna për këtë kategori</p>}
+                    <Line type="monotone" dataKey="NrProdukteve" stroke="#ff7300" name={t('Nr i Produkteve')}/>
+                    </LineChart>:<p>{t('Nuk ka të dhëna për këtë kategori')}</p>}
                 </CardBody>
             </Card>
           </Row>

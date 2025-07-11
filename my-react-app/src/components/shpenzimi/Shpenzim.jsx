@@ -7,10 +7,10 @@ import LlojetShpenzimeve from './LlojetShpenzimeve'
 import ShtoShpenzim from './ShtoShpenzim';
 import NgaStokiNeShpenzim from './NgaStokiNeShpenzim';
 import {ToastContainer } from 'react-toastify';
-
+import { useTranslation } from 'react-i18next';
 export default function Shpenzim() {
   const [activeTab, setActiveTab] = useState("shpenzimet");
-
+  const {t} = useTranslation('shpenzimi')
   return (
     <Container fluid>
       <Row className="my-5 d-flex justify-content-center">
@@ -19,7 +19,7 @@ export default function Shpenzim() {
             variant={activeTab === "shpenzimet" ? "primary" : "outline-primary"}
             onClick={() => setActiveTab("shpenzimet")}
           >
-            <FontAwesomeIcon icon={faMoneyBillTransfer} /> Shpenzimet
+            <FontAwesomeIcon icon={faMoneyBillTransfer} /> {t('Shpenzimet')}
           </Button>
         </Col>
         <Col xs="auto">
@@ -29,7 +29,7 @@ export default function Shpenzim() {
             }
             onClick={() => setActiveTab("llojetShpenzimeve")}
           >
-            <FontAwesomeIcon icon={faList} /> Llojet e Shpenzimeve
+            <FontAwesomeIcon icon={faList} /> {t('Llojet e Shpenzimeve')}
           </Button>
         </Col>
         <Col xs="auto">
@@ -39,7 +39,7 @@ export default function Shpenzim() {
             }
             onClick={() => setActiveTab("kaloNgaStoki")}
           >
-            <FontAwesomeIcon icon={faExchangeAlt} /> Kalo Nga Stoki ne Shpenzim
+            <FontAwesomeIcon icon={faExchangeAlt} /> {t('Kalo Nga Stoki ne Shpenzim')}
           </Button>
         </Col>
       </Row>

@@ -2,7 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Button, Form, Spinner } from 'react-bootstrap';
 import { useToast } from './ToastProvider';
+import { useTranslation } from 'react-i18next';
+
 const KonektoDatabazen = ({ isOpen, onClose }) => {
+  const {t} = useTranslation('others')
   const [formData, setFormData] = useState({
     server: '',
     database: '',
@@ -34,26 +37,26 @@ const KonektoDatabazen = ({ isOpen, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await window.api.saveDbConfig(formData);
-    showToast('✅ Konfigurimi u ruajt me sukses!','success');
+    showToast(t('✅ Konfigurimi u ruajt me sukses!'),'success');
     onClose();
   };
 
   return (
     <Modal show={isOpen} onHide={onClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Konekto me Databazën</Modal.Title>
+        <Modal.Title>{t('Konekto me Databazën')}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
         {loading ? (
           <div className="text-center">
             <Spinner animation="border" role="status" />
-            <div className="mt-2">Duke ngarkuar konfigurimin...</div>
+            <div className="mt-2">{t('Duke ngarkuar konfigurimin...')}</div>
           </div>
         ) : (
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-              <Form.Label>Server</Form.Label>
+              <Form.Label>{t('Serveri')}</Form.Label>
               <Form.Control
                 type="text"
                 name="server"
@@ -64,7 +67,7 @@ const KonektoDatabazen = ({ isOpen, onClose }) => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Database</Form.Label>
+              <Form.Label>{t('Databaza')}</Form.Label>
               <Form.Control
                 type="text"
                 name="database"
@@ -75,7 +78,7 @@ const KonektoDatabazen = ({ isOpen, onClose }) => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Username</Form.Label>
+              <Form.Label>{t('Emertimi i Perdoruesit')}</Form.Label>
               <Form.Control
                 type="text"
                 name="user"
@@ -86,7 +89,7 @@ const KonektoDatabazen = ({ isOpen, onClose }) => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>{t('Fjalekalimi')}</Form.Label>
               <Form.Control
                 type="password"
                 name="password"
@@ -102,11 +105,11 @@ const KonektoDatabazen = ({ isOpen, onClose }) => {
                       setFormData(prev => ({ ...prev, pdfFolder: folderPath }));
                     }
                   }}>
-                    Zgjedh dosjen për PDF
+                    {t('Zgjedh dosjen për PDF')}
                   </Button>
 
                   {formData.pdfFolder && (
-                    <div className="mt-2"><strong>Dosja:</strong> {formData.pdfFolder}</div>
+                    <div className="mt-2"><strong>{t('Dosja:')}</strong> {formData.pdfFolder}</div>
                   )}
               </Form.Group>
             <Form.Group className="mb-3" controlId="encrypt">
@@ -134,10 +137,10 @@ const KonektoDatabazen = ({ isOpen, onClose }) => {
 
             <div className="d-flex justify-content-between">
               <Button variant="secondary" onClick={onClose}>
-                Anulo
+                {t('Anulo')}
               </Button>
               <Button variant="primary" type="submit">
-                Ruaj
+                {t('Ruaj')}
               </Button>
             </div>
           </Form>

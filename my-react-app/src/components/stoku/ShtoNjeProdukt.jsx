@@ -4,8 +4,11 @@ import {ToastContainer } from 'react-toastify';
 import { useToast } from '../ToastProvider';
 import AuthContext from "../AuthContext";
 import AnimatedSpinner from '../AnimatedSpinner';
+import { useTranslation } from 'react-i18next';
 
 const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleConfirm }) => {
+
+  const {t} = useTranslation('stoku')
   const [kategorite, setKategorite] = useState([]);
   const [selectedKategoria, setSelectedKategoria] = useState(null);
   const [aKa, setAka] = useState(true);
@@ -78,7 +81,7 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
 
   const handleShtoProduktin = useCallback(async () => {
     if (parseFloat(productDetails.cmimiShitjes) <= parseFloat(productDetails.cmimiBlerjes)) {
-      showToast('Cmimi Shitjes duhet të jetë më i madh se Cmimi Blerjes!', 'warning');
+      showToast(t("Cmimi Shitjes duhet të jetë më i madh se Cmimi Blerjes!"), 'warning');
       return;
     }
 
@@ -117,15 +120,15 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
         const result = await window.api.insertProduktin(data);
 
         if (result.success) {
-          showToast('Produkti u shtua me sukses!', 'success');
+          showToast(t("Produkti u shtua me sukses!"), 'success');
           setTimeout(() => {
             handleClose();
           }, 1500);
         } else {
-          showToast('Gabim gjatë regjistrimit: ' + result.error , 'error');
+          showToast(t("Gabim gjatë regjistrimit:") + result.error , 'error');
         }
       } catch (error) {
-        showToast('Gabim gjatë komunikimit me serverin.' + error , 'error');
+        showToast(t("Gabim gjatë komunikimit me serverin!") + error , 'error');
       } finally {
         setLoading(false);
         setProductDetails(null)
@@ -137,14 +140,14 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
         }
       }
     } else {
-      showToast('Ju Lutem Plotesoni te Gjitha Fushat!', 'warning');
+      showToast(t("Ju Lutem Plotesoni te Gjitha Fushat!"), 'warning');
       setLoading(false);
     }
   }, [productDetails, selectedKategoria, meFature, sasiStatike, authData.perdoruesiID, handleClose, prejardhja]);
 
   const ndryshoProduktin = useCallback(async () => {
     if (parseFloat(productDetails.cmimiShitjes) <= parseFloat(productDetails.cmimiBlerjes)) {
-      showToast('Cmimi Shitjes duhet të jetë më i madh se Cmimi Blerjes!', 'warning');
+      showToast(t("Cmimi Shitjes duhet të jetë më i madh se Cmimi Blerjes!"), 'warning');
       return;
     }
 
@@ -190,17 +193,17 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
 
       try {
         const result = await window.api.ndryshoProduktin(data);
-        console.log('ndrysho Produktin called')
+
         if (result.success) {
-          showToast('Produkti u Ndryshua me Sukses!', 'success');
+          showToast(t("Produkti u Ndryshua me Sukses!"), 'success');
           setTimeout(() => {
             handleClose();
           }, 1500);
         } else {
-          showToast('Gabim gjatë regjistrimit: ' + result.error , 'error');
+          showToast(t("Gabim gjatë regjistrimit:") + result.error , 'error');
         }
       } catch (error) {
-        showToast('Gabim gjatë komunikimit me serverin.' + error , 'error');
+        showToast(t("Gabim gjatë komunikimit me serverin") + error , 'error');
       } finally {
         setLoading(false);
         setProductDetails(null)
@@ -212,7 +215,7 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
         }
       }
     } else {
-      showToast('Ju Lutem Plotesoni te Gjitha Fushat!', 'warning');
+      showToast(t("Ju Lutem Plotesoni te Gjitha Fushat!"), 'warning');
       setLoading(false);
     }
   }, [productDetails, selectedKategoria, meFature, sasiStatike, authData.perdoruesiID, handleClose, prejardhja, produkti.produktiID]);
@@ -237,12 +240,12 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
       {loading && <AnimatedSpinner />}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{produkti ? 'Ndrysho' : 'Shto'} Një Produkt</Modal.Title>
+          <Modal.Title>{produkti ? t("Ndrysho nje Produkt") : t("Shto nje Produkt")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group>
-              <Form.Label>Emertimi</Form.Label>
+              <Form.Label>{t("Emertimi")}</Form.Label>
               <Form.Control
                 type="text"
                 name="emertimi"
@@ -253,7 +256,7 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Kategoria</Form.Label>
+              <Form.Label>{t('Kategoria')}</Form.Label>
               <Form.Control
                 as="select"
                 name="kategoria"
@@ -261,7 +264,7 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
                 value={selectedKategoria?.kategoriaID || ''}
                 onChange={handleCategoryChange}
               >
-                <option value="">Zgjidh Kategorinë</option>
+                <option value="">{t('Zgjidh Kategorinë')}</option>
                 {kategorite.map((kategoria) => (
                   <option key={kategoria.kategoriaID} value={kategoria.kategoriaID}>
                     {kategoria.emertimi}
@@ -275,23 +278,23 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
                 <hr />
                 <div className='d-flex flex-row justify-content-around'>
                   <Form.Group>
-                    <Form.Label>Procesori:</Form.Label>
+                    <Form.Label>{t('Procesori:')}</Form.Label>
                     <Form.Control
                       type="text"
                       name="cpu"
                       required={true}
-                      placeholder='Modeli i Procesorit...'
+                      placeholder={t('Modeli i Procesorit...')}
                       value={productDetails.cpu}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
                   <Form.Group>
-                    <Form.Label>RAM</Form.Label>
+                    <Form.Label>{t('RAM')}</Form.Label>
                     <Form.Control
                       type="text"
                       name="ram"
                       required={true}
-                      placeholder='Kapaciteti i RAM...'
+                      placeholder={t('Kapaciteti i RAM...')}
                       value={productDetails.ram}
                       onChange={handleInputChange}
                     />
@@ -299,23 +302,23 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
                 </div>
                 <div className='d-flex flex-row justify-content-around'>
                   <Form.Group>
-                    <Form.Label>Disku</Form.Label>
+                    <Form.Label>{t('Disku')}</Form.Label>
                     <Form.Control
                       type="text"
                       name="disku"
                       required={true}
-                      placeholder='Kapaciteti i Disqeve...'
+                      placeholder={t('Kapaciteti i Disqeve...')}
                       value={productDetails.disku}
                       onChange={handleInputChange}
                     />
                   </Form.Group>
                   <Form.Group>
-                    <Form.Label>GPU</Form.Label>
+                    <Form.Label>{t('GPU')}</Form.Label>
                     <Form.Control
                       type="text"
                       name="gpu"
                       required={true}
-                      placeholder='Kapaciteti i Grafikes...'
+                      placeholder={t('Kapaciteti i Grafikes...')}
                       value={productDetails.gpu}
                       onChange={handleInputChange}
                     />
@@ -326,12 +329,12 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
             ) : (
               <>
                 <Form.Group>
-                  <Form.Label>Pershkrimi</Form.Label>
+                  <Form.Label>{t('Pershkrimi')}</Form.Label>
                   <Form.Control
                     type="text"
                     name="pershkrimi"
                     required={true}
-                    placeholder='Pershkrimi i Produktit...'
+                    placeholder={t('Pershkrimi i Produktit...')}
                     value={productDetails?.pershkrimi || ''}
                     onChange={handleInputChange}
                   />
@@ -340,7 +343,7 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
             )}
 
             <Form.Group>
-              <Form.Label>Cmimi Blerjes</Form.Label>
+              <Form.Label>{t('Cmimi Blerjes')}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="number"
@@ -355,7 +358,7 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Cmimi Shitjes</Form.Label>
+              <Form.Label>{t('Cmimi Shitjes')}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type="number"
@@ -371,7 +374,7 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Komenti</Form.Label>
+              <Form.Label>{t('Komenti')}</Form.Label>
               <Form.Control
                 as="textarea"
                 name="komenti"
@@ -396,7 +399,7 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
                       : '0px 4px 15px rgba(108, 117, 125, 0.5)'
                   }}
                 >
-                  {meFature ? 'Me Fature te Rregullt' : 'Pa Fature te Rregullt'}
+                  {meFature ? t('Me Fature te Rregullt') : t('Pa Fature te Rregullt')}
                 </Button>
               </Form.Group>
 
@@ -422,7 +425,7 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose} disabled={loading}>
-            Mbyll
+            {t('Mbyll')}
           </Button>
           <Button
             variant="primary"
@@ -438,10 +441,10 @@ const ShtoNjeProdukt = ({ show, handleClose, prejardhja, produkti = {} , handleC
                   role="status"
                   aria-hidden="true"
                 />{' '}
-                Duke ruajtur...
+                {t('Duke ruajtur...')}
               </>
             ) : (
-              <>{produkti ? 'Ruaj Ndryshimet' : 'Shto Produktin'}</>
+              <>{produkti ? t('Ruaj Ndryshimet') : t("Shto Produktin")}</>
             )}
           </Button>
         </Modal.Footer>

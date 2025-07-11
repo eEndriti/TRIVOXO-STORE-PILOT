@@ -8,6 +8,7 @@ import { AuthProvider } from './components/AuthContext.jsx'
 import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastProvider } from "./components/ToastProvider";
+import './i18n';
 
 
 

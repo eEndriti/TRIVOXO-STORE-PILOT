@@ -6,8 +6,10 @@ import '../assets/css/Layout.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faSignOutAlt, faExchangeAlt, faCoins, faGift, faGears } from '@fortawesome/free-solid-svg-icons';
 import AuthContext, { formatCurrency } from './AuthContext';
+import { useTranslation } from 'react-i18next';
 
 import Cookies from 'js-cookie';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 
 function Layout() {
@@ -20,6 +22,7 @@ function Layout() {
   const [totaliIArkes,setTotaliIArkes] = useState()
   const [totaliArkesResult,setTotaliArkesResult] = useState([])
   const [visibleData,setVisibleData] = useState(false)
+  const { t } = useTranslation('others');
 
   useEffect(() => { // ktu jon butonat me  navigu neper faqe F1,F2,F3,F4,F5,F6
     const handleKeyPress = (event) => {
@@ -141,7 +144,6 @@ function Layout() {
       document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     });
   };
-console.log(authData.dataFillimit)
  
     return (
       <div className='container-fluid p-0'>
@@ -150,15 +152,15 @@ console.log(authData.dataFillimit)
           <Row className='align-items-center '>
             <Col xs={12} md={8} className='d-flex justify-content-between'>
               <div className='d-flex align-items-center'>
-              <span className='me-3'>
-                <FontAwesomeIcon icon={faCoins} className='me-2 text-warning fs-4' />
-                Totali i Arkes: <strong>{formatCurrency(totaliIArkes)}</strong>
-                 <span className='d-block text-muted text-center'>Avansi: {formatCurrency(authData.avansi,false)}</span>
-              </span>
+                <span className='me-3'>
+                  <FontAwesomeIcon icon={faCoins} className='me-2 text-warning fs-4' />
+                  {t('Totali i Arkes')}: <strong>{formatCurrency(totaliIArkes)}</strong>
+                  <span className='d-block text-muted text-center'>{t('Avansi')}: {formatCurrency(authData.avansi,false)}</span>
+                </span>
                 <span className='me-4'></span>
   
                 <FontAwesomeIcon icon={faExchangeAlt} className='me-2 text-success fs-5' />
-                <span className='me-4'>Nderrimi: <strong>{authData.numriPercjelles}-{formatDate(authData.dataFillimit)}</strong></span>
+                <span className='me-4'>{t('Nderrimi:')} <strong>{authData.numriPercjelles}-{formatDate(authData.dataFillimit)}</strong></span>
   
                 {authData.aKaUser == 'admin' && 
                     <> 
@@ -167,7 +169,7 @@ console.log(authData.dataFillimit)
                           <>
                             <Col className='d-flex flex-row pb-2' >
                               <FontAwesomeIcon icon={faGift} className='me-2 text-info fs-5' />
-                              <span>Bonuse: <strong>{formatCurrency(perBonuse)}</strong> <span className='d-inline mx-4 text-secondary'>{formatCurrency(totalShumaPerBonuse)}</span></span> 
+                              <span>{t('Bonuse:')} <strong>{formatCurrency(perBonuse)}</strong> <span className='d-inline mx-4 text-secondary'>{formatCurrency(totalShumaPerBonuse)}</span></span> 
                             </Col>
                             <Col className='w-50'><ProgressBar animated variant={getPerBonuseFillBar() > 199 ? 'success' : 'info'} now={getPerBonuseFillBar()} style={{height:'7px'}}/></Col>
                           </>
@@ -178,14 +180,13 @@ console.log(authData.dataFillimit)
               </div>
                
             </Col>
-  
             <Col xs={12} md={4} className='d-flex justify-content-end align-items-center'>
               <span className='me-3'>
                 <FontAwesomeIcon icon={faUser} className='me-2 text-success fs-4' />
-                {authData.emriPerdoruesit} <span className='d-block text-muted'>Roli: {authData.aKaUser}</span>
+                {authData.emriPerdoruesit} <span className='d-block text-muted'>{t('Roli:')} {authData.aKaUser}</span>
               </span>
               <NavLink onClick={() => logOut()} className='btn btn-danger'>
-                <FontAwesomeIcon icon={faSignOutAlt} className='me-1' /> Dil
+                <FontAwesomeIcon icon={faSignOutAlt} className='me-1' /> {t('Dil')}
               </NavLink>
             </Col>
           </Row>
@@ -200,46 +201,48 @@ console.log(authData.dataFillimit)
               </div>
               <div className='sidebar-content d-flex flex-column'>
               <NavLink exact to='/faqjaKryesore' className='nav-link' activeClassName='active'>
-                Kryefaqja <Badge bg="secondary" className="ms-2 float-end">F 1</Badge>
+                {t('Kryefaqja')} <Badge bg="secondary" className="ms-2 float-end">F 1</Badge>
               </NavLink>
               <NavLink to='/shitje' className='nav-link' activeClassName='active'>
-                Shitje <Badge bg="secondary" className="ms-2 float-end">F 2</Badge>
+                {t('Shitje')} <Badge bg="secondary" className="ms-2 float-end">F 2</Badge>
               </NavLink>
               <NavLink to='/shpenzim' className='nav-link' activeClassName='active'>
-                Shpenzim <Badge bg="secondary" className="ms-2 float-end">F3</Badge>
+                {t('Shpenzim')} <Badge bg="secondary" className="ms-2 float-end">F3</Badge>
               </NavLink>
               {authData.aKaUser == 'admin' && <NavLink exact to='/blerje' className='nav-link' activeClassName='active'>
-                Blerje <Badge bg="secondary" className="ms-2 float-end">F4</Badge>
+                {t('Blerje')} <Badge bg="secondary" className="ms-2 float-end">F4</Badge>
               </NavLink>}
               <NavLink to='/serviset' className='nav-link' activeClassName='active'>
-                Serviset <Badge bg="secondary" className="ms-2 float-end">F5</Badge>
+                {t('Serviset')} <Badge bg="secondary" className="ms-2 float-end">F5</Badge>
               </NavLink>
                 <NavLink to='/stoku' className='nav-link' activeClassName='active'>
-                  Stoku
+                  {t('Stoku')}
                 </NavLink>
                 <NavLink to='/klient' className='nav-link' activeClassName='active'>
-                  Klient
+                  {t('Klient')}
                 </NavLink>
                 {authData.aKaUser == 'admin' && <>
                   <NavLink exact to='/furnitor' className='nav-link' activeClassName='active'>
-                  Furnitor
+                  {t('Furnitor')}
                 </NavLink>
-                <NavLink to='/printoLabell' className='nav-link' activeClassName='active'>
+               {/** <NavLink to='/printoLabell' className='nav-link' activeClassName='active'>
                   Testo Labellen
-                </NavLink>
+                </NavLink> */}
                 <NavLink to='/evidenca' className='nav-link' activeClassName='active'>
-                  Evidenca
+                  {t('Evidenca')}
                 </NavLink>
                 <NavLink exact to='/transaksionet' className='nav-link' activeClassName='active'>
-                  Transaksionet
+                  {t('Transaksionet')}
                 </NavLink>
                 <NavLink to='/administrimi' className='nav-link' activeClassName='active'>
-                  Administrimi
+                  {t('Administrimi')}
                 </NavLink>
                 <NavLink to='/parametrat' className='nav-link' activeClassName='active'>
-                  Parametrat <FontAwesomeIcon icon={faGears} />
+                  {t('Parametrat')} <FontAwesomeIcon icon={faGears} />
                 </NavLink>
                 </>}
+                <br/>
+                <LanguageSwitcher/>
                 {/**<div className='current-url p-3'>
                   <p>Current URL: {location.pathname}</p> {/* Display the current URL }
                 </div> */}

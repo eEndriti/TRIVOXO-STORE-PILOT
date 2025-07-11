@@ -13,9 +13,11 @@ import dummyTransaksionet from '../../assets/dummyData.json/transaksionet.json'
 import dummyNderrimet from '../../assets/dummyData.json/nderrimet.json'
 import AuthContext, { formatCurrency, formatDate, formatLongDateToAlbanian, normalizoDaten } from '../AuthContext';
 import Charts from './Charts';
+import { useTranslation } from 'react-i18next';
 const isElectron = !!(window && window.electronAPI);
 
 export default function Transaksionet() {
+  const {t} = useTranslation('faqjaKryesore')
     const navigate = useNavigate()
     const [loading,setLoading] = useState(true)
     const [transaksionet,setTransaksionet] = useState([])
@@ -119,7 +121,6 @@ export default function Transaksionet() {
             perdoruesiID:authData.perdoruesiID,
             nderrimiID:authData.nderrimiID,
           }
-          console.log('data',dataPerPerdorim)
         try{
             let result
 
@@ -130,24 +131,31 @@ export default function Transaksionet() {
                     break;
                 case 'Shpenzim' : result = await window.api.anuloShpenzimin(data)
                     break;
-                case 'Servisim' : showToast('Servisi mund te anulohet vetem nga sektori i Servisimit!', 'warning')
-                    break;
-                case 'Pagese Bonuseve' : showToast('Pagesa e Bonuseve mund te Anulohet vetem nga sektori i Administrimit', 'warning') 
-                    break;
-                case 'Pagese per Blerje':
-                case 'Pagese per Shitje':
-                case 'Pagese per Servisimi': showToast('Pagesa e Dokumentit mund te Anulohet vetem nga sektori i Dokumentit Perkates', 'warning')
-                    break;
-                case 'Pagese Page' : showToast('Pagesa e Pages mund te Anulohet vetem nga sektori i Administrimit', 'warning')
-                    break;
-                default : showToast('Veprimi nuk Lejohet!','warning')
+              case 'Servisim':
+                showToast(t('Servisi mund te anulohet vetem nga sektori i Servisimit!'), 'warning');
+                break;
+              case 'Pagese Bonuseve':
+                showToast(t('Pagesa e Bonuseve mund te Anulohet vetem nga sektori i Administrimit'), 'warning');
+                break;
+              case 'Pagese per Blerje':
+              case 'Pagese per Shitje':
+              case 'Pagese per Servisimi':
+                showToast(t('Pagesa e Dokumentit mund te Anulohet vetem nga sektori i Dokumentit Perkates'), 'warning');
+                break;
+              case 'Pagese Page':
+                showToast(t('Pagesa e Pages mund te Anulohet vetem nga sektori i Administrimit'), 'warning');
+                break;
+              default:
+                showToast(t('Veprimi nuk Lejohet!'), 'warning');
             }
 
+      
+
             if (result.success) {
-              showToast(`Transaksioni i llojit ${dataPerPerdorim.lloji} u Anulua me Sukses!`, "success");
+              showToast(t(`Transaksioni i llojit`) + t(dataPerPerdorim.lloji) + t(' u Anulua me Sukses!'), "success");
                fetchData();
               } else {
-                showToast("Gabim gjatë Anulimit!", "error"); 
+                showToast(t("Gabim gjatë Anulimit!"), "error"); 
  
               }
         }catch(e){
@@ -174,14 +182,18 @@ export default function Transaksionet() {
         case 'Servisim':
         case 'Modifikim Servisi': showServisimModal(item.llojiID)
             break;
-        case 'Pagese Bonuseve' : showToast('Pagesa e Bonuseve mund te ndryshohet vetem nga sektori i Administrimit', 'warning') 
-            break;
+        case 'Pagese Bonuseve':
+          showToast(t('Pagesa e Bonuseve mund te ndryshohet vetem nga sektori i Administrimit'), 'warning');
+          break;
         case 'Pagese per Blerje':
         case 'Pagese per Shitje':
-        case 'Pagese per Servisimi': showToast('Pagesa e Dokumentit mund te ndryshohet vetem nga sektori i Dokumentit Perkates', 'warning')
-            break;
-        case 'Pagese Page' : showToast('Pagesa e Pages mund te ndryshohet vetem nga sektori i Administrimit', 'warning')
-            break;
+        case 'Pagese per Servisimi':
+          showToast(t('Pagesa e Dokumentit mund te ndryshohet vetem nga sektori i Dokumentit Perkates'), 'warning');
+          break;
+        case 'Pagese Page':
+          showToast(t('Pagesa e Pages mund te ndryshohet vetem nga sektori i Administrimit'), 'warning');
+          break;
+
          
       }
     }
@@ -193,7 +205,7 @@ export default function Transaksionet() {
           setDataNdryshoShpenzim(data) 
 
       } catch (error) {
-         showToast('Gabim gjate marrjes se te dhenave per ndryshim' + error, 'error')
+         showToast(t('Gabim gjate marrjes se te dhenave per ndryshim') + error, 'error')
       }finally{
           setModalNdryshoShpenzim(true)
           updateAuthData({reloadLayout:!authData.reloadLayout})
@@ -215,7 +227,7 @@ export default function Transaksionet() {
           setModalNdryshoServisim(true); 
   
       } catch (error) {
-          showToast('Gabim gjatë marrjes së të dhënave për ndryshim: ' + error, 'error');
+          showToast(t('Gabim gjate marrjes se te dhenave per ndryshim') + error, 'error');
       }finally{
         updateAuthData({reloadLayout:!authData.reloadLayout})
 
@@ -233,21 +245,22 @@ export default function Transaksionet() {
       <AnimatedSpinner />
     ) : (
         <Row className="section-container my-4">
-        <h3 className="section-title">Transaksionet e {authData.aKaUser == 'admin' ? 'Dites' : 'Nderrimit'}</h3>
+        <h3 className="section-title">{t('Transaksionet e')} {authData.aKaUser == 'admin' ? t('Dites') : t('Nderrimit')}</h3>
         <div className="table-container tableHeight50">
             <Table responsive="sm" striped bordered hover size="sm" className="custom-table">
             <thead className="table-header">
                 <tr>
-                <th>Nr</th>
-                <th>Shifra</th>
-                <th>Lloji</th>
-                <th>Pershkrimi</th>
-                <th>Totali Për Pagesë</th>
-                <th>Totali Pagesës</th>
-                <th>Mbetja Për Pagesë</th>
-                <th>Komenti</th>
-                <th>Koha</th>
-                <th>Opsionet</th>
+                <th>{t('Nr')}</th>
+                <th>{t('Shifra')}</th>
+                <th>{t('Lloji')}</th>
+                <th>{t('Përshkrimi')}</th>
+                <th>{t('Totali Për Pagesë')}</th>
+                <th>{t('Totali Pagesës')}</th>
+                <th>{t('Mbetja Për Pagesë')}</th>
+                <th>{t('Komenti')}</th>
+                <th>{t('Koha')}</th>
+                <th>{t('Opsionet')}</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -304,7 +317,7 @@ export default function Transaksionet() {
               onChange={(e) => setSelectedNderrimi(e.target.value)}
             >
               <option value="" disabled>
-                Selekto Nderrimin
+                {t('Selekto Nderrimin')}
               </option>
               {nderrimet?.slice(0, -1).reverse().map((item) => (
                 <option key={item.nderrimiID} value={item.nderrimiID}>
@@ -316,7 +329,7 @@ export default function Transaksionet() {
           </Col>
           <Col>
               {selectedNderrimi &&               
-              <Button variant='outline-primary' onClick={() => {setTregoGrafikun(false);setSelectedNderrimi('')}}>{tregoGrafikun ? 'Mbyll Grafikun' : 'Krahaso Nderrimet'}</Button>
+              <Button variant='outline-primary' onClick={() => {setTregoGrafikun(false);setSelectedNderrimi('')}}>{tregoGrafikun ? t('Mbyll Grafikun') : t('Krahaso Nderrimet')}</Button>
             }
           </Col>
         </Col>

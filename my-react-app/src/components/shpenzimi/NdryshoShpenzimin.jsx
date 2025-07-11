@@ -5,9 +5,9 @@ import {ToastContainer } from 'react-toastify';
 import { useToast } from '../ToastProvider';
 import  AuthProvider  from '../AuthContext';
 import MenyratPagesesExport from '../MenyratPagesesExport';
-
+import { useTranslation } from 'react-i18next';
 export default function NdryshoShpenzimin({show,handleClose,dataPerNdryshim = {}}) {
-    
+    const {t} = useTranslation('shpenzimi')
     const [buttonLoading,setButtonLoading] = useState(false)
     const [loading,setLoading] = useState(true)
     const [llojiShpenzimeveSelektuarID,setLlojiShpenzimeveSelektuarID] = useState()
@@ -76,10 +76,10 @@ export default function NdryshoShpenzimin({show,handleClose,dataPerNdryshim = {}
               }
               console.log('data2',data2)
               await window.api.ndryshoShpenzimin(data2)
-              showToast('Ndryshimet u ruajten me sukses!', 'success')
+              showToast(t("Ndryshimet u ruajten me sukses!"), 'success')
 
         }catch(e){
-            showToast('Gabim gjate ndryshimit: '+e , 'error');
+            showToast(t('Gabim gjate ndryshimit: ')+e , 'error');
         }finally{
             setLoading(false)
             setButtonLoading(false)
@@ -104,11 +104,11 @@ export default function NdryshoShpenzimin({show,handleClose,dataPerNdryshim = {}
     {loading ? <AnimatedSpinner/> :
     <Modal show={show} onHide={handleClose}>
     <Modal.Header closeButton>
-        <Modal.Title>Ndrysho Shpenzimin</Modal.Title>
+        <Modal.Title>{t('Ndrysho Shpenzimin')}</Modal.Title>
     </Modal.Header>
     <Modal.Body>
         <Form.Group>
-        <Form.Label>Shifra:</Form.Label>
+        <Form.Label>{t('Shifra:')}</Form.Label>
         <Form.Control
             type="text"
             disabled
@@ -117,9 +117,9 @@ export default function NdryshoShpenzimin({show,handleClose,dataPerNdryshim = {}
         </Form.Group>
         <Col className='d-flex flex-row align-items-center justify-content-between my-2'>
             <Form.Group className='w-75 mx-2'>
-                <Form.Label className='mb-2'>Lloji i Shpenzimit:</Form.Label>
-                    <Form.Select onChange={handleSelectChange}     value={llojiShpenzimeveSelektuarID || ""}  aria-label="Selekto nje Lloj Shpenzimi">
-                        <option value="" disabled selected >Selekto nje Lloj Shpenzimi</option>
+                <Form.Label className='mb-2'>{t('Lloji i Shpenzimit:')}</Form.Label>
+                    <Form.Select onChange={handleSelectChange}     value={llojiShpenzimeveSelektuarID || ""}  aria-label={t("Selekto nje Lloj Shpenzimi")}>
+                        <option value="" disabled selected >{t("Selekto nje Lloj Shpenzimi")}</option>
                         {llojetShpenzimeve.map((item, index) => (
                         <option key={index} value={item.llojetShpenzimeveID}>
                             {item.emertimi}
@@ -129,7 +129,7 @@ export default function NdryshoShpenzimin({show,handleClose,dataPerNdryshim = {}
             </Form.Group>
             
             <Form.Group>
-            <Form.Label>Shuma:</Form.Label>
+            <Form.Label>{t('Shuma:')}</Form.Label>
             <Form.Control className=''
                 type="number"
                 name = 'shumaShpenzimit'
@@ -140,7 +140,7 @@ export default function NdryshoShpenzimin({show,handleClose,dataPerNdryshim = {}
             </Form.Group>
         </Col>
         <Form.Group>
-        <Form.Label>Komenti:</Form.Label>
+        <Form.Label>{t('Komenti:')}</Form.Label>
         <Form.Control
             as="textarea"
             name = 'komenti'
@@ -153,10 +153,10 @@ export default function NdryshoShpenzimin({show,handleClose,dataPerNdryshim = {}
         </Row>
     </Modal.Body>
     <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>Mbyll</Button>
+        <Button variant="secondary" onClick={handleClose}>{t('Mbyll')}</Button>
         <Button variant="primary" onClick={handleRuajNdryshimet} disabled={buttonLoading || data?.shumaShpenzimit < 1 || !data?.shumaShpenzimit || !data.menyraPagesesID}>{buttonLoading ? <>
-        <Spinner as="span" animation='border' size='sm' role='status' aria-hidden={true}/>{''}Duke Ruajtur...
-        </> :'Ruaj Ndryshimet'}</Button>
+        <Spinner as="span" animation='border' size='sm' role='status' aria-hidden={true}/>{''}{t('Duke Ruajtur...')}
+        </> :t('Ruaj Ndryshimet')}</Button>
     </Modal.Footer>
   </Modal>
   }        <ToastContainer />

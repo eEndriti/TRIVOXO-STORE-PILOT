@@ -4,8 +4,9 @@ import {ToastContainer } from 'react-toastify';
 import { useToast } from '../ToastProvider';
 import MenyratPagesesExport from '../MenyratPagesesExport';
 import AuthContext from '../AuthContext';
-
+import { useTranslation } from 'react-i18next';
 export default function ShtoShpenzim() {
+    const {t} = useTranslation('shpenzimi')
     const [llojetShpenzimeve, setLlojetShpenzimeve] = useState([]);
     const [llojiShpenzimeveSelektuarID, setLlojiShpenzimeveSelektuarID] = useState();
     const [selectedShumaStandarde, setSelectedShumaStandarde] = useState();
@@ -49,10 +50,10 @@ export default function ShtoShpenzim() {
       try {
         console.log(data)
         await window.api.insertShpenzimi(data);
-        showToast('Shpenzimi u Regjistrua me Sukses!', 'success');            
+        showToast(t("Shpenzimi u Regjistrua me Sukses!"), 'success');            
 
       } catch (e) {
-        showToast('Gabim gjate regjistrimit: ' ,'error');
+        showToast(t('Gabim gjate regjistrimit!') ,'error');
 
       }finally{
         setLoading(false)
@@ -67,19 +68,19 @@ export default function ShtoShpenzim() {
     <Container>
         <Row >
                 <Col className='d-flex flex-column justify-content-start bg-light border rounded p-4 shadow-sm '>
-                  <h3 className='text-center mb-4'>Shto nje Shpenzim</h3>
+                  <h3 className='text-center mb-4'>{t('Shto nje Shpenzim')}</h3>
         
                   <Form className='d-flex flex-column align-items-center justify-content-center'>
                     
                    <Col className='d-flex flex-row align-items-center justify-content-around'>
                     <Form.Group className='mb-4 w-100'>
-                        <Form.Label className='mb-2'>Lloji i Shpenzimit</Form.Label>
+                        <Form.Label className='mb-2'>{t('Lloji i Shpenzimit')}</Form.Label>
                         <Form.Select
                           onChange={handleSelectChange}
-                          aria-label="Selekto nje Lloj Shpenzimi"
+                          aria-label={t("Selekto nje Lloj Shpenzimi")}
                           value={llojiShpenzimeveSelektuarID}
                         >
-                          <option value="" >Selekto nje Lloj Shpenzimi</option>
+                          <option value="" >{t('Selekto nje Lloj Shpenzimi')}</option>
                           {llojetShpenzimeve.map((item, index) => (
                             <option key={index} value={item.llojetShpenzimeveID}>
                               {item.emertimi}
@@ -89,11 +90,11 @@ export default function ShtoShpenzim() {
                       </Form.Group>
           
                       <Form.Group className='mb-4 w-75 mx-2'>
-                        <Form.Label className='mb-2'>Shuma per Shpenzim</Form.Label>
+                        <Form.Label className='mb-2'>{t('Shuma per Shpenzim')}</Form.Label>
                         <InputGroup>
                           <Form.Control
                             type='number'
-                            placeholder='P.sh 20,50,etj...'
+                            placeholder={t('P.sh 20,50,etj...')}
                             value={selectedShumaStandarde}
                             onChange={(e) => setSelectedShumaStandarde(e.target.value)}
                             min="1"
@@ -104,11 +105,11 @@ export default function ShtoShpenzim() {
                      </Col>
         
                     <Form.Group className='mb-4 w-100'>
-                      <Form.Label className='mb-2'>Komenti i Shpenzimit</Form.Label>
+                      <Form.Label className='mb-2'>{t('Komenti i Shpenzimit')}</Form.Label>
                       <Form.Control
                         as='textarea'
                         rows={3}
-                        placeholder='Opsionale nese deshironi te tregoni arsyen...'
+                        placeholder={t('Opsionale nese deshironi te tregoni arsyen...')}
                         onChange={(e) => setKomenti(e.target.value)}
                       />
                     </Form.Group>
@@ -127,10 +128,10 @@ export default function ShtoShpenzim() {
                       {loading ? (
                         <>
                           <Spinner as="span" animation='border' size='sm' role='status' aria-hidden={true} /> 
-                          {`Duke Ruajtur...`}
+                          {t(`Duke Ruajtur...`)}
                         </>
                       ) : (
-                        'Regjistro'
+                        t('Regjistro')
                       )}
                     </Button>
                   </Form>

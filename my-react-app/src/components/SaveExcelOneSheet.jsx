@@ -3,8 +3,11 @@ import { Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileExcel } from '@fortawesome/free-solid-svg-icons'
 import { useToast } from './ToastProvider';
+import { useTranslation } from 'react-i18next';
 
 export default function saveExcelOneSheet({data,fileName}) {
+
+ const {t} = useTranslation('others')
 const [meMaus,setMeMaus] = useState(false)
 const showToast = useToast()
 
@@ -18,9 +21,9 @@ let fullFileName = `${fileName}__${isoFmt}.xlsx`
         })
     
         if (result.success) {
-          showToast(`Excel u Ruajt me sukses ne :${result.filePath}`, 'success')
+          showToast( t('Excel u Ruajt me sukses ne ')+` :${result.filePath}`, 'success')
         } else {
-          showToast(`Excel nuk u Ruajt!`, 'error')
+          showToast(t('Excel nuk u Ruajt!'), 'error')
         }
       }
 
@@ -28,7 +31,7 @@ let fullFileName = `${fileName}__${isoFmt}.xlsx`
     <div className="text-end my-3">
     <Button variant="btn btn-outline-success" onClick={() => handleExport()} onMouseEnter={(e) => setMeMaus(true)} onMouseLeave={(e) => setMeMaus(false)}>
       <FontAwesomeIcon icon={faFileExcel}  className= {`mx-2 ${meMaus ? 'primary' : 'success'}`} />
-        Eksporto ne Excel 
+        {t('Eksporto ne Excel')} 
     </Button>
   </div>
   )

@@ -9,7 +9,10 @@ import {ToastContainer } from 'react-toastify';
 import { useToast } from '../ToastProvider';
 import KategoriteCharts from './KategoriteCharts';
 import AuthProvider from '../AuthContext'
+import { useTranslation } from 'react-i18next';
+
 export default function Kategorite() {
+  const {t} = useTranslation('stoku')
   const [kategorite, setKategorite] = useState([]);
   const [kategorieDetails, setKategorieDetails] = useState([]);
   const [chartData, setChartData] = useState([]);
@@ -25,6 +28,8 @@ export default function Kategorite() {
   const [triggerReload, setTriggerReload] = useState(false);
   const showToast = useToast();
   const {authData} = useContext(AuthProvider)
+
+
   useEffect(() => {
       fetchData()
   }, [triggerReload]);
@@ -55,7 +60,7 @@ export default function Kategorite() {
       setChartData(mergedArray);
   
     } catch (error) {
-      showToast('Gabim gjate marrjes se te dhenave: ' + error, 'error');
+      showToast(t('Gabim gjate marrjes se te dhenave:') + error, 'error');
     } finally {
       setLoading(false);
     }
@@ -80,9 +85,9 @@ export default function Kategorite() {
 
     try {
       await window.api.insertKategorine(data);
-      showToast('Kategoria u Regjistrua me Sukses!','success');
+      showToast(t("Kategoria u Regjistrua me Sukses!"),'success');
     } catch (error) {
-      showToast('Gabim gjate regjistrimit: '+error ,'error');
+      showToast(t("Gabim gjate regjistrimit:")+error ,'error');
 
     }finally{
       setSubmitLoading(false);
@@ -115,9 +120,9 @@ export default function Kategorite() {
       const result = await window.api.deleteKategoria(data);
 
       if (result.success) {
-        showToast('Kategoria u fshi me sukses!', 'success');
+        showToast(t('Kategoria u fshi me sukses!'), 'success');
       } else {
-        showToast('Gabim gjate fshirjes: ' + result.error,'error');
+        showToast(t('Gabim gjate fshirjes:') + result.error,'error');
       }
     } catch (error) {
       console.log(error)
@@ -146,10 +151,10 @@ export default function Kategorite() {
     try {
       const result = await window.api.ndryshoKategorine(data);
       if (result.success) {
-        showToast('Kategoria u ndryshua me sukses!', 'success');
+        showToast(t('Kategoria u ndryshua me sukses!'), 'success');
        
       } else {
-        showToast('Gabim gjate ndryshimit: ' + result.error,'error');
+        showToast(t('Gabim gjate ndryshimit:') + result.error,'error');
       }
     } catch (error) {
       console.log(error)
@@ -162,33 +167,33 @@ export default function Kategorite() {
 
   return (
     <Container fluid className="mt-5">
-      <h3 className="text-center fw-bold text-dark">Kategorite:</h3>
+      <h3 className="text-center fw-bold text-dark">{t('Kategorite')}:</h3>
       <hr />
       <Row>
         <Col lg={3} className="bg-light border rounded p-4">
           <Card className="shadow">
             <Card.Body>
-              <Card.Title className="text-center">Shto nje Kategori</Card.Title>
+              <Card.Title className="text-center">{t('Shto nje Kategori')}</Card.Title>
               <Form>
                 <Form.Group className="mb-3">
-                  <Form.Label>Emertimi</Form.Label>
+                  <Form.Label>{t('Emertimi')}</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Emertimi i Kategorise..."
+                    placeholder={t("Emertimi i Kategorise...")}
                     onChange={(e) => setEmertimiPerTeShtuar(e.target.value)}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>TVSH</Form.Label>
+                  <Form.Label>{t('TVSH')}</Form.Label>
                   <Form.Control
                     type="number"
-                    placeholder="TVSH e Kategorise..."
+                    placeholder={t("TVSH e Kategorise...")}
                     min={0}
                     onChange={(e) => setTvshPerTeShtuar(e.target.value)}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>Pajisje Procesuese?</Form.Label>
+                  <Form.Label>{t('Pajisje Procesuese?')}</Form.Label>
                   <Form.Check
                     inline
                     onChange={handleCheckKomponenta}
@@ -211,7 +216,7 @@ export default function Kategorite() {
         <Col lg={9} className="mt-3 mt-lg-0">
           <Card className="shadow">
             <Card.Body>
-              <Card.Title className="text-center">Lista e Kategorive</Card.Title>
+              <Card.Title className="text-center">{t('Lista e Kategorive')}</Card.Title>
               {loading ? (
                 <div className="d-flex justify-content-center py-5">
                   <AnimatedSpinner/>
@@ -220,12 +225,12 @@ export default function Kategorite() {
                 <Table responsive striped bordered hover className="text-center">
                   <thead className="table-light">
                     <tr>
-                      <th>Nr</th>
-                      <th>Emertimi</th>
-                      <th>TVSH</th>
-                      <th>Pajisje Procesuese</th>
-                      <th>Sasia</th>
-                      <th>Opsionet</th>
+                      <th>{t('Nr')}</th>
+                      <th>{t('Emertimi')}</th>
+                      <th>{t('TVSH')}</th>
+                      <th>{t('Pajisje Procesuese')}</th>
+                      <th>{t('Sasia')}</th>
+                      <th>{t('Opsionet')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -238,9 +243,9 @@ export default function Kategorite() {
                         </td>
                         <td>
                           {item.komponenta === 'true' ? (
-                            <Badge bg="success">Po</Badge>
+                            <Badge bg="success">{t('Po')}</Badge>
                           ) : (
-                            <Badge bg="danger">Jo</Badge>
+                            <Badge bg="danger">{t('Jo')}</Badge>
                           )}
                         </td>
                         <td>{item.total_sasia || '0'}</td>
@@ -266,7 +271,7 @@ export default function Kategorite() {
                   </tbody>
                 </Table>
               ) : (
-                <h5 className="text-center text-danger">Nuk ekzistojne kategori te regjistruara...</h5>
+                <h5 className="text-center text-danger">{t('Nuk ekzistojne kategori te regjistruara...')}</h5>
               )}
             </Card.Body>
           </Card>
@@ -279,13 +284,13 @@ export default function Kategorite() {
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Ndrysho Kategorine</Modal.Title>
+          <Modal.Title>{t('Ndrysho Kategorine')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {selectedCategory && (
             <Form>
               <Form.Group className="mb-3">
-                <Form.Label>Emertimi</Form.Label>
+                <Form.Label>{t('Emertimi')}</Form.Label>
                 <Form.Control
                   type="text"
                   value={selectedCategory.emertimi}
@@ -293,7 +298,7 @@ export default function Kategorite() {
                 />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Label>TVSH</Form.Label>
+                <Form.Label>{t('TVSH')}</Form.Label>
                 <Form.Control
                   type="number"
                   value={selectedCategory.tvsh}
@@ -301,7 +306,7 @@ export default function Kategorite() {
                 />
               </Form.Group>
               <Form.Group className="mb-3 d-flex flex-row">
-                <Form.Label>Pajisje Procesuese?</Form.Label>
+                <Form.Label>{t('Pajisje Procesuese?')}</Form.Label>
                 <Form.Check
                   checked={selectedCategory.komponenta === 'true'} className='px-3 fs-5'
                   onChange={(e) =>
@@ -314,10 +319,10 @@ export default function Kategorite() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
-            Mbyll
+            {t('Mbyll')}
           </Button>
           <Button variant="primary" onClick={handleUpdateCategory} disabled={submitLoading ||selectedCategory?.tvsh < 1 || selectedCategory?.emertimi.length < 1}>
-            Ndrysho Kategorine
+            {t('Ndrysho Kategorine')}
           </Button>
         </Modal.Footer>
       </Modal>
